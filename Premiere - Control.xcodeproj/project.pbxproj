@@ -8,12 +8,37 @@
 
 /* Begin PBXBuildFile section */
 		BC41FE901C060094004FBA72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FE8F1C060094004FBA72 /* AppDelegate.swift */; };
-		BC41FE921C060094004FBA72 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FE911C060094004FBA72 /* FirstViewController.swift */; };
-		BC41FE941C060094004FBA72 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FE931C060094004FBA72 /* SecondViewController.swift */; };
-		BC41FE971C060094004FBA72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC41FE951C060094004FBA72 /* Main.storyboard */; };
+		BC41FE921C060094004FBA72 /* FixturesSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FE911C060094004FBA72 /* FixturesSplitViewController.swift */; };
+		BC41FE941C060094004FBA72 /* SubmastersSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FE931C060094004FBA72 /* SubmastersSplitViewController.swift */; };
 		BC41FE991C060094004FBA72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC41FE981C060094004FBA72 /* Assets.xcassets */; };
 		BC41FE9C1C060094004FBA72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC41FE9A1C060094004FBA72 /* LaunchScreen.storyboard */; };
 		BC41FEA71C060095004FBA72 /* Premiere___ControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FEA61C060095004FBA72 /* Premiere___ControlTests.swift */; };
+		BC6126FA1C15CEC900C22F5E /* FixtureEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126F91C15CEC900C22F5E /* FixtureEditViewController.swift */; };
+		BC6126FD1C15D14100C22F5E /* GenericPropriety.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126FC1C15D14100C22F5E /* GenericPropriety.swift */; };
+		BC6126FF1C15D16E00C22F5E /* ColourPropriety.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126FE1C15D16E00C22F5E /* ColourPropriety.swift */; };
+		BC6127011C15D1A100C22F5E /* ScrollerPropriety.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127001C15D1A100C22F5E /* ScrollerPropriety.swift */; };
+		BC6127031C15D1C400C22F5E /* PositionPropriety.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127021C15D1C400C22F5E /* PositionPropriety.swift */; };
+		BC6127051C15D55900C22F5E /* FixtureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127041C15D55900C22F5E /* FixtureTableViewCell.swift */; };
+		BC6127091C1628CD00C22F5E /* KeypadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127081C1628CD00C22F5E /* KeypadViewController.swift */; };
+		BCBF4F3F1C168ED5008C7192 /* FixtureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */; };
+		BCD43ADE1C08A1EE005ABA97 /* FixtureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43ADD1C08A1EE005ABA97 /* FixtureTableViewController.swift */; };
+		BCD43AE01C08A20A005ABA97 /* SubmasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */; };
+		BCD43AE41C08A279005ABA97 /* SubmasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AE31C08A279005ABA97 /* SubmasterViewController.swift */; };
+		BCD43AE81C08A5F5005ABA97 /* SubmasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AE71C08A5F5005ABA97 /* SubmasterTableViewCell.swift */; };
+		BCD43AEA1C08BE96005ABA97 /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AE91C08BE96005ABA97 /* Fixture.swift */; };
+		BCD43AEC1C08BEB1005ABA97 /* Submaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AEB1C08BEB1005ABA97 /* Submaster.swift */; };
+		BCD43AEF1C092450005ABA97 /* Cue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AEE1C092450005ABA97 /* Cue.swift */; };
+		BCD43AF31C0924B1005ABA97 /* CuesSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AF21C0924B1005ABA97 /* CuesSplitViewController.swift */; };
+		BCD43AF51C0924C5005ABA97 /* CueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AF41C0924C5005ABA97 /* CueTableViewController.swift */; };
+		BCD43AF71C0924E5005ABA97 /* CueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AF61C0924E5005ABA97 /* CueTableViewCell.swift */; };
+		BCD43AF91C092509005ABA97 /* CueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AF81C092509005ABA97 /* CueViewController.swift */; };
+		BCD43B001C0AA7CC005ABA97 /* SubmasterEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AFF1C0AA7CC005ABA97 /* SubmasterEditViewController.swift */; };
+		BCD43B031C0AA7DE005ABA97 /* CueEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43B021C0AA7DE005ABA97 /* CueEditViewController.swift */; };
+		BCD43B321C0B91CB005ABA97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCD43B311C0B91CB005ABA97 /* Main.storyboard */; };
+		BCD43B381C0CA970005ABA97 /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43B371C0CA970005ABA97 /* OptionsTableViewController.swift */; };
+		BCD43B3A1C0F457B005ABA97 /* Dimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43B391C0F457B005ABA97 /* Dimmer.swift */; };
+		BCD43B3C1C0F49A0005ABA97 /* DMX.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43B3B1C0F49A0005ABA97 /* DMX.swift */; };
+		BCD43B3E1C108B06005ABA97 /* Propriety.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43B3D1C108B06005ABA97 /* Propriety.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +52,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BC41FE8C1C060094004FBA72 /* Premiere - Control.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Premiere - Control.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC41FE8C1C060094004FBA72 /* Premiere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Premiere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC41FE8F1C060094004FBA72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BC41FE911C060094004FBA72 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		BC41FE931C060094004FBA72 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		BC41FE961C060094004FBA72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BC41FE911C060094004FBA72 /* FixturesSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesSplitViewController.swift; sourceTree = "<group>"; };
+		BC41FE931C060094004FBA72 /* SubmastersSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmastersSplitViewController.swift; sourceTree = "<group>"; };
 		BC41FE981C060094004FBA72 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC41FE9B1C060094004FBA72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC41FE9D1C060094004FBA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC41FEA21C060095004FBA72 /* Premiere - ControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Premiere - ControlTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC41FEA61C060095004FBA72 /* Premiere___ControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Premiere___ControlTests.swift"; sourceTree = "<group>"; };
 		BC41FEA81C060095004FBA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC6126F91C15CEC900C22F5E /* FixtureEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureEditViewController.swift; sourceTree = "<group>"; };
+		BC6126FC1C15D14100C22F5E /* GenericPropriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPropriety.swift; sourceTree = "<group>"; };
+		BC6126FE1C15D16E00C22F5E /* ColourPropriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourPropriety.swift; sourceTree = "<group>"; };
+		BC6127001C15D1A100C22F5E /* ScrollerPropriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollerPropriety.swift; sourceTree = "<group>"; };
+		BC6127021C15D1C400C22F5E /* PositionPropriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionPropriety.swift; sourceTree = "<group>"; };
+		BC6127041C15D55900C22F5E /* FixtureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureTableViewCell.swift; sourceTree = "<group>"; };
+		BC6127081C1628CD00C22F5E /* KeypadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeypadViewController.swift; sourceTree = "<group>"; };
+		BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureDetailViewController.swift; sourceTree = "<group>"; };
+		BCD43ADD1C08A1EE005ABA97 /* FixtureTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureTableViewController.swift; sourceTree = "<group>"; };
+		BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterTableViewController.swift; sourceTree = "<group>"; };
+		BCD43AE31C08A279005ABA97 /* SubmasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterViewController.swift; sourceTree = "<group>"; };
+		BCD43AE71C08A5F5005ABA97 /* SubmasterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterTableViewCell.swift; sourceTree = "<group>"; };
+		BCD43AE91C08BE96005ABA97 /* Fixture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
+		BCD43AEB1C08BEB1005ABA97 /* Submaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Submaster.swift; sourceTree = "<group>"; };
+		BCD43AEE1C092450005ABA97 /* Cue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cue.swift; sourceTree = "<group>"; };
+		BCD43AF21C0924B1005ABA97 /* CuesSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CuesSplitViewController.swift; sourceTree = "<group>"; };
+		BCD43AF41C0924C5005ABA97 /* CueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CueTableViewController.swift; sourceTree = "<group>"; };
+		BCD43AF61C0924E5005ABA97 /* CueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CueTableViewCell.swift; sourceTree = "<group>"; };
+		BCD43AF81C092509005ABA97 /* CueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CueViewController.swift; sourceTree = "<group>"; };
+		BCD43AFF1C0AA7CC005ABA97 /* SubmasterEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterEditViewController.swift; sourceTree = "<group>"; };
+		BCD43B021C0AA7DE005ABA97 /* CueEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CueEditViewController.swift; sourceTree = "<group>"; };
+		BCD43B311C0B91CB005ABA97 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BCD43B371C0CA970005ABA97 /* OptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTableViewController.swift; sourceTree = "<group>"; };
+		BCD43B391C0F457B005ABA97 /* Dimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimmer.swift; sourceTree = "<group>"; };
+		BCD43B3B1C0F49A0005ABA97 /* DMX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMX.swift; sourceTree = "<group>"; };
+		BCD43B3D1C108B06005ABA97 /* Propriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Propriety.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +120,7 @@
 		BC41FE8D1C060094004FBA72 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC41FE8C1C060094004FBA72 /* Premiere - Control.app */,
+				BC41FE8C1C060094004FBA72 /* Premiere.app */,
 				BC41FEA21C060095004FBA72 /* Premiere - ControlTests.xctest */,
 			);
 			name = Products;
@@ -79,13 +129,12 @@
 		BC41FE8E1C060094004FBA72 /* Premiere - Control */ = {
 			isa = PBXGroup;
 			children = (
-				BC41FE8F1C060094004FBA72 /* AppDelegate.swift */,
-				BC41FE911C060094004FBA72 /* FirstViewController.swift */,
-				BC41FE931C060094004FBA72 /* SecondViewController.swift */,
-				BC41FE951C060094004FBA72 /* Main.storyboard */,
-				BC41FE981C060094004FBA72 /* Assets.xcassets */,
-				BC41FE9A1C060094004FBA72 /* LaunchScreen.storyboard */,
-				BC41FE9D1C060094004FBA72 /* Info.plist */,
+				BC41FEB11C060244004FBA72 /* Core */,
+				BC41FEB31C06027E004FBA72 /* Fixtures */,
+				BC6126FB1C15D10D00C22F5E /* Proprieties */,
+				BC41FEB21C060249004FBA72 /* Submasters */,
+				BC41FEB41C060283004FBA72 /* Cues */,
+				BC41FEB51C06028C004FBA72 /* Other Views */,
 			);
 			path = "Premiere - Control";
 			sourceTree = "<group>";
@@ -97,6 +146,80 @@
 				BC41FEA81C060095004FBA72 /* Info.plist */,
 			);
 			path = "Premiere - ControlTests";
+			sourceTree = "<group>";
+		};
+		BC41FEB11C060244004FBA72 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BC41FE8F1C060094004FBA72 /* AppDelegate.swift */,
+				BCD43B311C0B91CB005ABA97 /* Main.storyboard */,
+				BC41FE981C060094004FBA72 /* Assets.xcassets */,
+				BC41FE9A1C060094004FBA72 /* LaunchScreen.storyboard */,
+				BC41FE9D1C060094004FBA72 /* Info.plist */,
+				BCD43B391C0F457B005ABA97 /* Dimmer.swift */,
+				BCD43B3B1C0F49A0005ABA97 /* DMX.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		BC41FEB21C060249004FBA72 /* Submasters */ = {
+			isa = PBXGroup;
+			children = (
+				BCD43AEB1C08BEB1005ABA97 /* Submaster.swift */,
+				BC41FE931C060094004FBA72 /* SubmastersSplitViewController.swift */,
+				BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */,
+				BCD43AE71C08A5F5005ABA97 /* SubmasterTableViewCell.swift */,
+				BCD43AE31C08A279005ABA97 /* SubmasterViewController.swift */,
+				BCD43AFF1C0AA7CC005ABA97 /* SubmasterEditViewController.swift */,
+			);
+			name = Submasters;
+			sourceTree = "<group>";
+		};
+		BC41FEB31C06027E004FBA72 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				BCD43AE91C08BE96005ABA97 /* Fixture.swift */,
+				BC41FE911C060094004FBA72 /* FixturesSplitViewController.swift */,
+				BCD43ADD1C08A1EE005ABA97 /* FixtureTableViewController.swift */,
+				BC6127041C15D55900C22F5E /* FixtureTableViewCell.swift */,
+				BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */,
+				BC6126F91C15CEC900C22F5E /* FixtureEditViewController.swift */,
+			);
+			name = Fixtures;
+			sourceTree = "<group>";
+		};
+		BC41FEB41C060283004FBA72 /* Cues */ = {
+			isa = PBXGroup;
+			children = (
+				BCD43AEE1C092450005ABA97 /* Cue.swift */,
+				BCD43AF21C0924B1005ABA97 /* CuesSplitViewController.swift */,
+				BCD43AF41C0924C5005ABA97 /* CueTableViewController.swift */,
+				BCD43AF61C0924E5005ABA97 /* CueTableViewCell.swift */,
+				BCD43AF81C092509005ABA97 /* CueViewController.swift */,
+				BCD43B021C0AA7DE005ABA97 /* CueEditViewController.swift */,
+			);
+			name = Cues;
+			sourceTree = "<group>";
+		};
+		BC41FEB51C06028C004FBA72 /* Other Views */ = {
+			isa = PBXGroup;
+			children = (
+				BCD43B371C0CA970005ABA97 /* OptionsTableViewController.swift */,
+				BC6127081C1628CD00C22F5E /* KeypadViewController.swift */,
+			);
+			name = "Other Views";
+			sourceTree = "<group>";
+		};
+		BC6126FB1C15D10D00C22F5E /* Proprieties */ = {
+			isa = PBXGroup;
+			children = (
+				BCD43B3D1C108B06005ABA97 /* Propriety.swift */,
+				BC6126FC1C15D14100C22F5E /* GenericPropriety.swift */,
+				BC6126FE1C15D16E00C22F5E /* ColourPropriety.swift */,
+				BC6127001C15D1A100C22F5E /* ScrollerPropriety.swift */,
+				BC6127021C15D1C400C22F5E /* PositionPropriety.swift */,
+			);
+			name = Proprieties;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -116,7 +239,7 @@
 			);
 			name = "Premiere - Control";
 			productName = "Premiere - Control";
-			productReference = BC41FE8C1C060094004FBA72 /* Premiere - Control.app */;
+			productReference = BC41FE8C1C060094004FBA72 /* Premiere.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BC41FEA11C060095004FBA72 /* Premiere - ControlTests */ = {
@@ -143,6 +266,9 @@
 		BC41FE841C060094004FBA72 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					"com.apple.gamecenter.Dashboard Image",
+				);
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Samuel Dewan";
@@ -182,9 +308,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD43B321C0B91CB005ABA97 /* Main.storyboard in Resources */,
 				BC41FE9C1C060094004FBA72 /* LaunchScreen.storyboard in Resources */,
 				BC41FE991C060094004FBA72 /* Assets.xcassets in Resources */,
-				BC41FE971C060094004FBA72 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,9 +328,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC41FE941C060094004FBA72 /* SecondViewController.swift in Sources */,
+				BCD43B031C0AA7DE005ABA97 /* CueEditViewController.swift in Sources */,
+				BCD43B3E1C108B06005ABA97 /* Propriety.swift in Sources */,
+				BC6127091C1628CD00C22F5E /* KeypadViewController.swift in Sources */,
+				BCD43AF51C0924C5005ABA97 /* CueTableViewController.swift in Sources */,
+				BCD43AEF1C092450005ABA97 /* Cue.swift in Sources */,
+				BCD43B3A1C0F457B005ABA97 /* Dimmer.swift in Sources */,
+				BCD43AF71C0924E5005ABA97 /* CueTableViewCell.swift in Sources */,
+				BC6126FF1C15D16E00C22F5E /* ColourPropriety.swift in Sources */,
+				BCD43AE01C08A20A005ABA97 /* SubmasterTableViewController.swift in Sources */,
+				BC6127031C15D1C400C22F5E /* PositionPropriety.swift in Sources */,
+				BC41FE941C060094004FBA72 /* SubmastersSplitViewController.swift in Sources */,
+				BCD43AE41C08A279005ABA97 /* SubmasterViewController.swift in Sources */,
 				BC41FE901C060094004FBA72 /* AppDelegate.swift in Sources */,
-				BC41FE921C060094004FBA72 /* FirstViewController.swift in Sources */,
+				BCD43AF31C0924B1005ABA97 /* CuesSplitViewController.swift in Sources */,
+				BC6126FD1C15D14100C22F5E /* GenericPropriety.swift in Sources */,
+				BC6127011C15D1A100C22F5E /* ScrollerPropriety.swift in Sources */,
+				BCD43B381C0CA970005ABA97 /* OptionsTableViewController.swift in Sources */,
+				BCD43B001C0AA7CC005ABA97 /* SubmasterEditViewController.swift in Sources */,
+				BCD43AEC1C08BEB1005ABA97 /* Submaster.swift in Sources */,
+				BCD43ADE1C08A1EE005ABA97 /* FixtureTableViewController.swift in Sources */,
+				BCBF4F3F1C168ED5008C7192 /* FixtureDetailViewController.swift in Sources */,
+				BCD43B3C1C0F49A0005ABA97 /* DMX.swift in Sources */,
+				BCD43AE81C08A5F5005ABA97 /* SubmasterTableViewCell.swift in Sources */,
+				BC6127051C15D55900C22F5E /* FixtureTableViewCell.swift in Sources */,
+				BCD43AEA1C08BE96005ABA97 /* Fixture.swift in Sources */,
+				BC6126FA1C15CEC900C22F5E /* FixtureEditViewController.swift in Sources */,
+				BC41FE921C060094004FBA72 /* FixturesSplitViewController.swift in Sources */,
+				BCD43AF91C092509005ABA97 /* CueViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,14 +378,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BC41FE951C060094004FBA72 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BC41FE961C060094004FBA72 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BC41FE9A1C060094004FBA72 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -321,7 +464,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -336,7 +479,7 @@
 				INFOPLIST_FILE = "Premiere - Control/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "samDewan.Premiere---Control";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Premiere;
 			};
 			name = Debug;
 		};
@@ -347,7 +490,7 @@
 				INFOPLIST_FILE = "Premiere - Control/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "samDewan.Premiere---Control";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Premiere;
 			};
 			name = Release;
 		};
@@ -394,6 +537,7 @@
 				BC41FEAD1C060095004FBA72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC41FEAE1C060095004FBA72 /* Build configuration list for PBXNativeTarget "Premiere - ControlTests" */ = {
 			isa = XCConfigurationList;
@@ -402,6 +546,7 @@
 				BC41FEB01C060095004FBA72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

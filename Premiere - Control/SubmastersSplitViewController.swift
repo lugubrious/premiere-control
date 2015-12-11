@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  SubmasterSplitViewController.swift
 //  Premiere - Control
 //
 //  Created by Samuel Dewan on 2015-11-25.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
-
+class SubmastersSplitViewController: UISplitViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

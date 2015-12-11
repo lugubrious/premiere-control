@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC41FE8B1C060094004FBA72"
-               BuildableName = "Premiere - Control.app"
+               BuildableName = "Premiere.app"
                BlueprintName = "Premiere - Control"
                ReferencedContainer = "container:Premiere - Control.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC41FE8B1C060094004FBA72"
-            BuildableName = "Premiere - Control.app"
+            BuildableName = "Premiere.app"
             BlueprintName = "Premiere - Control"
             ReferencedContainer = "container:Premiere - Control.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC41FE8B1C060094004FBA72"
-            BuildableName = "Premiere - Control.app"
+            BuildableName = "Premiere.app"
             BlueprintName = "Premiere - Control"
             ReferencedContainer = "container:Premiere - Control.xcodeproj">
          </BuildableReference>
@@ -85,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC41FE8B1C060094004FBA72"
-            BuildableName = "Premiere - Control.app"
+            BuildableName = "Premiere.app"
             BlueprintName = "Premiere - Control"
             ReferencedContainer = "container:Premiere - Control.xcodeproj">
          </BuildableReference>
