@@ -13,6 +13,7 @@
 		BC41FE991C060094004FBA72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC41FE981C060094004FBA72 /* Assets.xcassets */; };
 		BC41FE9C1C060094004FBA72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC41FE9A1C060094004FBA72 /* LaunchScreen.storyboard */; };
 		BC41FEA71C060095004FBA72 /* Premiere___ControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FEA61C060095004FBA72 /* Premiere___ControlTests.swift */; };
+		BC5C2B481C1DD90E00B16077 /* FixtureEditDynamicCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5C2B471C1DD90E00B16077 /* FixtureEditDynamicCells.swift */; };
 		BC6126FA1C15CEC900C22F5E /* FixtureEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126F91C15CEC900C22F5E /* FixtureEditViewController.swift */; };
 		BC6126FD1C15D14100C22F5E /* GenericPropriety.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126FC1C15D14100C22F5E /* GenericPropriety.swift */; };
 		BC6126FF1C15D16E00C22F5E /* ColourPropriety.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126FE1C15D16E00C22F5E /* ColourPropriety.swift */; };
@@ -62,6 +63,7 @@
 		BC41FEA21C060095004FBA72 /* Premiere - ControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Premiere - ControlTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC41FEA61C060095004FBA72 /* Premiere___ControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Premiere___ControlTests.swift"; sourceTree = "<group>"; };
 		BC41FEA81C060095004FBA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC5C2B471C1DD90E00B16077 /* FixtureEditDynamicCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureEditDynamicCells.swift; sourceTree = "<group>"; };
 		BC6126F91C15CEC900C22F5E /* FixtureEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureEditViewController.swift; sourceTree = "<group>"; };
 		BC6126FC1C15D14100C22F5E /* GenericPropriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPropriety.swift; sourceTree = "<group>"; };
 		BC6126FE1C15D16E00C22F5E /* ColourPropriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourPropriety.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				BC6127041C15D55900C22F5E /* FixtureTableViewCell.swift */,
 				BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */,
 				BC6126F91C15CEC900C22F5E /* FixtureEditViewController.swift */,
+				BC5C2B471C1DD90E00B16077 /* FixtureEditDynamicCells.swift */,
 			);
 			name = Fixtures;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				BC6127011C15D1A100C22F5E /* ScrollerPropriety.swift in Sources */,
 				BCD43B381C0CA970005ABA97 /* OptionsTableViewController.swift in Sources */,
 				BCD43B001C0AA7CC005ABA97 /* SubmasterEditViewController.swift in Sources */,
+				BC5C2B481C1DD90E00B16077 /* FixtureEditDynamicCells.swift in Sources */,
 				BCD43AEC1C08BEB1005ABA97 /* Submaster.swift in Sources */,
 				BCD43ADE1C08A1EE005ABA97 /* FixtureTableViewController.swift in Sources */,
 				BCBF4F3F1C168ED5008C7192 /* FixtureDetailViewController.swift in Sources */,

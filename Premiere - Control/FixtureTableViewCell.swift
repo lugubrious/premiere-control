@@ -15,7 +15,7 @@ class FixtureTableViewCell: UITableViewCell {
     
     func setup (fixture: Fixture) {
         self.nameLabel.text = fixture.name
-        self.addressLabel.text = "#\(fixture.address)"
+        self.addressLabel.text = "#\(fixture.index)"
         
         if let val = fixture.getProprietyAsDouble("Intesity") {
             let intensity = val * 100

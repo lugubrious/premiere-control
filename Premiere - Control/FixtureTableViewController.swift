@@ -118,6 +118,7 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
                 let indexPath = tableView.indexPathForCell(selectedFixtureCell)!    // Get path to the currently selecter row
                 let selectedFixture = fixtures[indexPath.row]   // Get the fixture that the currently selected row represents
                 fixtureDetailViewController.fixture = selectedFixture   // Set the selected fixture in the detail view controller
+                fixtureDetailViewController.parentCell = selectedFixtureCell
             }
         } else if segue.identifier == "FixtureAddItem" {
             let detailNavView = segue.destinationViewController as! UINavigationController

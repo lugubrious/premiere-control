@@ -6,8 +6,6 @@
 //  Copyright © 2015 Samuel Dewan. All rights reserved.
 //
 
-// Test Commit
-
 import UIKit
 
 class Fixture: NSObject, NSCoding {
@@ -38,6 +36,10 @@ class Fixture: NSObject, NSCoding {
         if name.isEmpty || index < 0 {
             return nil
         }
+    }
+    
+    deinit {
+        print("Deinit Fixture: \(self.name)")
     }
     
     // MARK: Functions
