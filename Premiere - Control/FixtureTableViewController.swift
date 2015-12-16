@@ -35,8 +35,16 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
     
     func loadSampleFixtures() {
         let fix = Fixture(name: "A Fixture", address: 1, index: 1)!
-        let intesity = GenericPropriety(index: 0, parent: fix, name: "Intesity", initialValue: ProprietyType.Generic(0.0))
-        fix.proprieties.append(intesity!)
+        
+        let intensity = GenericPropriety(index: 0, parent: fix, name: "Intensity", initialValue: ProprietyType.Generic(0.0))
+        let colour = ColourPropriety(index: 0, parent: fix)
+        let position = PositionPropriety(index: 0, parent: fix)
+        let scroller = ScrollerPropriety(index: 0, parent: fix)
+        
+        fix.proprieties.append(intensity!)
+        fix.proprieties.append(colour)
+        fix.proprieties.append(position)
+        fix.proprieties.append(scroller)
         
         fixtures.append(fix)
     }
@@ -135,7 +143,7 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
                 let newIndexPath = NSIndexPath(forRow: fixtures.count, inSection: 0)    // Get the path where the data should be added
                 fixtures.append(fixture)    // Add new fixture to array
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom) // Add data to tabel view
-                fixtures.sortInPlace({ $0.index < $1.index })   // Sort the fixtures in ascending order by idnex
+                fixtures.sortInPlace({$0.index < $1.index})   // Sort the fixtures in ascending order by index
                 tableView.reloadData()  // Notify the table view that the data has chagned
         } else if let sourceViewController = sender.sourceViewController as? FixtureDetailViewController, fixture = sourceViewController.fixture {
                 // Edited Fixture

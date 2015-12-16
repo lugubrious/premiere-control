@@ -17,7 +17,7 @@ class FixtureTableViewCell: UITableViewCell {
         self.nameLabel.text = fixture.name
         self.addressLabel.text = "#\(fixture.index)"
         
-        if let val = fixture.getProprietyAsDouble("Intesity") {
+        if let val = fixture.getProprietyAsDouble("Intensity") {
             let intensity = val * 100
             self.valueLabel.text = "\(intensity)%"
         } else if let val = fixture.getProprietyAsInt("Scroller") {

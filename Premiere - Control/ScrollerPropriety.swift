@@ -62,7 +62,7 @@ class ScrollerPropriety: Propriety {
         if let val = unwrappedValue {
             return [UInt8(ceil((Double(val)/100.0) * Double(maxValue)))]
         } else {
-            return[0,0,0]
+            return[0]
         }
     }
     
