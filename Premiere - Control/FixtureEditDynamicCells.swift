@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
+class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, ProprietyEditor {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
     @IBOutlet weak var offsetLabel: UILabel!
@@ -16,7 +16,7 @@ class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, FixtureEdito
     
     var validData: Bool!
     
-    var propriety:GenericPropriety!
+    var propriety:Propriety!
     var parent: FixtureEditViewController!
     
     func setupForPropriety(propriety: GenericPropriety, parent:FixtureEditViewController) {
@@ -84,7 +84,7 @@ class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, FixtureEdito
     }
 }
 
-class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
+class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, ProprietyEditor {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
@@ -96,7 +96,7 @@ class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, FixtureEditor
     
     var validData: Bool!
     
-    var propriety:ColourPropriety!
+    var propriety: Propriety!
     var parent: FixtureEditViewController!
     
     func setupForPropriety(propriety: ColourPropriety, parent:FixtureEditViewController) {
@@ -168,7 +168,7 @@ class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, FixtureEditor
     }
 }
 
-class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
+class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate, ProprietyEditor {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
@@ -177,7 +177,7 @@ class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate, FixtureEdit
     
     var validData: Bool!
     
-    var propriety:PositionPropriety!
+    var propriety: Propriety!
     var parent: FixtureEditViewController!
     
     func setupForPropriety(propriety: PositionPropriety, parent:FixtureEditViewController) {
@@ -246,7 +246,7 @@ class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate, FixtureEdit
     }
 }
 
-class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
+class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, ProprietyEditor {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
@@ -257,7 +257,7 @@ class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, FixtureEdit
   
     var validData: Bool!
     
-    var propriety:ScrollerPropriety!
+    var propriety: Propriety!
     var parent: FixtureEditViewController!
     
     func setupForPropriety(propriety: ScrollerPropriety, parent:FixtureEditViewController) {
@@ -270,7 +270,7 @@ class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, FixtureEdit
         self.offsetStepper.wraps = true
         offsetLabel.text = String(Int(offsetStepper.value))
         
-        self.numStepsStepper.value = Double(self.propriety.locations)
+        self.numStepsStepper.value = Double((self.propriety as! ScrollerPropriety).locations)
         self.numStepsStepper.wraps = true
         numStepsLabel.text = String(Int(numStepsStepper.value))
         
@@ -329,7 +329,7 @@ class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, FixtureEdit
     func updateFixture (fixture: Fixture) {
         self.propriety.name = self.nameTextField.text!
         self.propriety.index = Int(self.offsetLabel.text!)!
-        self.propriety.locations = Int(self.numStepsLabel.text!)!
+        (self.propriety as! ScrollerPropriety).locations = Int(self.numStepsLabel.text!)!
         self.propriety.depth = self.depthSwitch.on ? 16 : 8
         fixture.proprieties.append(self.propriety)
     }
