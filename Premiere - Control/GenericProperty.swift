@@ -1,5 +1,5 @@
 //
-//  ScrollerPropriety.swift
+//  GenericPropriety.swift
 //  Premiere - Control
 //
 //  Created by Samuel Dewan on 2015-12-07.
@@ -8,21 +8,18 @@
 
 import UIKit
 
-class ScrollerPropriety: NSObject, Propriety {
+class GenericProperty: NSObject, Property {
     // MARK: Constants
-    static let sortOrder = 50
+    static let sortOrder = 30
     
     // MARK: Protocol Variables
     var parent: Fixture
-    var value: ProprietyType {
+    var value: PropertyType {
         didSet {
             switch value {
-            case .Scroller(let val):
-                if (0 <= val) && (val < locations) {
-                    parent.update()
-                    return
-                }
-                fallthrough
+            case .Generic:
+                parent.update()
+                return
             default:
                 value = oldValue
             }
@@ -36,11 +33,9 @@ class ScrollerPropriety: NSObject, Propriety {
     var name: String
     
     // MARK: Other Variables
-    var locations: Int
-    
-    private var unwrappedValue: Int? {
+    private var unwrappedValue: Double? {
         switch value {
-        case .Scroller(let val):
+        case .Generic(let val):
             return val
         default:
             return nil
@@ -48,21 +43,31 @@ class ScrollerPropriety: NSObject, Propriety {
     }
     
     // MARK: Initilization
+    convenience init? (index: Int, parent: Fixture, name: String, initialValue: PropertyType, depth: Int) {
+        self.init(index: index, parent: parent)
+        self.value = initialValue
+        if !name.isEmpty {
+            self.name = name
+        } else {
+            return nil
+        }
+        self.depth = depth
+    }
+    
     required init (index: Int, parent: Fixture) {
-        value = ProprietyType.Scroller(0)
+        value = PropertyType.Generic(0.0)
         self.index = index
         self.parent = parent
         self.depth = 8
-        self.locations = 10
-        self.name = "Gel Scroller"
+        self.name = "Propriety"
     }
     
     // MARK: Protocol Functions
     func getDMXValues() -> [UInt8] {
         if let val = unwrappedValue {
-            return [UInt8(ceil((Double(val)/100.0) * Double(maxValue)))]
+            return [UInt8(val * Double(maxValue))]
         } else {
-            return[0]
+            return [0]
         }
     }
     
@@ -73,11 +78,6 @@ class ScrollerPropriety: NSObject, Propriety {
     // MARK: Copying
     
     @objc func copyWithZone(zone: NSZone) -> AnyObject {
-        let copy = ScrollerPropriety(index: self.index, parent: self.parent)
-        copy.name = self.name
-        copy.depth = self.depth
-        copy.value = self.value
-        copy.locations = self.locations
-        return copy
+        return GenericProperty(index: self.index, parent: self.parent, name: self.name, initialValue: self.value, depth: self.depth)!
     }
 }

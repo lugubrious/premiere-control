@@ -15,10 +15,10 @@
 		BC41FEA71C060095004FBA72 /* Premiere___ControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FEA61C060095004FBA72 /* Premiere___ControlTests.swift */; };
 		BC5C2B481C1DD90E00B16077 /* FixtureEditDynamicCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5C2B471C1DD90E00B16077 /* FixtureEditDynamicCells.swift */; };
 		BC6126FA1C15CEC900C22F5E /* FixtureEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126F91C15CEC900C22F5E /* FixtureEditViewController.swift */; };
-		BC6126FD1C15D14100C22F5E /* GenericPropriety.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126FC1C15D14100C22F5E /* GenericPropriety.swift */; };
-		BC6126FF1C15D16E00C22F5E /* ColourPropriety.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126FE1C15D16E00C22F5E /* ColourPropriety.swift */; };
-		BC6127011C15D1A100C22F5E /* ScrollerPropriety.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127001C15D1A100C22F5E /* ScrollerPropriety.swift */; };
-		BC6127031C15D1C400C22F5E /* PositionPropriety.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127021C15D1C400C22F5E /* PositionPropriety.swift */; };
+		BC6126FD1C15D14100C22F5E /* GenericProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126FC1C15D14100C22F5E /* GenericProperty.swift */; };
+		BC6126FF1C15D16E00C22F5E /* ColourProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126FE1C15D16E00C22F5E /* ColourProperty.swift */; };
+		BC6127011C15D1A100C22F5E /* ScrollerProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127001C15D1A100C22F5E /* ScrollerProperty.swift */; };
+		BC6127031C15D1C400C22F5E /* PositionProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127021C15D1C400C22F5E /* PositionProperty.swift */; };
 		BC6127051C15D55900C22F5E /* FixtureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127041C15D55900C22F5E /* FixtureTableViewCell.swift */; };
 		BC6127091C1628CD00C22F5E /* KeypadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127081C1628CD00C22F5E /* KeypadViewController.swift */; };
 		BCBF4F3F1C168ED5008C7192 /* FixtureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */; };
@@ -65,10 +65,10 @@
 		BC41FEA81C060095004FBA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC5C2B471C1DD90E00B16077 /* FixtureEditDynamicCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureEditDynamicCells.swift; sourceTree = "<group>"; };
 		BC6126F91C15CEC900C22F5E /* FixtureEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureEditViewController.swift; sourceTree = "<group>"; };
-		BC6126FC1C15D14100C22F5E /* GenericPropriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPropriety.swift; sourceTree = "<group>"; };
-		BC6126FE1C15D16E00C22F5E /* ColourPropriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourPropriety.swift; sourceTree = "<group>"; };
-		BC6127001C15D1A100C22F5E /* ScrollerPropriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollerPropriety.swift; sourceTree = "<group>"; };
-		BC6127021C15D1C400C22F5E /* PositionPropriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionPropriety.swift; sourceTree = "<group>"; };
+		BC6126FC1C15D14100C22F5E /* GenericProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericProperty.swift; sourceTree = "<group>"; };
+		BC6126FE1C15D16E00C22F5E /* ColourProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourProperty.swift; sourceTree = "<group>"; };
+		BC6127001C15D1A100C22F5E /* ScrollerProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollerProperty.swift; sourceTree = "<group>"; };
+		BC6127021C15D1C400C22F5E /* PositionProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionProperty.swift; sourceTree = "<group>"; };
 		BC6127041C15D55900C22F5E /* FixtureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureTableViewCell.swift; sourceTree = "<group>"; };
 		BC6127081C1628CD00C22F5E /* KeypadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeypadViewController.swift; sourceTree = "<group>"; };
 		BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureDetailViewController.swift; sourceTree = "<group>"; };
@@ -217,10 +217,10 @@
 			isa = PBXGroup;
 			children = (
 				BCD43B3D1C108B06005ABA97 /* Propriety.swift */,
-				BC6126FC1C15D14100C22F5E /* GenericPropriety.swift */,
-				BC6126FE1C15D16E00C22F5E /* ColourPropriety.swift */,
-				BC6127001C15D1A100C22F5E /* ScrollerPropriety.swift */,
-				BC6127021C15D1C400C22F5E /* PositionPropriety.swift */,
+				BC6126FC1C15D14100C22F5E /* GenericProperty.swift */,
+				BC6126FE1C15D16E00C22F5E /* ColourProperty.swift */,
+				BC6127001C15D1A100C22F5E /* ScrollerProperty.swift */,
+				BC6127021C15D1C400C22F5E /* PositionProperty.swift */,
 			);
 			name = Proprieties;
 			sourceTree = "<group>";
@@ -338,15 +338,15 @@
 				BCD43AEF1C092450005ABA97 /* Cue.swift in Sources */,
 				BCD43B3A1C0F457B005ABA97 /* Dimmer.swift in Sources */,
 				BCD43AF71C0924E5005ABA97 /* CueTableViewCell.swift in Sources */,
-				BC6126FF1C15D16E00C22F5E /* ColourPropriety.swift in Sources */,
+				BC6126FF1C15D16E00C22F5E /* ColourProperty.swift in Sources */,
 				BCD43AE01C08A20A005ABA97 /* SubmasterTableViewController.swift in Sources */,
-				BC6127031C15D1C400C22F5E /* PositionPropriety.swift in Sources */,
+				BC6127031C15D1C400C22F5E /* PositionProperty.swift in Sources */,
 				BC41FE941C060094004FBA72 /* SubmastersSplitViewController.swift in Sources */,
 				BCD43AE41C08A279005ABA97 /* SubmasterViewController.swift in Sources */,
 				BC41FE901C060094004FBA72 /* AppDelegate.swift in Sources */,
 				BCD43AF31C0924B1005ABA97 /* CuesSplitViewController.swift in Sources */,
-				BC6126FD1C15D14100C22F5E /* GenericPropriety.swift in Sources */,
-				BC6127011C15D1A100C22F5E /* ScrollerPropriety.swift in Sources */,
+				BC6126FD1C15D14100C22F5E /* GenericProperty.swift in Sources */,
+				BC6127011C15D1A100C22F5E /* ScrollerProperty.swift in Sources */,
 				BCD43B381C0CA970005ABA97 /* OptionsTableViewController.swift in Sources */,
 				BCD43B001C0AA7CC005ABA97 /* SubmasterEditViewController.swift in Sources */,
 				BC5C2B481C1DD90E00B16077 /* FixtureEditDynamicCells.swift in Sources */,

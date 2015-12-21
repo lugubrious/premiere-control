@@ -36,15 +36,15 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
     func loadSampleFixtures() {
         let fix = Fixture(name: "A Fixture", address: 1, index: 1)!
         
-        let intensity = GenericPropriety(index: 0, parent: fix, name: "Intensity", initialValue: ProprietyType.Generic(0.0), depth: 8)
-        let colour = ColourPropriety(index: 0, parent: fix)
-        let position = PositionPropriety(index: 0, parent: fix)
-        let scroller = ScrollerPropriety(index: 0, parent: fix)
+        let intensity = GenericProperty(index: 0, parent: fix, name: "Intensity", initialValue: PropertyType.Generic(0.0), depth: 8)
+        let colour = ColourProperty(index: 0, parent: fix)
+        let position = PositionProperty(index: 0, parent: fix)
+        let scroller = ScrollerProperty(index: 0, parent: fix)
         
-        fix.proprieties.append(intensity!)
-        fix.proprieties.append(colour)
-        fix.proprieties.append(position)
-        fix.proprieties.append(scroller)
+        fix.properties.append(intensity!)
+        fix.properties.append(colour)
+        fix.properties.append(position)
+        fix.properties.append(scroller)
         
         fixtures.append(fix)
     }

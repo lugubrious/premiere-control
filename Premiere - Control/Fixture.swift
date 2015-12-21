@@ -18,7 +18,7 @@ class Fixture: NSObject, NSCoding, NSCopying {
     var address: Int
     var index: Int
     
-    var proprieties: [Propriety]
+    var properties: [Property]
     
     // MARK: Initilization
     
@@ -28,7 +28,7 @@ class Fixture: NSObject, NSCoding, NSCopying {
         self.address = address
         self.index = index
         
-        self.proprieties = [Propriety]()
+        self.properties = [Property]()
         
         super.init()
         
@@ -47,7 +47,7 @@ class Fixture: NSObject, NSCoding, NSCopying {
      *  Updates the dmx values for the fixture
      */
     func update() {
-        let outputs = proprieties.sort({$0.index > $1.index})
+        let outputs = properties.sort({$0.index > $1.index})
         for output in outputs {
             let dmxValues = output.getDMXValues()
             let address = self.index + output.index
@@ -58,7 +58,7 @@ class Fixture: NSObject, NSCoding, NSCopying {
     }
     
     func getProprietyAsDouble(name: String) -> Double? {
-        for prop in proprieties {
+        for prop in properties {
             if prop.name == name {
                 switch prop.value {
                 case.Generic(let val):
@@ -72,7 +72,7 @@ class Fixture: NSObject, NSCoding, NSCopying {
     }
     
     func getProprietyAsInt(name: String) -> Int? {
-        for prop in proprieties {
+        for prop in properties {
             if prop.name == name {
                 switch prop.value {
                 case.Scroller(let val):
@@ -86,7 +86,7 @@ class Fixture: NSObject, NSCoding, NSCopying {
     }
     
     func getProprietyAsTuple(name: String) -> (Int,Int)? {
-        for prop in proprieties {
+        for prop in properties {
             if prop.name == name {
                 switch prop.value {
                 case.Position(let val):
@@ -100,7 +100,7 @@ class Fixture: NSObject, NSCoding, NSCopying {
     }
     
     func getProprietyAsColour(name: String) -> UIColor? {
-        for prop in proprieties {
+        for prop in properties {
             if prop.name == name {
                 switch prop.value {
                 case.Colour(let val):
@@ -126,7 +126,7 @@ class Fixture: NSObject, NSCoding, NSCopying {
     
     func copyWithZone(zone: NSZone) -> AnyObject {
         let copy = Fixture(name: self.name, address: self.address, index: self.index)!
-        copy.proprieties = self.proprieties.map({($0.copyWithZone(nil)) as! Propriety})
+        copy.properties = self.properties.map({($0.copyWithZone(nil)) as! Property})
         return copy
     }
 }

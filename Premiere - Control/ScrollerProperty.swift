@@ -1,5 +1,5 @@
 //
-//  PositionPropriety.swift
+//  ScrollerPropriety.swift
 //  Premiere - Control
 //
 //  Created by Samuel Dewan on 2015-12-07.
@@ -8,17 +8,21 @@
 
 import UIKit
 
-class PositionPropriety: NSObject, Propriety {
+class ScrollerProperty: NSObject, Property {
     // MARK: Constants
     static let sortOrder = 50
     
     // MARK: Protocol Variables
     var parent: Fixture
-    var value: ProprietyType {
+    var value: PropertyType {
         didSet {
             switch value {
-            case .Position(let pan, let tilt):
-                print("\(pan),\(tilt)") // TODO
+            case .Scroller(let val):
+                if (0 <= val) && (val < locations) {
+                    parent.update()
+                    return
+                }
+                fallthrough
             default:
                 value = oldValue
             }
@@ -32,11 +36,12 @@ class PositionPropriety: NSObject, Propriety {
     var name: String
     
     // MARK: Other Variables
+    var locations: Int
     
-    private var unwrappedValue: (Int,Int)? {
+    private var unwrappedValue: Int? {
         switch value {
-        case .Position(let pan, let tilt):
-            return (pan, tilt)
+        case .Scroller(let val):
+            return val
         default:
             return nil
         }
@@ -44,16 +49,21 @@ class PositionPropriety: NSObject, Propriety {
     
     // MARK: Initilization
     required init (index: Int, parent: Fixture) {
-        value = ProprietyType.Position(0, 0)
+        value = PropertyType.Scroller(0)
         self.index = index
         self.parent = parent
         self.depth = 8
-        self.name = "Position"
+        self.locations = 10
+        self.name = "Gel Scroller"
     }
     
     // MARK: Protocol Functions
     func getDMXValues() -> [UInt8] {
-        return[0]
+        if let val = unwrappedValue {
+            return [UInt8(ceil((Double(val)/100.0) * Double(maxValue)))]
+        } else {
+            return[0]
+        }
     }
     
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell {
@@ -63,10 +73,11 @@ class PositionPropriety: NSObject, Propriety {
     // MARK: Copying
     
     @objc func copyWithZone(zone: NSZone) -> AnyObject {
-        let copy = PositionPropriety(index: self.index, parent: self.parent)
-        copy.value = self.value
+        let copy = ScrollerProperty(index: self.index, parent: self.parent)
         copy.name = self.name
         copy.depth = self.depth
+        copy.value = self.value
+        copy.locations = self.locations
         return copy
     }
 }

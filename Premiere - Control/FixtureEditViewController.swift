@@ -73,7 +73,7 @@ class FixtureEditViewController: UITableViewController {
         case 0:
             return 3
         case 1:
-            return self.fixture.proprieties.count// - (numDeletedProprieties ?? 0)
+            return self.fixture.properties.count// - (numDeletedProprieties ?? 0)
         case 2:
             return 1
         default:
@@ -86,9 +86,9 @@ class FixtureEditViewController: UITableViewController {
         case 0:
             return "General"
         case 1:
-            return "Proprieties"
+            return "Properties"
         case 2:
-            return " "
+            return nil
         default:
             return nil
         }
@@ -104,8 +104,8 @@ class FixtureEditViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
  //           numDeletedProprieties = (numDeletedProprieties ?? 0) + 1
-            self.fixture.proprieties.sortInPlace({$0.index < $1.index})
-            self.fixture.proprieties.removeAtIndex(indexPath.row)
+            self.fixture.properties.sortInPlace({$0.index < $1.index})
+            self.fixture.properties.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -134,8 +134,8 @@ class FixtureEditViewController: UITableViewController {
                 return name
             }
         } else if indexPath.section == 1 {
-            self.fixture.proprieties.sortInPlace({$0.index < $1.index})
-            return createPropCell(propriety: self.fixture.proprieties[indexPath.row], path: indexPath)
+            self.fixture.properties.sortInPlace({$0.index < $1.index})
+            return createPropCell(propriety: self.fixture.properties[indexPath.row], path: indexPath)
         } else if  indexPath.section == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier("FixtureEditAddCell", forIndexPath: indexPath) as! FixtureEditAddCell
             cell.setupForController(self)
@@ -147,23 +147,23 @@ class FixtureEditViewController: UITableViewController {
         }
     }
 
-    func createPropCell (propriety prop: Propriety, path: NSIndexPath) -> UITableViewCell {
+    func createPropCell (propriety prop: Property, path: NSIndexPath) -> UITableViewCell {
         switch prop.value {
         case .Generic:
             let cell = tableView.dequeueReusableCellWithIdentifier("FixtureEditGenericCell", forIndexPath: path) as! FixtureEditGenericCell
-            cell.setupForPropriety(prop as! GenericPropriety, parent: self)
+            cell.setupForProperty(prop as! GenericProperty, parent: self)
             return cell
         case .Colour:
             let cell = tableView.dequeueReusableCellWithIdentifier("FixtureEditColourCell", forIndexPath: path) as! FixtureEditColourCell
-            cell.setupForPropriety(prop as! ColourPropriety, parent: self)
+            cell.setupForProperty(prop as! ColourProperty, parent: self)
             return cell
         case .Position:
             let cell = tableView.dequeueReusableCellWithIdentifier("FixtureEditPositionCell", forIndexPath: path) as! FixtureEditPositionCell
-            cell.setupForPropriety(prop as! PositionPropriety, parent: self)
+            cell.setupForProperty(prop as! PositionProperty, parent: self)
             return cell
         case .Scroller:
             let cell = tableView.dequeueReusableCellWithIdentifier("FixtureEditScrollerCell", forIndexPath: path) as! FixtureEditScrollerCell
-            cell.setupForPropriety(prop as! ScrollerPropriety, parent: self)
+            cell.setupForProperty(prop as! ScrollerProperty, parent: self)
             return cell
         }
     }
@@ -392,35 +392,44 @@ class FixtureEditAddCell: UITableViewCell {
     
     @IBAction func addPressed(sender: UIButton, forEvent event: UIEvent) {
 //        print("addPressed. Selected = \(typeControl.selectedSegmentIndex).")
-        var prop: Propriety!
+        var prop: Property!
         switch typeControl.selectedSegmentIndex {
         case 0:
-            prop = GenericPropriety(index: 5, parent: parent.fixture)
+            prop = GenericProperty(index: getLowestUnusedIndex(), parent: parent.fixture)
         case 1:
-            prop = ColourPropriety(index: 0, parent: parent.fixture)
+            prop = ColourProperty(index: getLowestUnusedIndex(), parent: parent.fixture)
         case 2:
-            prop = PositionPropriety(index: 0, parent: parent.fixture)
+            prop = PositionProperty(index: getLowestUnusedIndex(), parent: parent.fixture)
         case 3:
-            prop = ScrollerPropriety(index: 0, parent: parent.fixture)
+            prop = ScrollerProperty(index: getLowestUnusedIndex(), parent: parent.fixture)
         default:
             return
         }
-        
-        parent.fixture.proprieties.append(prop)
-        parent.fixture.proprieties.sortInPlace({$0.index < $1.index})
+        parent.fixture.properties.append(prop)
+        parent.fixture.properties.sortInPlace({$0.index < $1.index})
         let row = (getRow(propriety: prop) ?? 0)
         parent.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: row, inSection: 1)], withRowAnimation: .Automatic)
     }
     
-    func getRow (propriety prop: Propriety) -> Int? {
-        if let p = prop as? GenericPropriety {
-            return parent.fixture.proprieties.indexOf({($0 as? GenericPropriety) === p})
-        } else if let p = prop as? ColourPropriety {
-            return parent.fixture.proprieties.indexOf({($0 as? ColourPropriety) === p})
-        } else if let p = prop as? PositionPropriety {
-            return parent.fixture.proprieties.indexOf({($0 as? PositionPropriety) === p})
-        } else if let p = prop as? ScrollerPropriety {
-            return parent.fixture.proprieties.indexOf({($0 as? ScrollerPropriety) === p})
+    func getLowestUnusedIndex() -> Int {
+        var index = 0
+        for i in parent.fixture.properties {
+            if (i.index <= index) {
+                index = i.index + 1
+            }
+        }
+        return index
+    }
+    
+    func getRow (propriety prop: Property) -> Int? {
+        if let p = prop as? GenericProperty {
+            return parent.fixture.properties.indexOf({($0 as? GenericProperty) === p})
+        } else if let p = prop as? ColourProperty {
+            return parent.fixture.properties.indexOf({($0 as? ColourProperty) === p})
+        } else if let p = prop as? PositionProperty {
+            return parent.fixture.properties.indexOf({($0 as? PositionProperty) === p})
+        } else if let p = prop as? ScrollerProperty {
+            return parent.fixture.properties.indexOf({($0 as? ScrollerProperty) === p})
         } else {
             return nil
         }

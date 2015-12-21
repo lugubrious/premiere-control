@@ -1,5 +1,5 @@
 //
-//  GenericPropriety.swift
+//  PositionPropriety.swift
 //  Premiere - Control
 //
 //  Created by Samuel Dewan on 2015-12-07.
@@ -8,18 +8,17 @@
 
 import UIKit
 
-class GenericPropriety: NSObject, Propriety {
+class PositionProperty: NSObject, Property {
     // MARK: Constants
-    static let sortOrder = 30
+    static let sortOrder = 50
     
     // MARK: Protocol Variables
     var parent: Fixture
-    var value: ProprietyType {
+    var value: PropertyType {
         didSet {
             switch value {
-            case .Generic:
-                parent.update()
-                return
+            case .Position(let pan, let tilt):
+                print("\(pan),\(tilt)") // TODO
             default:
                 value = oldValue
             }
@@ -33,42 +32,28 @@ class GenericPropriety: NSObject, Propriety {
     var name: String
     
     // MARK: Other Variables
-    private var unwrappedValue: Double? {
+    
+    private var unwrappedValue: (Int,Int)? {
         switch value {
-        case .Generic(let val):
-            return val
+        case .Position(let pan, let tilt):
+            return (pan, tilt)
         default:
             return nil
         }
     }
     
     // MARK: Initilization
-    convenience init? (index: Int, parent: Fixture, name: String, initialValue: ProprietyType, depth: Int) {
-        self.init(index: index, parent: parent)
-        self.value = initialValue
-        if !name.isEmpty {
-            self.name = name
-        } else {
-            return nil
-        }
-        self.depth = depth
-    }
-    
     required init (index: Int, parent: Fixture) {
-        value = ProprietyType.Generic(0.0)
+        value = PropertyType.Position(0, 0)
         self.index = index
         self.parent = parent
         self.depth = 8
-        self.name = "Propriety"
+        self.name = "Position"
     }
     
     // MARK: Protocol Functions
     func getDMXValues() -> [UInt8] {
-        if let val = unwrappedValue {
-            return [UInt8(val * Double(maxValue))]
-        } else {
-            return [0]
-        }
+        return[0]
     }
     
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell {
@@ -78,6 +63,10 @@ class GenericPropriety: NSObject, Propriety {
     // MARK: Copying
     
     @objc func copyWithZone(zone: NSZone) -> AnyObject {
-        return GenericPropriety(index: self.index, parent: self.parent, name: self.name, initialValue: self.value, depth: self.depth)!
+        let copy = PositionProperty(index: self.index, parent: self.parent)
+        copy.value = self.value
+        copy.name = self.name
+        copy.depth = self.depth
+        return copy
     }
 }

@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ColourPropriety: NSObject, Propriety {
+class ColourProperty: NSObject, Property {
     // MARK: Constants
     static let sortOrder = 60
     
     // MARK: Protocol Variables
     var parent: Fixture
-    var value: ProprietyType {
+    var value: PropertyType {
         didSet {
             switch value {
             case .Colour:
@@ -52,7 +52,7 @@ class ColourPropriety: NSObject, Propriety {
     
     // MARK: Initilization
     required init (index: Int, parent: Fixture) {
-        value = ProprietyType.Colour(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
+        value = PropertyType.Colour(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
         self.index = index
         self.parent = parent
         self.depth = 8
@@ -90,10 +90,10 @@ class ColourPropriety: NSObject, Propriety {
     // MARK: Copying
     
     @objc func copyWithZone(zone: NSZone) -> AnyObject {
-        let copy = ColourPropriety(index: self.index, parent: self.parent)
+        let copy = ColourProperty(index: self.index, parent: self.parent)
         copy.depth = self.depth
         copy.outputMode = self.outputMode
-        copy.name = self.name + "Copy"
+        copy.name = self.name
         copy.value = self.value
         return copy
     }
