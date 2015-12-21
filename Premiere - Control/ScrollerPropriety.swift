@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScrollerPropriety: Propriety {
+class ScrollerPropriety: NSObject, Propriety {
     // MARK: Constants
     static let sortOrder = 50
     
@@ -31,7 +31,7 @@ class ScrollerPropriety: Propriety {
     var index: Int
     var depth: Int
     var maxValue: Int {
-        return Int(pow(2.0, Double(depth)))
+        return Int(pow(2.0, Double(depth))) - 1
     }
     var name: String
     
@@ -68,5 +68,16 @@ class ScrollerPropriety: Propriety {
     
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell {
         return cell
+    }
+    
+    // MARK: Copying
+    
+    @objc func copyWithZone(zone: NSZone) -> AnyObject {
+        let copy = ScrollerPropriety(index: self.index, parent: self.parent)
+        copy.name = self.name
+        copy.depth = self.depth
+        copy.value = self.value
+        copy.locations = self.locations
+        return copy
     }
 }

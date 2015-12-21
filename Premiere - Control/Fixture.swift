@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Fixture: NSObject, NSCoding {
+class Fixture: NSObject, NSCoding, NSCopying {
     // MARK: Properties
     
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
@@ -120,5 +120,13 @@ class Fixture: NSObject, NSCoding {
     
     required convenience init?(coder aDecoder: NSCoder) {
         self.init(name: "George", address: 0, index: 0)
+    }
+    
+    // MARK: Copying
+    
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        let copy = Fixture(name: self.name, address: self.address, index: self.index)!
+        copy.proprieties = self.proprieties.map({($0.copyWithZone(nil)) as! Propriety})
+        return copy
     }
 }

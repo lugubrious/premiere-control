@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, ProprietyEditor {
+class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
     @IBOutlet weak var offsetLabel: UILabel!
@@ -53,6 +53,7 @@ class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, ProprietyEdi
         validData = !text.isEmpty
         if (validData!) {
             parent.updateSaveButton()
+            self.propriety.name = self.nameTextField.text!
         } else {
             nameTextField.layer.borderColor = UIColor.redColor().CGColor
             parent.saveButton.enabled = false
@@ -71,20 +72,19 @@ class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, ProprietyEdi
         checkValidEntry()
     }
     
+    
     // MARK: Actions
     @IBAction func offsetStepperChanged(sender: UIStepper, forEvent event: UIEvent) {
         offsetLabel.text = String(Int(sender.value))
+        self.propriety.index = Int(self.offsetLabel.text!)!
     }
     
-    func updateFixture (fixture: Fixture) {
-        self.propriety.name = self.nameTextField.text!
-        self.propriety.index = Int(self.offsetLabel.text!)!
+    @IBAction func depthSwitched(sender: UISwitch, forEvent event: UIEvent) {
         self.propriety.depth = self.depthSwitch.on ? 16 : 8
-        fixture.proprieties.append(self.propriety)
     }
 }
 
-class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, ProprietyEditor {
+class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
@@ -133,6 +133,7 @@ class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, ProprietyEdit
         validData = !text.isEmpty
         if (validData!) {
             parent.updateSaveButton()
+            self.propriety.name = self.nameTextField.text!
         } else {
             nameTextField.layer.borderColor = UIColor.redColor().CGColor
             parent.saveButton.enabled = false
@@ -154,21 +155,29 @@ class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, ProprietyEdit
     // MARK: Actions
     @IBAction func offsetStepperChanged(sender: UIStepper, forEvent event: UIEvent) {
         offsetLabel.text = String(Int(sender.value))
+        self.propriety.index = Int(self.offsetLabel.text!)!
     }
     
     @IBAction func colourSpaceChanged(sender: UISegmentedControl, forEvent event: UIEvent) {
-        
+        let prop = self.propriety as! ColourPropriety
+        switch sender.selectedSegmentIndex {
+        case 0:
+            prop.outputMode = .RGB
+        case 1:
+            prop.outputMode = .CMY
+        case 2:
+            prop.outputMode = .HSI
+        default:
+            break
+        }
     }
     
-    func updateFixture (fixture: Fixture) {
-        self.propriety.name = self.nameTextField.text!
-        self.propriety.index = Int(self.offsetLabel.text!)!
+    @IBAction func depthSwitched(sender: UISwitch, forEvent event: UIEvent) {
         self.propriety.depth = self.depthSwitch.on ? 16 : 8
-        fixture.proprieties.append(self.propriety)
     }
 }
 
-class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate, ProprietyEditor {
+class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
@@ -214,6 +223,7 @@ class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate, ProprietyEd
         validData = !text.isEmpty
         if (validData!) {
             parent.updateSaveButton()
+            self.propriety.name = self.nameTextField.text!
         } else {
             nameTextField.layer.borderColor = UIColor.redColor().CGColor
             parent.saveButton.enabled = false
@@ -235,18 +245,15 @@ class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate, ProprietyEd
     // MARK: Actions
     @IBAction func offsetStepperChanged(sender: UIStepper, forEvent event: UIEvent) {
         offsetLabel.text = String(Int(sender.value))
+        self.propriety.index = Int(self.offsetLabel.text!)!
     }
     
-    
-    func updateFixture (fixture: Fixture) {
-        self.propriety.name = self.nameTextField.text!
-        self.propriety.index = Int(self.offsetLabel.text!)!
+    @IBAction func depthSwitched(sender: UISwitch, forEvent event: UIEvent) {
         self.propriety.depth = self.depthSwitch.on ? 16 : 8
-        fixture.proprieties.append(self.propriety)
     }
 }
 
-class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, ProprietyEditor {
+class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
@@ -298,6 +305,7 @@ class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, ProprietyEd
         validData = !text.isEmpty
         if (validData!) {
             parent.updateSaveButton()
+            self.propriety.name = self.nameTextField.text!
         } else {
             nameTextField.layer.borderColor = UIColor.redColor().CGColor
             parent.saveButton.enabled = false
@@ -319,18 +327,15 @@ class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, ProprietyEd
     // MARK: Actions
     @IBAction func offsetStepperChanged(sender: UIStepper, forEvent event: UIEvent) {
         offsetLabel.text = String(Int(sender.value))
+        self.propriety.index = Int(self.offsetLabel.text!)!
     }
    
     @IBAction func numStepsStepperChanged(sender: UIStepper, forEvent event: UIEvent) {
         numStepsLabel.text = String(Int(sender.value))
+        (self.propriety as! ScrollerPropriety).locations = Int(self.numStepsLabel.text!)!
     }
     
-    
-    func updateFixture (fixture: Fixture) {
-        self.propriety.name = self.nameTextField.text!
-        self.propriety.index = Int(self.offsetLabel.text!)!
-        (self.propriety as! ScrollerPropriety).locations = Int(self.numStepsLabel.text!)!
+    @IBAction func depthSwitched(sender: UISwitch, forEvent event: UIEvent) {
         self.propriety.depth = self.depthSwitch.on ? 16 : 8
-        fixture.proprieties.append(self.propriety)
     }
 }

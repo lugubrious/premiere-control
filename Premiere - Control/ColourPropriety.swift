@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ColourPropriety: Propriety {
+class ColourPropriety: NSObject, Propriety {
     // MARK: Constants
     static let sortOrder = 60
     
@@ -28,7 +28,7 @@ class ColourPropriety: Propriety {
     var index: Int
     var depth: Int
     var maxValue: Int {
-        return Int(pow(2.0, Double(depth)))
+        return Int(pow(2.0, Double(depth))) - 1
     }
     var name: String
     
@@ -36,6 +36,7 @@ class ColourPropriety: Propriety {
     enum ColourOutputMode {
         case CMY
         case RGB
+        case HSI
     }
     
     var outputMode: ColourOutputMode
@@ -51,7 +52,7 @@ class ColourPropriety: Propriety {
     
     // MARK: Initilization
     required init (index: Int, parent: Fixture) {
-        value = ProprietyType.Colour(UIColor.whiteColor())
+        value = ProprietyType.Colour(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
         self.index = index
         self.parent = parent
         self.depth = 8
@@ -64,10 +65,15 @@ class ColourPropriety: Propriety {
         if let val = unwrappedValue {
             switch (outputMode) {
             case .RGB:
-                var colour = [UnsafeMutablePointer<CGFloat>](count: 3, repeatedValue: UnsafeMutablePointer<CGFloat>())
-                val.getRed(colour[0], green: colour[1], blue: colour[2], alpha: nil);
-                return [UInt8(colour[0].memory * CGFloat(maxValue)), UInt8(colour[1].memory * CGFloat(maxValue)), UInt8(colour[2].memory * CGFloat(maxValue))]
+                var colour = [CGFloat](count: 3, repeatedValue: CGFloat())
+                val.getRed(&colour[0], green: &colour[1], blue: &colour[2], alpha: nil);
+                
+                let max = CGFloat(maxValue)
+                return [UInt8(colour[0] * max), UInt8(colour[1] * max), UInt8(colour[2] * max)]
             case .CMY:
+                // TODO: Implement HSI output
+                fallthrough
+            case .HSI:
                 var colour = [UnsafeMutablePointer<CGFloat>](count: 3, repeatedValue: UnsafeMutablePointer<CGFloat>())
                 val.getHue(colour[0], saturation: colour[1], brightness: colour[2], alpha: nil);
                 return [UInt8(colour[0].memory * CGFloat(maxValue)), UInt8(colour[1].memory * CGFloat(maxValue)), UInt8(colour[2].memory * CGFloat(maxValue))]
@@ -79,5 +85,16 @@ class ColourPropriety: Propriety {
     
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell {
         return cell
+    }
+    
+    // MARK: Copying
+    
+    @objc func copyWithZone(zone: NSZone) -> AnyObject {
+        let copy = ColourPropriety(index: self.index, parent: self.parent)
+        copy.depth = self.depth
+        copy.outputMode = self.outputMode
+        copy.name = self.name + "Copy"
+        copy.value = self.value
+        return copy
     }
 }

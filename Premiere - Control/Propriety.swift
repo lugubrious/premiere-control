@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol Propriety {
+protocol Propriety: NSCopying {
     // The weight of this propriety when displayed in a table view. Higher numbers are displayed first.
     static var sortOrder: Int {get}
     

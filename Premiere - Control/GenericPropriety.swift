@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GenericPropriety: Propriety {
+class GenericPropriety: NSObject, Propriety {
     // MARK: Constants
     static let sortOrder = 30
     
@@ -28,7 +28,7 @@ class GenericPropriety: Propriety {
     var index: Int
     var depth: Int
     var maxValue: Int {
-        return Int(pow(2.0, Double(depth)))
+        return Int(pow(2.0, Double(depth))) - 1
     }
     var name: String
     
@@ -43,7 +43,7 @@ class GenericPropriety: Propriety {
     }
     
     // MARK: Initilization
-    convenience init? (index: Int, parent: Fixture, name: String, initialValue: ProprietyType) {
+    convenience init? (index: Int, parent: Fixture, name: String, initialValue: ProprietyType, depth: Int) {
         self.init(index: index, parent: parent)
         self.value = initialValue
         if !name.isEmpty {
@@ -51,6 +51,7 @@ class GenericPropriety: Propriety {
         } else {
             return nil
         }
+        self.depth = depth
     }
     
     required init (index: Int, parent: Fixture) {
@@ -72,5 +73,11 @@ class GenericPropriety: Propriety {
     
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell {
         return cell
+    }
+    
+    // MARK: Copying
+    
+    @objc func copyWithZone(zone: NSZone) -> AnyObject {
+        return GenericPropriety(index: self.index, parent: self.parent, name: self.name, initialValue: self.value, depth: self.depth)!
     }
 }
