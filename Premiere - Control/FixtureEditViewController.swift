@@ -12,6 +12,9 @@ class FixtureEditViewController: UITableViewController {
     var fixture:Fixture!    // The fixture which this view controller is editing
     var source: UIViewController!   // The view controller that needs to be unwound to
     
+    var properties: [Property]!
+    var name: String!, index: Int!, address: Int!
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     let backgroundColour = UIColor(red: 0.975, green: 0.975, blue: 0.975, alpha: 1)
@@ -19,11 +22,18 @@ class FixtureEditViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let fix = self.fixture {
+        /*if let fix = self.fixture {
             self.fixture = fix.copy() as? Fixture
         } else {
-            self.fixture = Fixture(name: "New Fixture", address: 800, index: 0)
-        }
+            self.fixture = Fixture(name: "New Fixture", address: 0, index: 0)
+        }*/
+        
+        self.fixture = self.fixture ?? Fixture(name: "New Fixture", address: 0, index: 0)
+        
+        self.properties = self.fixture.properties.map({$0.copyWithZone(nil) as! Property})
+        self.name = self.fixture.name
+        self.index = self.fixture.index
+        self.address = self.fixture.address
         
         setNavigationTitle(self.fixture.name)
         
@@ -73,7 +83,7 @@ class FixtureEditViewController: UITableViewController {
         case 0:
             return 3
         case 1:
-            return self.fixture.properties.count// - (numDeletedProprieties ?? 0)
+            return self.properties.count
         case 2:
             return 1
         default:
@@ -104,8 +114,8 @@ class FixtureEditViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
  //           numDeletedProprieties = (numDeletedProprieties ?? 0) + 1
-            self.fixture.properties.sortInPlace({$0.index < $1.index})
-            self.fixture.properties.removeAtIndex(indexPath.row)
+            self.properties.sortInPlace({$0.index < $1.index})
+            self.properties.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -117,25 +127,25 @@ class FixtureEditViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 let name = tableView.dequeueReusableCellWithIdentifier("FixtureEditNameCell", forIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! FixtureEditNameCell
-                name.setupForFixture(self.fixture, parent: self)
+                name.setupForParent(self)
                 return name
             case 1:
                 let index = tableView.dequeueReusableCellWithIdentifier("FixtureEditIndexCell", forIndexPath: NSIndexPath(forRow: 1, inSection: 0)) as! FixtureEditIndexCell
-                index.setupForFixture(self.fixture, parent: self)
+                index.setupForParent(self)
                 return index
             case 2:
                 let dimmer = tableView.dequeueReusableCellWithIdentifier("FixtureEditDimmerCell", forIndexPath: NSIndexPath(forRow: 2, inSection: 0)) as! FixtureEditDimmerCell
-                dimmer.setupForFixture(self.fixture)
+                dimmer.setupForParent(self)
                 return dimmer
             default:
                 print("Too many rows in section 0 of fixtureEditView (row \(indexPath.row))")
                 let name = tableView.dequeueReusableCellWithIdentifier("FixtureEditNameCell", forIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! FixtureEditNameCell
-                name.setupForFixture(self.fixture, parent: self)
+                name.setupForParent(self)
                 return name
             }
         } else if indexPath.section == 1 {
-            self.fixture.properties.sortInPlace({$0.index < $1.index})
-            return createPropCell(propriety: self.fixture.properties[indexPath.row], path: indexPath)
+            self.properties.sortInPlace({$0.index < $1.index})
+            return createPropCell(propriety: self.properties[indexPath.row], path: indexPath)
         } else if  indexPath.section == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier("FixtureEditAddCell", forIndexPath: indexPath) as! FixtureEditAddCell
             cell.setupForController(self)
@@ -186,7 +196,10 @@ class FixtureEditViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if self === sender {
             // Save proprieties and set fixture
-            
+            self.fixture.name = self.name
+            self.fixture.index = self.index
+            self.fixture.address = self.address
+            self.fixture.properties = self.properties
         }
     }
 }
@@ -201,10 +214,10 @@ class FixtureEditNameCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
     var validData: Bool!
     
     var parent: FixtureEditViewController!
-    func setupForFixture(fixture: Fixture, parent:FixtureEditViewController) {
+    func setupForParent(parent: FixtureEditViewController) {
         self.parent = parent
         nameTextField.delegate = self
-        nameTextField.text = fixture.name
+        nameTextField.text = self.parent.name
         
         nameTextField.layer.borderColor = UIColor.clearColor().CGColor
         nameTextField.layer.borderWidth = 1
@@ -227,7 +240,7 @@ class FixtureEditNameCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
         validData = !text.isEmpty
         if (validData!) {
             parent.setNavigationTitle(text)
-            parent.fixture.name = text
+            parent.name = text
             parent.updateSaveButton()
         } else {
             nameTextField.layer.borderColor = UIColor.redColor().CGColor
@@ -254,9 +267,9 @@ class FixtureEditIndexCell: UITableViewCell, UITextFieldDelegate, FixtureEditor 
     var validData: Bool!
     var parent: FixtureEditViewController!
     
-    func setupForFixture(fixture: Fixture, parent:FixtureEditViewController) {
+    func setupForParent(parent:FixtureEditViewController) {
         self.parent = parent
-        indexTextField.text = String(fixture.index)
+        indexTextField.text = String(self.parent.index)
         indexTextField.delegate = self
         
         let keyboardToolbar = UIToolbar()
@@ -289,7 +302,7 @@ class FixtureEditIndexCell: UITableViewCell, UITextFieldDelegate, FixtureEditor 
         if let index = Int(indexTextField.text ?? "") {
             validData = true
             parent.updateSaveButton()
-            parent.fixture.index = index
+            parent.index = index
         } else {
             validData = false
             indexTextField.layer.borderColor = UIColor.redColor().CGColor
@@ -316,11 +329,11 @@ class FixtureEditDimmerCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     var pickerData = [[Int](), [Int]()]
     var universe = 1, dimmer = 1
     
-    var fixture: Fixture!
+    var parent: FixtureEditViewController!
     
-    func setupForFixture(fixture: Fixture) {
-        self.fixture = fixture
-        let address = self.fixture.address
+    func setupForParent(parent: FixtureEditViewController) {
+        self.parent = parent
+        let address = parent.address
         universe = (address < 512) ? 1 : 2
         dimmer = (universe == 1) ? address : address - 512
         
@@ -376,7 +389,7 @@ class FixtureEditDimmerCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
             } else if component == 1 {
                 dimmer = pickerData[component][row]
             }
-            self.fixture.address = (universe == 1) ? dimmer : dimmer + 512
+            parent.address = (universe == 1) ? dimmer : dimmer + 512
         }
     }
 }
@@ -405,15 +418,15 @@ class FixtureEditAddCell: UITableViewCell {
         default:
             return
         }
-        parent.fixture.properties.append(prop)
-        parent.fixture.properties.sortInPlace({$0.index < $1.index})
+        parent.properties.append(prop)
+        parent.properties.sortInPlace({$0.index < $1.index})
         let row = (getRow(propriety: prop) ?? 0)
         parent.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: row, inSection: 1)], withRowAnimation: .Automatic)
     }
     
     func getLowestUnusedIndex() -> Int {
         var index = 0
-        for i in parent.fixture.properties {
+        for i in parent.properties {
             if (i.index <= index) {
                 index = i.index + 1
             }
@@ -423,13 +436,13 @@ class FixtureEditAddCell: UITableViewCell {
     
     func getRow (propriety prop: Property) -> Int? {
         if let p = prop as? GenericProperty {
-            return parent.fixture.properties.indexOf({($0 as? GenericProperty) === p})
+            return parent.properties.indexOf({($0 as? GenericProperty) === p})
         } else if let p = prop as? ColourProperty {
-            return parent.fixture.properties.indexOf({($0 as? ColourProperty) === p})
+            return parent.properties.indexOf({($0 as? ColourProperty) === p})
         } else if let p = prop as? PositionProperty {
-            return parent.fixture.properties.indexOf({($0 as? PositionProperty) === p})
+            return parent.properties.indexOf({($0 as? PositionProperty) === p})
         } else if let p = prop as? ScrollerProperty {
-            return parent.fixture.properties.indexOf({($0 as? ScrollerProperty) === p})
+            return parent.properties.indexOf({($0 as? ScrollerProperty) === p})
         } else {
             return nil
         }
