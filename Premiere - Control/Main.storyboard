@@ -194,7 +194,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureGenericCell" rowHeight="80" id="GWJ-xt-9H5">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FixtureGenericCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureGenericCell" rowHeight="80" id="GWJ-xt-9H5" customClass="FixtureGenericCell" customModule="Premiere" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GWJ-xt-9H5" id="XU9-uO-Tsh">
@@ -209,6 +209,9 @@
                                         </label>
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="intensityLower" maximumValueImage="intensityHigher" translatesAutoresizingMaskIntoConstraints="NO" id="sJ0-E1-uVu">
                                             <rect key="frame" x="6" y="37" width="538" height="31"/>
+                                            <connections>
+                                                <action selector="valueChanged:forEvent:" destination="GWJ-xt-9H5" eventType="valueChanged" id="9sb-aB-jUV"/>
+                                            </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOu-xh-4F9">
                                             <rect key="frame" x="550" y="41" width="42" height="21"/>
@@ -236,8 +239,12 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="4NA-8W-Zjv" id="Pa9-O4-NZ5"/>
+                                    <outlet property="valueSlider" destination="sJ0-E1-uVu" id="efb-iO-sIJ"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureColourCell" rowHeight="150" id="npM-Be-e0q">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FixtureColourCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureColourCell" rowHeight="150" id="npM-Be-e0q" customClass="FixtureColourCell" customModule="Premiere" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="172" width="600" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="npM-Be-e0q" id="1St-tY-JhG">
@@ -253,14 +260,23 @@
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="x3w-Bi-DXP" userLabel="Red Slider">
                                             <rect key="frame" x="61" y="37" width="421" height="31"/>
                                             <color key="tintColor" red="0.8990929110738255" green="0.22029677013422819" blue="0.20766044463087249" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="redChanged:forEvent:" destination="npM-Be-e0q" eventType="valueChanged" id="Mnv-QK-Fg9"/>
+                                            </connections>
                                         </slider>
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bSe-mv-y9z" userLabel="Blue Slider">
                                             <rect key="frame" x="61" y="75" width="421" height="31"/>
                                             <color key="tintColor" red="0.30196078431372547" green="0.74509803921568629" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="greenChanged:forEvent:" destination="npM-Be-e0q" eventType="valueChanged" id="5PV-dW-Xd6"/>
+                                            </connections>
                                         </slider>
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ENE-Df-7au" userLabel="Green Slider">
                                             <rect key="frame" x="61" y="111" width="421" height="31"/>
                                             <color key="tintColor" red="0.30196078431372547" green="0.30190907109488085" blue="0.85849669775628379" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="blueChanged:forEvent:" destination="npM-Be-e0q" eventType="valueChanged" id="tc1-25-0p7"/>
+                                            </connections>
                                         </slider>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1t-6K-n3q">
                                             <rect key="frame" x="8" y="41" width="30" height="21"/>
@@ -316,8 +332,15 @@
                                         <constraint firstItem="x3w-Bi-DXP" firstAttribute="leading" secondItem="d1t-6K-n3q" secondAttribute="trailing" constant="25" id="wv8-gy-GM1"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="blueSlider" destination="ENE-Df-7au" id="zNE-vQ-TTa"/>
+                                    <outlet property="colourView" destination="e4P-2f-Unk" id="HkF-lz-Frq"/>
+                                    <outlet property="greenSlider" destination="bSe-mv-y9z" id="6Sc-bu-m47"/>
+                                    <outlet property="nameLabel" destination="QOr-jd-t5w" id="eR3-6t-eYM"/>
+                                    <outlet property="redSlider" destination="x3w-Bi-DXP" id="KZ4-ro-2IR"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixturePositionCell" rowHeight="80" id="4lW-9F-esD">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FixturePositionCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixturePositionCell" rowHeight="80" id="4lW-9F-esD" customClass="FixturePositionCell" customModule="Premiere" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="322" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4lW-9F-esD" id="MzX-Ze-5uW">
@@ -330,19 +353,33 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't be lazy, go move it yourself Torin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tN5-Vx-vj2">
+                                            <rect key="frame" x="152" y="50" width="296" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="LVL-2e-LcS" firstAttribute="top" secondItem="MzX-Ze-5uW" secondAttribute="topMargin" id="5Ql-pM-2tl"/>
+                                        <constraint firstItem="LVL-2e-LcS" firstAttribute="top" secondItem="MzX-Ze-5uW" secondAttribute="topMargin" id="DZm-5H-F9v"/>
                                         <constraint firstItem="LVL-2e-LcS" firstAttribute="trailing" secondItem="MzX-Ze-5uW" secondAttribute="trailingMargin" id="VAx-nJ-9js"/>
                                         <constraint firstItem="LVL-2e-LcS" firstAttribute="leading" secondItem="MzX-Ze-5uW" secondAttribute="leadingMargin" id="VcP-V6-6gM"/>
+                                        <constraint firstItem="LVL-2e-LcS" firstAttribute="trailing" secondItem="MzX-Ze-5uW" secondAttribute="trailingMargin" id="hTK-N0-amO"/>
+                                        <constraint firstItem="LVL-2e-LcS" firstAttribute="leading" secondItem="MzX-Ze-5uW" secondAttribute="leadingMargin" id="k4y-Dx-8om"/>
+                                        <constraint firstItem="tN5-Vx-vj2" firstAttribute="bottom" secondItem="MzX-Ze-5uW" secondAttribute="bottomMargin" id="p2h-A2-zBK"/>
+                                        <constraint firstItem="tN5-Vx-vj2" firstAttribute="centerX" secondItem="MzX-Ze-5uW" secondAttribute="centerX" id="pRu-dR-g2a"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="LVL-2e-LcS" id="gtw-Xs-gde"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureScrollerCell" rowHeight="80" id="XQ1-Id-eZW">
-                                <rect key="frame" x="0.0" y="402" width="600" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureScrollerCell" rowHeight="130" id="XQ1-Id-eZW" customClass="FixtureScrollerCell" customModule="Premiere" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="402" width="600" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XQ1-Id-eZW" id="XZz-uc-27S">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="129"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scroller Prop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TZ-5z-HoS">
@@ -351,13 +388,38 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqC-eK-WCy">
+                                            <rect key="frame" x="472" y="31" width="120" height="90"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="0jb-Re-OZr"/>
+                                            </constraints>
+                                        </pickerView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Segment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amH-FY-GLY">
+                                            <rect key="frame" x="8" y="65" width="141" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="eqC-eK-WCy" firstAttribute="top" secondItem="5TZ-5z-HoS" secondAttribute="bottom" constant="2" id="3RG-CT-8Gk"/>
                                         <constraint firstItem="5TZ-5z-HoS" firstAttribute="leading" secondItem="XZz-uc-27S" secondAttribute="leadingMargin" id="BlV-jb-RzE"/>
+                                        <constraint firstItem="eqC-eK-WCy" firstAttribute="trailing" secondItem="XZz-uc-27S" secondAttribute="trailingMargin" id="BoC-Yx-WBK"/>
+                                        <constraint firstItem="5TZ-5z-HoS" firstAttribute="top" secondItem="XZz-uc-27S" secondAttribute="topMargin" id="DxD-R0-izB"/>
                                         <constraint firstItem="5TZ-5z-HoS" firstAttribute="trailing" secondItem="XZz-uc-27S" secondAttribute="trailingMargin" id="NU8-PH-Jx6"/>
+                                        <constraint firstItem="5TZ-5z-HoS" firstAttribute="leading" secondItem="XZz-uc-27S" secondAttribute="leadingMargin" id="Qpq-ef-OjV"/>
                                         <constraint firstItem="5TZ-5z-HoS" firstAttribute="top" secondItem="XZz-uc-27S" secondAttribute="topMargin" id="VOF-Xn-9jy"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="amH-FY-GLY" secondAttribute="bottom" constant="35" id="XGa-lA-5AC"/>
+                                        <constraint firstItem="5TZ-5z-HoS" firstAttribute="trailing" secondItem="XZz-uc-27S" secondAttribute="trailingMargin" id="ZVj-qI-V4D"/>
+                                        <constraint firstItem="amH-FY-GLY" firstAttribute="top" secondItem="5TZ-5z-HoS" secondAttribute="bottom" constant="36" id="fLO-FH-j6X"/>
+                                        <constraint firstItem="eqC-eK-WCy" firstAttribute="bottom" secondItem="XZz-uc-27S" secondAttribute="bottomMargin" id="yp1-5m-jGc"/>
+                                        <constraint firstItem="amH-FY-GLY" firstAttribute="leading" secondItem="XZz-uc-27S" secondAttribute="leadingMargin" id="zOi-Rv-oHh"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="5TZ-5z-HoS" id="kRY-WZ-2CS"/>
+                                    <outlet property="valuePicker" destination="eqC-eK-WCy" id="OuC-AB-Eju"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

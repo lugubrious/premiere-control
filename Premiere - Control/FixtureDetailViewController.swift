@@ -90,7 +90,66 @@ class FixtureGenericCell: UITableViewCell {
     var parent: FixtureDetailViewController!
     var property: GenericProperty!
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var valueSlider: UISlider!
+    
     func setupForPropriety(property: GenericProperty, parent:FixtureDetailViewController) {
+        self.parent = parent
+        self.property = property
+        
+    }
+    
+    @IBAction func valueChanged(sender: UISlider, forEvent event: UIEvent) {
+    }
+}
+
+class FixtureColourCell: UITableViewCell {
+    var parent: FixtureDetailViewController!
+    var property: ColourProperty!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var redSlider: UISlider!
+    @IBOutlet weak var greenSlider: UISlider!
+    @IBOutlet weak var blueSlider: UISlider!
+    @IBOutlet weak var colourView: UIView!
+    
+    func setupForPropriety(property: ColourProperty, parent:FixtureDetailViewController) {
+        self.parent = parent
+        self.property = property
+        
+    }
+    
+    @IBAction func redChanged(sender: UISlider, forEvent event: UIEvent) {
+    }
+    
+    @IBAction func greenChanged(sender: UISlider, forEvent event: UIEvent) {
+    }
+   
+    @IBAction func blueChanged(sender: UISlider, forEvent event: UIEvent) {
+    }
+}
+
+class FixturePositionCell: UITableViewCell {
+    var parent: FixtureDetailViewController!
+    var property: PositionProperty!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    func setupForPropriety(property: PositionProperty, parent:FixtureDetailViewController) {
+        self.parent = parent
+        self.property = property
+        
+    }
+}
+
+class FixtureScrollerCell: UITableViewCell {
+    var parent: FixtureDetailViewController!
+    var property: ScrollerProperty!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var valuePicker: UIPickerView!
+    
+    func setupForPropriety(property: ScrollerProperty, parent:FixtureDetailViewController) {
         self.parent = parent
         self.property = property
         

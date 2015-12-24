@@ -74,9 +74,10 @@ class ColourProperty: NSObject, Property {
                 // TODO: Implement HSI output
                 fallthrough
             case .HSI:
-                var colour = [UnsafeMutablePointer<CGFloat>](count: 3, repeatedValue: UnsafeMutablePointer<CGFloat>())
-                val.getHue(colour[0], saturation: colour[1], brightness: colour[2], alpha: nil);
-                return [UInt8(colour[0].memory * CGFloat(maxValue)), UInt8(colour[1].memory * CGFloat(maxValue)), UInt8(colour[2].memory * CGFloat(maxValue))]
+                var colour = [CGFloat](count: 3, repeatedValue: CGFloat())
+                val.getHue(&colour[0], saturation: &colour[1], brightness: &colour[2], alpha: nil);
+                let max = CGFloat(maxValue)
+                return [UInt8(colour[0] * max), UInt8(colour[1] * max), UInt8(colour[2] * max)]
             }
         } else {
             return[0,0,0]

@@ -18,7 +18,7 @@ class PositionProperty: NSObject, Property {
         didSet {
             switch value {
             case .Position(let pan, let tilt):
-                print("\(pan),\(tilt)") // TODO
+                print("\(pan),\(tilt) : Position did set //TODO") // TODO
             default:
                 value = oldValue
             }

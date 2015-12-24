@@ -21,13 +21,7 @@ class FixtureEditViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*if let fix = self.fixture {
-            self.fixture = fix.copy() as? Fixture
-        } else {
-            self.fixture = Fixture(name: "New Fixture", address: 0, index: 0)
-        }*/
-        
+
         self.fixture = self.fixture ?? Fixture(name: "New Fixture", address: 0, index: 0)
         
         self.properties = self.fixture.properties.map({$0.copyWithZone(nil) as! Property})
@@ -53,7 +47,7 @@ class FixtureEditViewController: UITableViewController {
     }
     
     func updateSaveButton () {
-        for i in 0..<self.tableView.numberOfSections {
+/*        for i in 0..<self.tableView.numberOfSections {
             for j in 0..<self.tableView.numberOfRowsInSection(i) {
                 if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: j, inSection: i)) as? FixtureEditor {
                     if !cell.validData {
@@ -61,6 +55,16 @@ class FixtureEditViewController: UITableViewController {
                         return
                     }
                 }
+            }
+        }*/
+        if self.fixture.name.isEmpty || self.fixture.index <= 0 {
+            saveButton.enabled = false
+            return
+        }
+        for i in fixture.properties {
+            if i.name.isEmpty {
+                saveButton.enabled = false
+                return
             }
         }
         saveButton.enabled = true
@@ -204,14 +208,8 @@ class FixtureEditViewController: UITableViewController {
     }
 }
 
-protocol FixtureEditor {
-    var validData: Bool! {get}
-}
-
-class FixtureEditNameCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
+class FixtureEditNameCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
-    
-    var validData: Bool!
     
     var parent: FixtureEditViewController!
     func setupForParent(parent: FixtureEditViewController) {
@@ -229,18 +227,17 @@ class FixtureEditNameCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
     // MARK: Text fied delegate
     func textFieldDidBeginEditing(textField: UITextField) {
         // Disable the Save button while editing.
-        validData = false
         parent.saveButton.enabled = false
+        parent.name = ""
         nameTextField.layer.borderColor = UIColor.clearColor().CGColor
     }
     
     func checkValidEntry () {
         // Disable the Save button if the text field is empty.
         let text = nameTextField.text ?? ""
-        validData = !text.isEmpty
-        if (validData!) {
+        parent.name = text
+        if (!parent.name.isEmpty) {
             parent.setNavigationTitle(text)
-            parent.name = text
             parent.updateSaveButton()
         } else {
             nameTextField.layer.borderColor = UIColor.redColor().CGColor
@@ -261,10 +258,9 @@ class FixtureEditNameCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
     }
 }
 
-class FixtureEditIndexCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
+class FixtureEditIndexCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var indexTextField: UITextField!
     
-    var validData: Bool!
     var parent: FixtureEditViewController!
     
     func setupForParent(parent:FixtureEditViewController) {
@@ -292,7 +288,7 @@ class FixtureEditIndexCell: UITableViewCell, UITextFieldDelegate, FixtureEditor 
     // MARK: Text fied delegate
     func textFieldDidBeginEditing(textField: UITextField) {
         // Disable the Save button while editing.
-        validData = false
+        parent.index = -1
         parent.saveButton.enabled = false
         indexTextField.layer.borderColor = UIColor.clearColor().CGColor
     }
@@ -300,11 +296,10 @@ class FixtureEditIndexCell: UITableViewCell, UITextFieldDelegate, FixtureEditor 
     func checkValidEntry () {
         // Disable the Save button if the text field is empty.
         if let index = Int(indexTextField.text ?? "") {
-            validData = true
             parent.updateSaveButton()
             parent.index = index
         } else {
-            validData = false
+            parent.index = -1
             indexTextField.layer.borderColor = UIColor.redColor().CGColor
             parent.saveButton.enabled = false
         }
@@ -322,10 +317,9 @@ class FixtureEditIndexCell: UITableViewCell, UITextFieldDelegate, FixtureEditor 
     }
 }
 
-class FixtureEditDimmerCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource, FixtureEditor {
+class FixtureEditDimmerCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var dimmerPicker: UIPickerView!
     
-    var validData: Bool!
     var pickerData = [[Int](), [Int]()]
     var universe = 1, dimmer = 1
     
@@ -339,8 +333,6 @@ class FixtureEditDimmerCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
         
         dimmerPicker.delegate = self
         dimmerPicker.dataSource = self
-        
-        validData = true
 
         pickerData[0] = [1,2]
         for i in 1...512 {

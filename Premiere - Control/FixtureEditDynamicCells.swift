@@ -8,13 +8,11 @@
 
 import UIKit
 
-class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
+class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
     @IBOutlet weak var offsetLabel: UILabel!
     @IBOutlet weak var offsetStepper: UIStepper!
-    
-    var validData: Bool!
     
     var property:Property!
     var parent: FixtureEditViewController!
@@ -22,42 +20,40 @@ class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, FixtureEdito
     func setupForProperty(propriety: GenericProperty, parent:FixtureEditViewController) {
         self.parent = parent
         self.property = propriety
-        nameTextField.text = String(self.property.name)
-        nameTextField.delegate = self
+        self.nameTextField.text = String(self.property.name)
+        self.nameTextField.delegate = self
         
         self.offsetStepper.value = Double(self.property.index)
         self.offsetStepper.wraps = true
-        offsetLabel.text = String(Int(offsetStepper.value))
+        self.offsetLabel.text = String(Int(offsetStepper.value))
         
-        depthSwitch.setOn(self.property.depth == 16, animated: false)
+        self.depthSwitch.setOn(self.property.depth == 16, animated: false)
         
-        nameTextField.layer.borderColor = UIColor.clearColor().CGColor
-        nameTextField.layer.borderWidth = 1
-        nameTextField.layer.cornerRadius = 5
-        nameTextField.layer.masksToBounds = true
+        self.nameTextField.layer.borderColor = UIColor.clearColor().CGColor
+        self.nameTextField.layer.borderWidth = 1
+        self.nameTextField.layer.cornerRadius = 5
+        self.nameTextField.layer.masksToBounds = true
         
-        checkValidEntry()
+        self.checkValidEntry()
     }
     
     // MARK: Text fied delegate
     func textFieldDidBeginEditing(textField: UITextField) {
         // Disable the Save button while editing.
-        validData = false
-        parent.saveButton.enabled = false
-        nameTextField.layer.borderColor = UIColor.clearColor().CGColor
+        self.property.name = ""
+        self.parent.saveButton.enabled = false
+        self.nameTextField.layer.borderColor = UIColor.clearColor().CGColor
     }
     
     func checkValidEntry () {
         // Disable the Save button if the text field is empty.
         let text = nameTextField.text ?? ""
-        validData = !text.isEmpty
-        if (validData!) {
-            parent.updateSaveButton()
+        if (!text.isEmpty) {
+            self.parent.updateSaveButton()
             self.property.name = self.nameTextField.text!
         } else {
-            nameTextField.layer.borderColor = UIColor.redColor().CGColor
-            parent.saveButton.enabled = false
-            
+            self.nameTextField.layer.borderColor = UIColor.redColor().CGColor
+            self.parent.saveButton.enabled = false
         }
     }
     
@@ -75,7 +71,7 @@ class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, FixtureEdito
     
     // MARK: Actions
     @IBAction func offsetStepperChanged(sender: UIStepper, forEvent event: UIEvent) {
-        offsetLabel.text = String(Int(sender.value))
+        self.offsetLabel.text = String(Int(sender.value))
         self.property.index = Int(self.offsetLabel.text!)!
     }
     
@@ -84,7 +80,7 @@ class FixtureEditGenericCell: UITableViewCell, UITextFieldDelegate, FixtureEdito
     }
 }
 
-class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
+class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
@@ -92,52 +88,55 @@ class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, FixtureEditor
     @IBOutlet weak var offsetLabel: UILabel!
     @IBOutlet weak var colourSpaceControl: UISegmentedControl!
     
-    
-    
-    var validData: Bool!
-    
-    var property: Property!
+    var property: ColourProperty!
     var parent: FixtureEditViewController!
     
     func setupForProperty(property: ColourProperty, parent:FixtureEditViewController) {
         self.parent = parent
         self.property = property
-        nameTextField.text = String(self.property.name)
-        nameTextField.delegate = self
+        self.nameTextField.text = String(self.property.name)
+        self.nameTextField.delegate = self
         
         self.offsetStepper.value = Double(self.property.index)
         self.offsetStepper.wraps = true
-        offsetLabel.text = String(Int(offsetStepper.value))
+        self.offsetLabel.text = String(Int(offsetStepper.value))
         
-        depthSwitch.setOn(self.property.depth == 16, animated: false)
+        self.depthSwitch.setOn(self.property.depth == 16, animated: false)
         
-        nameTextField.layer.borderColor = UIColor.clearColor().CGColor
-        nameTextField.layer.borderWidth = 1
-        nameTextField.layer.cornerRadius = 5
-        nameTextField.layer.masksToBounds = true
+        switch self.property.outputMode {
+        case .RGB :
+            self.colourSpaceControl.selectedSegmentIndex = 0
+        case .CMY:
+            self.colourSpaceControl.selectedSegmentIndex = 1
+        case .HSI:
+            self.colourSpaceControl.selectedSegmentIndex = 2
+        }
         
-        checkValidEntry()
+        self.nameTextField.layer.borderColor = UIColor.clearColor().CGColor
+        self.nameTextField.layer.borderWidth = 1
+        self.nameTextField.layer.cornerRadius = 5
+        self.nameTextField.layer.masksToBounds = true
+        
+        self.checkValidEntry()
     }
     
     // MARK: Text fied delegate
     func textFieldDidBeginEditing(textField: UITextField) {
         // Disable the Save button while editing.
-        validData = false
-        parent.saveButton.enabled = false
-        nameTextField.layer.borderColor = UIColor.clearColor().CGColor
+        self.property.name = ""
+        self.parent.saveButton.enabled = false
+        self.nameTextField.layer.borderColor = UIColor.clearColor().CGColor
     }
     
     func checkValidEntry () {
         // Disable the Save button if the text field is empty.
         let text = nameTextField.text ?? ""
-        validData = !text.isEmpty
-        if (validData!) {
-            parent.updateSaveButton()
+        if (!text.isEmpty) {
+            self.parent.updateSaveButton()
             self.property.name = self.nameTextField.text!
         } else {
-            nameTextField.layer.borderColor = UIColor.redColor().CGColor
-            parent.saveButton.enabled = false
-            
+            self.nameTextField.layer.borderColor = UIColor.redColor().CGColor
+            self.parent.saveButton.enabled = false
         }
     }
     
@@ -149,24 +148,23 @@ class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, FixtureEditor
     
     func textFieldDidEndEditing(textField: UITextField) {
         //Update value
-        checkValidEntry()
+        self.checkValidEntry()
     }
     
     // MARK: Actions
     @IBAction func offsetStepperChanged(sender: UIStepper, forEvent event: UIEvent) {
-        offsetLabel.text = String(Int(sender.value))
+        self.offsetLabel.text = String(Int(sender.value))
         self.property.index = Int(self.offsetLabel.text!)!
     }
     
     @IBAction func colourSpaceChanged(sender: UISegmentedControl, forEvent event: UIEvent) {
-        let prop = self.property as! ColourProperty
         switch sender.selectedSegmentIndex {
         case 0:
-            prop.outputMode = .RGB
+            self.property.outputMode = .RGB
         case 1:
-            prop.outputMode = .CMY
+            self.property.outputMode = .CMY
         case 2:
-            prop.outputMode = .HSI
+            self.property.outputMode = .HSI
         default:
             break
         }
@@ -177,14 +175,12 @@ class FixtureEditColourCell: UITableViewCell, UITextFieldDelegate, FixtureEditor
     }
 }
 
-class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
+class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
     @IBOutlet weak var offsetStepper: UIStepper!
     @IBOutlet weak var offsetLabel: UILabel!
-    
-    var validData: Bool!
     
     var property: Property!
     var parent: FixtureEditViewController!
@@ -192,42 +188,40 @@ class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate, FixtureEdit
     func setupForProperty(property: PositionProperty, parent:FixtureEditViewController) {
         self.parent = parent
         self.property = property
-        nameTextField.text = String(self.property.name)
-        nameTextField.delegate = self
+        self.nameTextField.text = String(self.property.name)
+        self.nameTextField.delegate = self
         
         self.offsetStepper.value = Double(self.property.index)
         self.offsetStepper.wraps = true
-        offsetLabel.text = String(Int(offsetStepper.value))
+        self.offsetLabel.text = String(Int(offsetStepper.value))
         
-        depthSwitch.setOn(self.property.depth == 16, animated: false)
+        self.depthSwitch.setOn(self.property.depth == 16, animated: false)
         
-        nameTextField.layer.borderColor = UIColor.clearColor().CGColor
-        nameTextField.layer.borderWidth = 1
-        nameTextField.layer.cornerRadius = 5
-        nameTextField.layer.masksToBounds = true
+        self.nameTextField.layer.borderColor = UIColor.clearColor().CGColor
+        self.nameTextField.layer.borderWidth = 1
+        self.nameTextField.layer.cornerRadius = 5
+        self.nameTextField.layer.masksToBounds = true
         
-        checkValidEntry()
+        self.checkValidEntry()
     }
     
     // MARK: Text fied delegate
     func textFieldDidBeginEditing(textField: UITextField) {
         // Disable the Save button while editing.
-        validData = false
-        parent.saveButton.enabled = false
-        nameTextField.layer.borderColor = UIColor.clearColor().CGColor
+        self.property.name = ""
+        self.parent.saveButton.enabled = false
+        self.nameTextField.layer.borderColor = UIColor.clearColor().CGColor
     }
     
     func checkValidEntry () {
         // Disable the Save button if the text field is empty.
         let text = nameTextField.text ?? ""
-        validData = !text.isEmpty
-        if (validData!) {
-            parent.updateSaveButton()
+        if (!text.isEmpty) {
+            self.parent.updateSaveButton()
             self.property.name = self.nameTextField.text!
         } else {
-            nameTextField.layer.borderColor = UIColor.redColor().CGColor
-            parent.saveButton.enabled = false
-            
+            self.nameTextField.layer.borderColor = UIColor.redColor().CGColor
+            self.parent.saveButton.enabled = false
         }
     }
     
@@ -253,7 +247,7 @@ class FixtureEditPositionCell: UITableViewCell, UITextFieldDelegate, FixtureEdit
     }
 }
 
-class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, FixtureEditor {
+class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var depthSwitch: UISwitch!
@@ -261,9 +255,7 @@ class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, FixtureEdit
     @IBOutlet weak var offsetLabel: UILabel!
     @IBOutlet weak var numStepsStepper: UIStepper!
     @IBOutlet weak var numStepsLabel: UILabel!
-  
-    var validData: Bool!
-    
+
     var property: Property!
     var parent: FixtureEditViewController!
     
@@ -294,7 +286,7 @@ class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, FixtureEdit
     // MARK: Text fied delegate
     func textFieldDidBeginEditing(textField: UITextField) {
         // Disable the Save button while editing.
-        validData = false
+        self.property.name = ""
         parent.saveButton.enabled = false
         nameTextField.layer.borderColor = UIColor.clearColor().CGColor
     }
@@ -302,8 +294,7 @@ class FixtureEditScrollerCell: UITableViewCell, UITextFieldDelegate, FixtureEdit
     func checkValidEntry () {
         // Disable the Save button if the text field is empty.
         let text = nameTextField.text ?? ""
-        validData = !text.isEmpty
-        if (validData!) {
+        if (!text.isEmpty) {
             parent.updateSaveButton()
             self.property.name = self.nameTextField.text!
         } else {
