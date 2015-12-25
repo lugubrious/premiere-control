@@ -10,7 +10,7 @@ import UIKit
 
 class ColourProperty: NSObject, Property {
     // MARK: Constants
-    static let sortOrder = 60
+    let sortOrder = 50
     
     // MARK: Protocol Variables
     var parent: Fixture
@@ -41,7 +41,7 @@ class ColourProperty: NSObject, Property {
     
     var outputMode: ColourOutputMode
     
-    private var unwrappedValue: UIColor? {
+    var unwrappedValue: UIColor? {
         switch value {
         case .Colour(let val):
             return val
@@ -63,22 +63,24 @@ class ColourProperty: NSObject, Property {
     // MARK: Protocol Functions
     func getDMXValues() -> [UInt8] {
         if let val = unwrappedValue {
+            var colour = [CGFloat](count: 3, repeatedValue: CGFloat())
+            
             switch (outputMode) {
             case .RGB:
-                var colour = [CGFloat](count: 3, repeatedValue: CGFloat())
                 val.getRed(&colour[0], green: &colour[1], blue: &colour[2], alpha: nil);
-                
-                let max = CGFloat(maxValue)
-                return [UInt8(colour[0] * max), UInt8(colour[1] * max), UInt8(colour[2] * max)]
             case .CMY:
                 // TODO: Implement HSI output
                 fallthrough
             case .HSI:
-                var colour = [CGFloat](count: 3, repeatedValue: CGFloat())
                 val.getHue(&colour[0], saturation: &colour[1], brightness: &colour[2], alpha: nil);
-                let max = CGFloat(maxValue)
-                return [UInt8(colour[0] * max), UInt8(colour[1] * max), UInt8(colour[2] * max)]
             }
+            
+            let max = CGFloat(maxValue)
+            var values = [UInt8]()
+            values += DMX.dmxValuesFromInt(Int(colour[0] * max))
+            values += DMX.dmxValuesFromInt(Int(colour[1] * max))
+            values += DMX.dmxValuesFromInt(Int(colour[2] * max))
+            return values
         } else {
             return[0,0,0]
         }

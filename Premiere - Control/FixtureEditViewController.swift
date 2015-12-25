@@ -47,17 +47,7 @@ class FixtureEditViewController: UITableViewController {
     }
     
     func updateSaveButton () {
-/*        for i in 0..<self.tableView.numberOfSections {
-            for j in 0..<self.tableView.numberOfRowsInSection(i) {
-                if let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: j, inSection: i)) as? FixtureEditor {
-                    if !cell.validData {
-                        saveButton.enabled = false
-                        return
-                    }
-                }
-            }
-        }*/
-        if self.fixture.name.isEmpty || self.fixture.index <= 0 {
+        if self.fixture.name.isEmpty || self.fixture.index < 0 {
             saveButton.enabled = false
             return
         }

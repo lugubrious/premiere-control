@@ -10,7 +10,7 @@ import UIKit
 
 class ScrollerProperty: NSObject, Property {
     // MARK: Constants
-    static let sortOrder = 50
+    let sortOrder = 70
     
     // MARK: Protocol Variables
     var parent: Fixture
@@ -38,7 +38,7 @@ class ScrollerProperty: NSObject, Property {
     // MARK: Other Variables
     var locations: Int
     
-    private var unwrappedValue: Int? {
+    var unwrappedValue: Int? {
         switch value {
         case .Scroller(let val):
             return val
@@ -60,7 +60,7 @@ class ScrollerProperty: NSObject, Property {
     // MARK: Protocol Functions
     func getDMXValues() -> [UInt8] {
         if let val = unwrappedValue {
-            return [UInt8(ceil((Double(val)/100.0) * Double(maxValue)))]
+            return DMX.dmxValuesFromInt(Int(ceil((Double(val)/100.0) * Double(maxValue))))
         } else {
             return[0]
         }

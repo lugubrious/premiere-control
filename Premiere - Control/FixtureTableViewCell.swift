@@ -18,8 +18,7 @@ class FixtureTableViewCell: UITableViewCell {
         self.addressLabel.text = "#\(fixture.index)"
         
         if let val = fixture.getProprietyAsDouble("Intensity") {
-            let intensity = val * 100
-            self.valueLabel.text = "\(intensity)%"
+            self.valueLabel.text = "\(Int(round(val * 100)))%"
         } else if let val = fixture.getProprietyAsInt("Scroller") {
             self.valueLabel.text = "Pos: \(val)"
         } else if let val = fixture.getProprietyAsColour("Colour") {

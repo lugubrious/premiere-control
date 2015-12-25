@@ -10,7 +10,7 @@ import UIKit
 
 class GenericProperty: NSObject, Property {
     // MARK: Constants
-    static let sortOrder = 30
+    let sortOrder = 30
     
     // MARK: Protocol Variables
     var parent: Fixture
@@ -33,7 +33,7 @@ class GenericProperty: NSObject, Property {
     var name: String
     
     // MARK: Other Variables
-    private var unwrappedValue: Double? {
+    var unwrappedValue: Double? {
         switch value {
         case .Generic(let val):
             return val
@@ -65,7 +65,7 @@ class GenericProperty: NSObject, Property {
     // MARK: Protocol Functions
     func getDMXValues() -> [UInt8] {
         if let val = unwrappedValue {
-            return [UInt8(val * Double(maxValue))]
+            return DMX.dmxValuesFromInt(Int(val * Double(maxValue)))
         } else {
             return [0]
         }

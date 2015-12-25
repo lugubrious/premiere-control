@@ -33,4 +33,17 @@ class DMX: DimmerDelegate {
     func dimmerValueChanged (source: Dimmer, newValue value: UInt8) {
         sendDMXPacket()
     }
+    
+    
+    // MARK: Helper functions
+    static func dmxValuesFromInt(value: Int) -> [UInt8] {
+        if value < 256 {
+            return [UInt8(value)]
+        } else if value < 65536 {
+            return [UInt8(value >> 8), UInt8(value & 0xFF)]
+        }  else {
+            print("DMX Value too large for for 16 bits");
+            return [0]
+        }
+    }
 }

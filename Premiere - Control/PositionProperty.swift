@@ -10,7 +10,7 @@ import UIKit
 
 class PositionProperty: NSObject, Property {
     // MARK: Constants
-    static let sortOrder = 50
+    let sortOrder = 90
     
     // MARK: Protocol Variables
     var parent: Fixture
@@ -33,7 +33,7 @@ class PositionProperty: NSObject, Property {
     
     // MARK: Other Variables
     
-    private var unwrappedValue: (Int,Int)? {
+    var unwrappedValue: (Int,Int)? {
         switch value {
         case .Position(let pan, let tilt):
             return (pan, tilt)
@@ -53,7 +53,7 @@ class PositionProperty: NSObject, Property {
     
     // MARK: Protocol Functions
     func getDMXValues() -> [UInt8] {
-        return[0]
+        return[0] // TODO
     }
     
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell {

@@ -10,7 +10,7 @@ import UIKit
 
 protocol Property: NSCopying {
     // The weight of this property when displayed in a table view. Higher numbers are displayed first.
-    static var sortOrder: Int {get}
+    var sortOrder: Int {get}
     
     // The fixture that this property belogns to
     var parent: Fixture {get set}
