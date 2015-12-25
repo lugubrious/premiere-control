@@ -1384,7 +1384,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureEditNameCell" id="adp-5X-TJi" customClass="FixtureEditNameCell" customModule="Premiere" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="adp-5X-TJi" id="iuX-QG-rWu">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1418,7 +1418,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureEditIndexCell" id="I3z-Pi-BZt" customClass="FixtureEditIndexCell" customModule="Premiere" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I3z-Pi-BZt" id="5Zc-KK-pUh">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1452,7 +1452,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureEditDimmerCell" rowHeight="90" id="TDx-am-G1r" customClass="FixtureEditDimmerCell" customModule="Premiere" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="180" width="600" height="90"/>
+                                <rect key="frame" x="0.0" y="160" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TDx-am-G1r" id="rpQ-mn-RsY">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
@@ -1528,7 +1528,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureEditGenericCell" rowHeight="120" id="TJ0-IT-SSm" customClass="FixtureEditGenericCell" customModule="Premiere" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="270" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="250" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TJ0-IT-SSm" id="VPp-xo-fPF">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
@@ -1631,7 +1631,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureEditColourCell" rowHeight="159" id="Emk-wE-4H3" customClass="FixtureEditColourCell" customModule="Premiere" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="390" width="600" height="159"/>
+                                <rect key="frame" x="0.0" y="370" width="600" height="159"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Emk-wE-4H3" id="8jL-AA-fu2">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="158"/>
@@ -1726,7 +1726,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureEditPositionCell" rowHeight="123" id="DCm-3Z-NmP" customClass="FixtureEditPositionCell" customModule="Premiere" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="549" width="600" height="123"/>
+                                <rect key="frame" x="0.0" y="529" width="600" height="123"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DCm-3Z-NmP" id="ILc-UN-wuT">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
@@ -1793,7 +1793,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureEditScrollerCell" rowHeight="160" id="XK3-lD-hJF" customClass="FixtureEditScrollerCell" customModule="Premiere" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="672" width="600" height="160"/>
+                                <rect key="frame" x="0.0" y="652" width="600" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XK3-lD-hJF" id="2j4-M1-TKK">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="159"/>
@@ -1882,7 +1882,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureEditAddCell" id="DoD-8e-xU5" customClass="FixtureEditAddCell" customModule="Premiere" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="832" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="812" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DoD-8e-xU5" id="rUj-Ng-Q2Z">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -2072,13 +2072,13 @@
         <image name="submastersTab" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Uwv-0J-doI"/>
+        <segue reference="Jjm-Sn-zPB"/>
         <segue reference="eoh-0n-C1F"/>
-        <segue reference="U1e-sP-V46"/>
-        <segue reference="Yxv-WJ-1Z0"/>
-        <segue reference="Swg-O8-wEH"/>
+        <segue reference="Uwv-0J-doI"/>
         <segue reference="kGH-2f-idf"/>
         <segue reference="6dD-OB-AjF"/>
+        <segue reference="Yxv-WJ-1Z0"/>
+        <segue reference="XTd-LF-09X"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.23921568627450979" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

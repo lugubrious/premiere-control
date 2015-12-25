@@ -8,10 +8,13 @@
 
 import UIKit
 
-class FixtureTableViewController: UITableViewController, UISplitViewControllerDelegate {
+class FixtureTableViewController: UITableViewController, UISplitViewControllerDelegate, UISearchResultsUpdating {
     var fixtures = [Fixture]()
+    var searchResultFixtures = [Fixture]()
     
     private var collapseDetailViewController = true
+    
+    var searchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,12 +22,29 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
         loadSampleFixtures()
         
         splitViewController?.delegate = self
+        
+        self.searchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.sizeToFit()
+            controller.searchBar.placeholder = "Search"
+            
+            self.tableView.tableHeaderView = controller.searchBar
+            
+            return controller
+        })()
+        
+        // Calculate the size of the tableView if it were to be displayed
+        
+        self.tableView.layoutIfNeeded()
+        
+        
+        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: false) // Hide search bar (doesn't work if there aren;t enough cells)
 
         // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        //self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //self.clearsSelectionOnViewWillAppear = false
+       
     }
     
 /*    override func viewDidAppear(animated: Bool) {
@@ -61,17 +81,17 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fixtures.count
+        let data = (!self.searchController.active) ? fixtures : searchResultFixtures
+        return data.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "FixtureTableViewCell"
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! FixtureTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("FixtureTableViewCell", forIndexPath: indexPath) as! FixtureTableViewCell
         
         // Fetches the appropriate fixture for the data source layout.
-        let fixture = fixtures[indexPath.row]
+        let data = (!self.searchController.active) ? fixtures : searchResultFixtures
+        
+        let fixture = data[indexPath.row]
         cell.setup(fixture)
         
         return cell
@@ -112,6 +132,15 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
         return false
     }
     
+    // MARK: Search
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        searchResultFixtures.removeAll(keepCapacity: false)
+        
+        searchResultFixtures = fixtures.filter({$0.name.lowercaseString.containsString(self.searchController.searchBar.text?.lowercaseString ?? "")})
+        
+        self.tableView.reloadData()
+    }
 
     
     // MARK: - Navigation
