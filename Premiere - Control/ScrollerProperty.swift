@@ -8,18 +8,18 @@
 
 import UIKit
 
-class ScrollerProperty: NSObject, Property {
+class ScrollerProperty: NSObject, NSCoding, Property {
     // MARK: Constants
     let sortOrder = 70
     
     // MARK: Protocol Variables
-    var parent: Fixture
+    var parent: Fixture?
     var value: PropertyType {
         didSet {
             switch value {
             case .Scroller(let val):
                 if (0 <= val) && (val < locations) {
-                    parent.update()
+                    parent?.update()
                     return
                 }
                 fallthrough
@@ -47,8 +47,16 @@ class ScrollerProperty: NSObject, Property {
         }
     }
     
+    struct PropertyKey {
+        static let nameKey = "scrollerName"
+        static let valueKey = "scrollerValue"
+        static let indexKey = "scrollerIndex"
+        static let depthKey = "scrollerDepth"
+        static let locationsKey = "scrollerLocations"
+    }
+    
     // MARK: Initilization
-    required init (index: Int, parent: Fixture) {
+    required init (index: Int, parent: Fixture?) {
         value = PropertyType.Scroller(0)
         self.index = index
         self.parent = parent
@@ -68,6 +76,35 @@ class ScrollerProperty: NSObject, Property {
     
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell {
         return cell
+    }
+    
+    // MARK: Encoding
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: PropertyKey.nameKey)
+        aCoder.encodeInteger(self.index, forKey: PropertyKey.indexKey)
+        aCoder.encodeInteger(self.depth, forKey: PropertyKey.depthKey)
+        
+        aCoder.encodeInteger(self.locations, forKey: PropertyKey.locationsKey)
+        
+        switch self.value {
+        case .Scroller(let val):
+            aCoder.encodeInteger(val, forKey: PropertyKey.valueKey)
+        default:
+            break
+        }
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let index = aDecoder.decodeIntegerForKey(PropertyKey.indexKey)
+        self.init(index: index, parent: nil)
+        
+        self.name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        self.depth = aDecoder.decodeIntegerForKey(PropertyKey.depthKey)
+        self.locations = aDecoder.decodeIntegerForKey(PropertyKey.locationsKey)
+        
+        let rawValue = aDecoder.decodeIntegerForKey(PropertyKey.valueKey)
+        self.value = PropertyType.Scroller(rawValue)
     }
     
     // MARK: Copying

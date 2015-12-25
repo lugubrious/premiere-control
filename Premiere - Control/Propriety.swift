@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol Property: NSCopying {
+protocol Property: NSCopying, NSCoding {
     // The weight of this property when displayed in a table view. Higher numbers are displayed first.
     var sortOrder: Int {get}
     
     // The fixture that this property belogns to
-    var parent: Fixture {get set}
+    var parent: Fixture? {get set}
     // The value of this propriety
     var value: PropertyType {get set}
     // The order of this property in the DMX packet (unlike sortOrder this should be an absolute value, nto a weigth)
@@ -30,7 +30,7 @@ protocol Property: NSCopying {
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell
     
     // A generic initilaiser
-    init(index: Int, parent: Fixture)
+    init(index: Int, parent: Fixture?)
 }
 
 // The possible storage types for the value paramater

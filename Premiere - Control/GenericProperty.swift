@@ -8,17 +8,17 @@
 
 import UIKit
 
-class GenericProperty: NSObject, Property {
+class GenericProperty: NSObject, NSCoding, Property {
     // MARK: Constants
     let sortOrder = 30
     
     // MARK: Protocol Variables
-    var parent: Fixture
+    var parent: Fixture?
     var value: PropertyType {
         didSet {
             switch value {
             case .Generic:
-                parent.update()
+                parent?.update()
                 return
             default:
                 value = oldValue
@@ -42,8 +42,15 @@ class GenericProperty: NSObject, Property {
         }
     }
     
+    struct PropertyKey {
+        static let nameKey = "genericName"
+        static let valueKey = "genericValue"
+        static let indexKey = "genericIndex"
+        static let depthKey = "genericDepth"
+    }
+    
     // MARK: Initilization
-    convenience init? (index: Int, parent: Fixture, name: String, initialValue: PropertyType, depth: Int) {
+    convenience init? (index: Int, parent: Fixture?, name: String, initialValue: PropertyType, depth: Int) {
         self.init(index: index, parent: parent)
         self.value = initialValue
         if !name.isEmpty {
@@ -54,7 +61,7 @@ class GenericProperty: NSObject, Property {
         self.depth = depth
     }
     
-    required init (index: Int, parent: Fixture) {
+    required init (index: Int, parent: Fixture?) {
         value = PropertyType.Generic(0.0)
         self.index = index
         self.parent = parent
@@ -73,6 +80,30 @@ class GenericProperty: NSObject, Property {
     
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell {
         return cell
+    }
+    
+    // MARK: Encoding
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: PropertyKey.nameKey)
+        switch self.value {
+        case .Generic(let val):
+            aCoder.encodeDouble(val, forKey: PropertyKey.valueKey)
+        default:
+            break
+        }
+        aCoder.encodeInteger(self.index, forKey: PropertyKey.indexKey)
+        aCoder.encodeInteger(self.depth, forKey: PropertyKey.depthKey)
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        let index = aDecoder.decodeIntegerForKey(PropertyKey.indexKey)
+        let depth = aDecoder.decodeIntegerForKey(PropertyKey.depthKey)
+        let rawValue = aDecoder.decodeDoubleForKey(PropertyKey.valueKey)
+        let value = PropertyType.Generic(rawValue)
+        
+        self.init(index: index, parent: nil, name: name, initialValue: value, depth: depth)
     }
     
     // MARK: Copying

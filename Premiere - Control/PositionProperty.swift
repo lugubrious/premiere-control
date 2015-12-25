@@ -8,17 +8,18 @@
 
 import UIKit
 
-class PositionProperty: NSObject, Property {
+class PositionProperty: NSObject, NSCoding, Property {
     // MARK: Constants
     let sortOrder = 90
     
     // MARK: Protocol Variables
-    var parent: Fixture
+    var parent: Fixture?
     var value: PropertyType {
         didSet {
             switch value {
             case .Position(let pan, let tilt):
                 print("\(pan),\(tilt) : Position did set //TODO") // TODO
+                parent?.update()
             default:
                 value = oldValue
             }
@@ -42,8 +43,17 @@ class PositionProperty: NSObject, Property {
         }
     }
     
+    struct PropertyKey {
+        static let nameKey = "positionName"
+        static let valuePanKey = "positionValuePan"
+        static let valueTiltKey = "positionValueTilt"
+        static let indexKey = "positionIndex"
+        static let depthKey = "positionDepth"
+        static let locationsKey = "positionLocations"
+    }
+    
     // MARK: Initilization
-    required init (index: Int, parent: Fixture) {
+    required init (index: Int, parent: Fixture?) {
         value = PropertyType.Position(0, 0)
         self.index = index
         self.parent = parent
@@ -58,6 +68,34 @@ class PositionProperty: NSObject, Property {
     
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell {
         return cell
+    }
+    
+    // MARK: Encoding
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: PropertyKey.nameKey)
+        aCoder.encodeInteger(self.index, forKey: PropertyKey.indexKey)
+        aCoder.encodeInteger(self.depth, forKey: PropertyKey.depthKey)
+        
+        switch self.value {
+        case .Position(let pan, let tilt):
+            aCoder.encodeInteger(pan, forKey: PropertyKey.valuePanKey)
+            aCoder.encodeInteger(tilt, forKey: PropertyKey.valueTiltKey)
+        default:
+            break
+        }
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let index = aDecoder.decodeIntegerForKey(PropertyKey.indexKey)
+        self.init(index: index, parent: nil)
+        
+        self.name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        self.depth = aDecoder.decodeIntegerForKey(PropertyKey.depthKey)
+        
+        let panValue = aDecoder.decodeIntegerForKey(PropertyKey.valuePanKey)
+        let tiltValue = aDecoder.decodeIntegerForKey(PropertyKey.valueTiltKey)
+        self.value = PropertyType.Position(panValue, tiltValue)
     }
     
     // MARK: Copying

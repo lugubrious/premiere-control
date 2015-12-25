@@ -27,6 +27,17 @@ struct Data {
         return results
     }
     
+    static func saveFixures() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(fixtures, toFile:  Fixture.ArchiveURL.path!)
+        if !isSuccessfulSave {
+            print("failed to save fixtures")
+        }
+    }
+    
+    static func loadFixtures() -> [Fixture]? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(Fixture.ArchiveURL.path!) as? [Fixture]
+    }
+    
     // MARK: Submaster functions
     
     // MARK: Cue functions

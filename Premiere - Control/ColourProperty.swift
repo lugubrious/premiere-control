@@ -8,17 +8,17 @@
 
 import UIKit
 
-class ColourProperty: NSObject, Property {
+class ColourProperty: NSObject, NSCoding, Property {
     // MARK: Constants
     let sortOrder = 50
     
     // MARK: Protocol Variables
-    var parent: Fixture
+    var parent: Fixture?
     var value: PropertyType {
         didSet {
             switch value {
             case .Colour:
-                parent.update()
+                parent?.update()
                 return
             default:
                 value = oldValue
@@ -33,8 +33,8 @@ class ColourProperty: NSObject, Property {
     var name: String
     
     // MARK: Other Variables
-    enum ColourOutputMode {
-        case CMY
+    enum ColourOutputMode : Int {
+        case CMY = 0
         case RGB
         case HSI
     }
@@ -50,8 +50,16 @@ class ColourProperty: NSObject, Property {
         }
     }
     
+    struct PropertyKey {
+        static let nameKey = "colourName"
+        static let valueKey = "colourValue"
+        static let indexKey = "colourIndex"
+        static let depthKey = "colourDepth"
+        static let modeKey = "colourOutputMode"
+    }
+    
     // MARK: Initilization
-    required init (index: Int, parent: Fixture) {
+    required init (index: Int, parent: Fixture?) {
         value = PropertyType.Colour(UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
         self.index = index
         self.parent = parent
@@ -88,6 +96,35 @@ class ColourProperty: NSObject, Property {
     
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell {
         return cell
+    }
+    
+    // MARK: Encoding
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.name, forKey: PropertyKey.nameKey)
+        aCoder.encodeInteger(self.index, forKey: PropertyKey.indexKey)
+        aCoder.encodeInteger(self.depth, forKey: PropertyKey.depthKey)
+        
+        aCoder.encodeInteger(self.outputMode.rawValue, forKey: PropertyKey.modeKey)
+        
+        switch self.value {
+        case .Colour(let val):
+            aCoder.encodeObject(val, forKey: PropertyKey.valueKey)
+        default:
+            break
+        }
+    }
+
+    required convenience init?(coder aDecoder: NSCoder) {
+        let index = aDecoder.decodeIntegerForKey(PropertyKey.indexKey)
+        self.init(index: index, parent: nil)
+        
+        self.name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        self.depth = aDecoder.decodeIntegerForKey(PropertyKey.depthKey)
+        self.outputMode = ColourOutputMode(rawValue: aDecoder.decodeIntegerForKey(PropertyKey.modeKey))!
+        
+        let rawValue = aDecoder.decodeObjectForKey(PropertyKey.valueKey) as! UIColor
+        self.value = PropertyType.Colour(rawValue)
     }
     
     // MARK: Copying

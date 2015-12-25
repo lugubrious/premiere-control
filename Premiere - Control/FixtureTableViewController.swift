@@ -13,12 +13,23 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
     
     private var collapseDetailViewController = true
     
-    var searchController = UISearchController()
+    private var fixtureArray : [Fixture] {
+        let searching = (self.searchController?.active ?? false)
+        return (!searching) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
+    }
+    
+    var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadSampleFixtures()
+        // Load any saved fixtures, otherwise load sample data.
+        if let savedFixtures = Data.loadFixtures() {
+            Data.fixtures += savedFixtures
+            print("Loaded \(Data.fixtures.count) fixture(s) from non-volatile storage")
+        } else {
+            loadSampleFixtures()
+        }
         
         splitViewController?.delegate = self
         
@@ -80,7 +91,7 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let fixtureArray = (!self.searchController.active) ? Data.fixtures : searchResultFixtures
+//        let fixtureArray = (!self.searchController.active ?? false) ? Data.fixtures : searchResultFixtures
         return fixtureArray.count
     }
 
@@ -88,7 +99,7 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
         let cell = tableView.dequeueReusableCellWithIdentifier("FixtureTableViewCell", forIndexPath: indexPath) as! FixtureTableViewCell
         
         // Fetches the appropriate fixture for the data source layout.
-        let fixtureArray = (!self.searchController.active) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
+//        let fixtureArray = (!self.searchController.active ?? false) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
         
         let fixture = fixtureArray[indexPath.row]
         cell.setup(fixture)
@@ -109,7 +120,7 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            let fixtureArray = (!self.searchController.active) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
+//            let fixtureArray = (!self.searchController.active ?? false) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
             let fixture = fixtureArray[indexPath.row]
             
             Data.fixtures.removeAtIndex(Data.fixtures.indexOf(fixture)!)
@@ -117,6 +128,7 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
                 self.searchResultFixtures.removeAtIndex(index)
             }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            Data.saveFixures()
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -159,7 +171,7 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
             if let selectedFixtureCell = sender as? FixtureTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedFixtureCell)!    // Get path to the currently selecter row
                 
-                let fixtureArray = (!self.searchController.active) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
+//                let fixtureArray = (!self.searchController.active ?? false) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
                 
                 let selectedFixture = fixtureArray[indexPath.row]   // Get the fixture that the currently selected row represents
                 fixtureDetailViewController.fixture = selectedFixture   // Set the selected fixture in the detail view controller
@@ -185,6 +197,8 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic) // Add data to table view
                 Data.fixtures.sortInPlace({$0.index < $1.index})   // Sort the fixtures in ascending order by index
                 tableView.reloadData()  // Notify the table view that the data has chagned
+                
+                Data.saveFixures()
         } else if let sourceViewController = sender.sourceViewController as? FixtureDetailViewController, fixture = sourceViewController.fixture {
                 // Edited Fixture
                 print("Returned from fixture \(fixture.name)")

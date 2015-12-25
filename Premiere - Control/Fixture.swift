@@ -129,13 +129,26 @@ class Fixture: NSObject, NSCoding, NSCopying {
         aCoder.encodeInteger(self.index, forKey: PropertyKey.indexKey)
         aCoder.encodeInteger(self.properties.count, forKey: PropertyKey.propCountKey)
         
-        for i in 0 ..< properties.count {
-            
+        for i in 0 ..< self.properties.count {
+            aCoder.encodeObject(self.properties[i], forKey: PropertyKey.propKey + String(i))
         }
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        self.init(name: "George", address: 0, index: 0)
+        let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
+        let address = aDecoder.decodeIntegerForKey(PropertyKey.addressKey)
+        let index = aDecoder.decodeIntegerForKey(PropertyKey.indexKey)
+        
+        self.init(name: name, address: address, index: index)
+        
+        let numProperties = aDecoder.decodeIntegerForKey(PropertyKey.propCountKey)
+        
+        self.properties = [Property]()
+        for i in 0 ..< numProperties {
+            let prop = aDecoder.decodeObjectForKey(PropertyKey.propKey + String(i)) as! Property
+            prop.parent = self
+            self.properties.append(prop)
+        }
     }
     
     // MARK: Copying

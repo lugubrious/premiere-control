@@ -98,6 +98,7 @@ class FixtureDetailViewController: UITableViewController {
                 self.navigationItem.title = self.fixture.name
                 self.tableView.reloadData()
                 self.parentCell.setup(self.fixture)
+                Data.saveFixures()
         }
     }
     
