@@ -20,6 +20,14 @@ class Fixture: NSObject, NSCoding, NSCopying {
     
     var properties: [Property]
     
+    struct PropertyKey {
+        static let nameKey = "fixtureName"
+        static let addressKey = "fixtureAddress"
+        static let indexKey = "fixtureIndex"
+        static let propCountKey = "fixturePropertiesCount"
+        static let propKey = "fixtureProperty"
+    }
+    
     // MARK: Initilization
     
     init? (name: String, address: Int, index: Int) {
@@ -52,7 +60,7 @@ class Fixture: NSObject, NSCoding, NSCopying {
             let dmxValues = output.getDMXValues()
             let address = self.index + output.index
             for i in address..<address + dmxValues.count {
-                dmx.dimmers[i].intesity = dmxValues[i - address]
+                Data.dmx.dimmers[i].intesity = dmxValues[i - address]
             }
         }
     }
@@ -116,6 +124,14 @@ class Fixture: NSObject, NSCoding, NSCopying {
     // MARK: Encoding
     
     func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeInteger(self.address, forKey: PropertyKey.addressKey)
+        aCoder.encodeObject(self.name, forKey: PropertyKey.nameKey)
+        aCoder.encodeInteger(self.index, forKey: PropertyKey.indexKey)
+        aCoder.encodeInteger(self.properties.count, forKey: PropertyKey.propCountKey)
+        
+        for i in 0 ..< properties.count {
+            
+        }
     }
     
     required convenience init?(coder aDecoder: NSCoder) {

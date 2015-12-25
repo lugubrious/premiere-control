@@ -9,5 +9,10 @@
 import UIKit
 
 class Submaster: NSObject {
-
+    // MARK: Properties
+    var values: [(fixture:Int, value:Double)]
+    
+    override init() {
+        values = [(fixture:Int, value:Double)]()
+    }
 }

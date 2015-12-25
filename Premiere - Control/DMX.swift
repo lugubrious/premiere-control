@@ -10,8 +10,6 @@ import Foundation
 
 let numDimmers = 1024
 
-var dmx = DMX()
-
 class DMX: DimmerDelegate {
     
     var dimmers: [Dimmer]

@@ -14,6 +14,7 @@
 		BC41FE9C1C060094004FBA72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC41FE9A1C060094004FBA72 /* LaunchScreen.storyboard */; };
 		BC41FEA71C060095004FBA72 /* Premiere___ControlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FEA61C060095004FBA72 /* Premiere___ControlTests.swift */; };
 		BC5C2B481C1DD90E00B16077 /* FixtureEditDynamicCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5C2B471C1DD90E00B16077 /* FixtureEditDynamicCells.swift */; };
+		BC5D9C4E1C2D154700E4DB6A /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D9C4D1C2D154700E4DB6A /* Data.swift */; };
 		BC6126FA1C15CEC900C22F5E /* FixtureEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126F91C15CEC900C22F5E /* FixtureEditViewController.swift */; };
 		BC6126FD1C15D14100C22F5E /* GenericProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126FC1C15D14100C22F5E /* GenericProperty.swift */; };
 		BC6126FF1C15D16E00C22F5E /* ColourProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6126FE1C15D16E00C22F5E /* ColourProperty.swift */; };
@@ -64,6 +65,7 @@
 		BC41FEA61C060095004FBA72 /* Premiere___ControlTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Premiere___ControlTests.swift"; sourceTree = "<group>"; };
 		BC41FEA81C060095004FBA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC5C2B471C1DD90E00B16077 /* FixtureEditDynamicCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureEditDynamicCells.swift; sourceTree = "<group>"; };
+		BC5D9C4D1C2D154700E4DB6A /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		BC6126F91C15CEC900C22F5E /* FixtureEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureEditViewController.swift; sourceTree = "<group>"; };
 		BC6126FC1C15D14100C22F5E /* GenericProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericProperty.swift; sourceTree = "<group>"; };
 		BC6126FE1C15D16E00C22F5E /* ColourProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourProperty.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				BC41FE9D1C060094004FBA72 /* Info.plist */,
 				BCD43B391C0F457B005ABA97 /* Dimmer.swift */,
 				BCD43B3B1C0F49A0005ABA97 /* DMX.swift */,
+				BC5D9C4D1C2D154700E4DB6A /* Data.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD43B031C0AA7DE005ABA97 /* CueEditViewController.swift in Sources */,
+				BC5D9C4E1C2D154700E4DB6A /* Data.swift in Sources */,
 				BCD43B3E1C108B06005ABA97 /* Propriety.swift in Sources */,
 				BC6127091C1628CD00C22F5E /* KeypadViewController.swift in Sources */,
 				BCD43AF51C0924C5005ABA97 /* CueTableViewController.swift in Sources */,

@@ -9,7 +9,6 @@
 import UIKit
 
 class FixtureTableViewController: UITableViewController, UISplitViewControllerDelegate, UISearchResultsUpdating {
-    var fixtures = [Fixture]()
     var searchResultFixtures = [Fixture]()
     
     private var collapseDetailViewController = true
@@ -66,7 +65,7 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
         fix.properties.append(position)
         fix.properties.append(scroller)
         
-        fixtures.append(fix)
+        Data.fixtures.append(fix)
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,17 +80,17 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let data = (!self.searchController.active) ? fixtures : searchResultFixtures
-        return data.count
+        let fixtureArray = (!self.searchController.active) ? Data.fixtures : searchResultFixtures
+        return fixtureArray.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FixtureTableViewCell", forIndexPath: indexPath) as! FixtureTableViewCell
         
         // Fetches the appropriate fixture for the data source layout.
-        let data = (!self.searchController.active) ? fixtures : searchResultFixtures
+        let fixtureArray = (!self.searchController.active) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
         
-        let fixture = data[indexPath.row]
+        let fixture = fixtureArray[indexPath.row]
         cell.setup(fixture)
         
         return cell
@@ -110,7 +109,13 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            fixtures.removeAtIndex(indexPath.row)
+            let fixtureArray = (!self.searchController.active) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
+            let fixture = fixtureArray[indexPath.row]
+            
+            Data.fixtures.removeAtIndex(Data.fixtures.indexOf(fixture)!)
+            if let index = self.searchResultFixtures.indexOf(fixture) {
+                self.searchResultFixtures.removeAtIndex(index)
+            }
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -137,7 +142,7 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         searchResultFixtures.removeAll(keepCapacity: false)
         
-        searchResultFixtures = fixtures.filter({$0.name.lowercaseString.containsString(self.searchController.searchBar.text?.lowercaseString ?? "")})
+        searchResultFixtures = Data.fixtures.filter({$0.name.lowercaseString.containsString(self.searchController.searchBar.text?.lowercaseString ?? "")})
         
         self.tableView.reloadData()
     }
@@ -153,7 +158,10 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
             // Get the cell that generated this segue.
             if let selectedFixtureCell = sender as? FixtureTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedFixtureCell)!    // Get path to the currently selecter row
-                let selectedFixture = fixtures[indexPath.row]   // Get the fixture that the currently selected row represents
+                
+                let fixtureArray = (!self.searchController.active) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
+                
+                let selectedFixture = fixtureArray[indexPath.row]   // Get the fixture that the currently selected row represents
                 fixtureDetailViewController.fixture = selectedFixture   // Set the selected fixture in the detail view controller
                 fixtureDetailViewController.parentCell = selectedFixtureCell
             }
@@ -169,10 +177,13 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
         if let sourceViewController = sender.sourceViewController as? FixtureEditViewController, fixture =
             sourceViewController.fixture {
                 // Add an new fixture
-                let newIndexPath = NSIndexPath(forRow: fixtures.count, inSection: 0)    // Get the path where the data should be added
-                fixtures.append(fixture)    // Add new fixture to array
-                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom) // Add data to tabel view
-                fixtures.sortInPlace({$0.index < $1.index})   // Sort the fixtures in ascending order by index
+                Data.fixtures.append(fixture)    // Add new fixture to array
+                
+                let row = Data.fixtures.indexOf(fixture) ?? Data.fixtures.count
+                let newIndexPath = NSIndexPath(forRow: row, inSection: 0)    // Get the path where the data should be added
+                
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic) // Add data to table view
+                Data.fixtures.sortInPlace({$0.index < $1.index})   // Sort the fixtures in ascending order by index
                 tableView.reloadData()  // Notify the table view that the data has chagned
         } else if let sourceViewController = sender.sourceViewController as? FixtureDetailViewController, fixture = sourceViewController.fixture {
                 // Edited Fixture
