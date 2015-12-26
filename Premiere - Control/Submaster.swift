@@ -11,8 +11,16 @@ import UIKit
 class Submaster: NSObject {
     // MARK: Properties
     var values: [(fixture:Int, value:Double)]
+    var index: Int
+    var intensity: Double
+    var name: String
     
-    override init() {
-        values = [(fixture:Int, value:Double)]()
+    init (index: Int, name: String? = nil) {
+        self.values = [(fixture:Int, value:Double)]()
+        self.index = index
+        self.intensity = 0.0
+        self.name = name ?? "Submaster \(index)"
+        
+        super.init()
     }
 }

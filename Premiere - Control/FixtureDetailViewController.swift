@@ -140,6 +140,10 @@ class FixtureGenericCell: UITableViewCell {
         self.valueLabel.text = labelText
         self.parent.parentCell.setup(parent.fixture)
     }
+    
+    @IBAction func valueFinishedEditing(sender: UISlider, forEvent event: UIEvent) {
+        Data.saveFixures()
+    }
 }
 
 class FixtureColourCell: UITableViewCell {
@@ -195,6 +199,10 @@ class FixtureColourCell: UITableViewCell {
         self.colourView.backgroundColor = self.property.unwrappedValue!
         self.blueValueLabel.text = String(Int(Float(self.blueSlider.value * 255.0)))
         self.parent.parentCell.setup(parent.fixture)
+    }
+    
+    @IBAction func valueEditingEnded(sender: UISlider, forEvent event: UIEvent) {
+        Data.saveFixures()
     }
 }
 
@@ -270,6 +278,7 @@ class FixtureScrollerCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDa
         if component == 0 {
             self.property.value = PropertyType.Scroller(row)
             self.parent.parentCell.setup(parent.fixture)
+            Data.saveFixures()
         }
     }
 }

@@ -8,10 +8,10 @@
 
 import UIKit
 
-class FixtureTableViewController: UITableViewController, UISplitViewControllerDelegate, UISearchResultsUpdating {
-    var searchResultFixtures = [Fixture]()
-    
+class FixtureTableViewController: UITableViewController, UISearchResultsUpdating, UISplitViewControllerDelegate {
     private var collapseDetailViewController = true
+    
+    var searchResultFixtures = [Fixture]()
     
     private var fixtureArray : [Fixture] {
         let searching = (self.searchController?.active ?? false)
@@ -24,14 +24,14 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
         super.viewDidLoad()
         
         // Load any saved fixtures, otherwise load sample data.
-        if let savedFixtures = Data.loadFixtures() {
+        if let savedFixtures = Data.loadFixtures() where savedFixtures.count != 0 {
             Data.fixtures += savedFixtures
             print("Loaded \(Data.fixtures.count) fixture(s) from non-volatile storage")
         } else {
             loadSampleFixtures()
         }
         
-        splitViewController?.delegate = self
+        self.splitViewController?.delegate = self
         
         self.searchController = ({
             let controller = UISearchController(searchResultsController: nil)
@@ -45,24 +45,15 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
             return controller
         })()
         
-        // Calculate the size of the tableView if it were to be displayed
-        
-        self.tableView.layoutIfNeeded()
-        
-        
-        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: false) // Hide search bar (doesn't work if there aren;t enough cells)
-
-        // Uncomment the following line to preserve selection between presentations
-        //self.clearsSelectionOnViewWillAppear = false
-       
-    }
-    
-/*    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
         let path = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.selectRowAtIndexPath(path, animated: true, scrollPosition:.Top)
-    }*/
-    
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad {
+            performSegueWithIdentifier("FixtureShowDetail", sender: self.tableView.cellForRowAtIndexPath(path))
+        }
+        
+        self.clearsSelectionOnViewWillAppear = true
+    }
+
     func loadSampleFixtures() {
         let fix = Fixture(name: "A Fixture", address: 1, index: 1)!
         
@@ -91,38 +82,25 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let fixtureArray = (!self.searchController.active ?? false) ? Data.fixtures : searchResultFixtures
-        return fixtureArray.count
+        return self.fixtureArray.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FixtureTableViewCell", forIndexPath: indexPath) as! FixtureTableViewCell
         
         // Fetches the appropriate fixture for the data source layout.
-//        let fixtureArray = (!self.searchController.active ?? false) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
-        
-        let fixture = fixtureArray[indexPath.row]
+        let fixture = self.fixtureArray[indexPath.row]
         cell.setup(fixture)
         
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-//            let fixtureArray = (!self.searchController.active ?? false) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
-            let fixture = fixtureArray[indexPath.row]
-            
+            let fixture = self.fixtureArray[indexPath.row]
+
             Data.fixtures.removeAtIndex(Data.fixtures.indexOf(fixture)!)
             if let index = self.searchResultFixtures.indexOf(fixture) {
                 self.searchResultFixtures.removeAtIndex(index)
@@ -133,16 +111,7 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
@@ -170,10 +139,7 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
             // Get the cell that generated this segue.
             if let selectedFixtureCell = sender as? FixtureTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedFixtureCell)!    // Get path to the currently selecter row
-                
-//                let fixtureArray = (!self.searchController.active ?? false) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
-                
-                let selectedFixture = fixtureArray[indexPath.row]   // Get the fixture that the currently selected row represents
+                let selectedFixture = self.fixtureArray[indexPath.row]   // Get the fixture that the currently selected row represents
                 fixtureDetailViewController.fixture = selectedFixture   // Set the selected fixture in the detail view controller
                 fixtureDetailViewController.parentCell = selectedFixtureCell
             }
@@ -205,18 +171,15 @@ class FixtureTableViewController: UITableViewController, UISplitViewControllerDe
         }
     }
     
+    // MARK: - UISplitViewControllerDelegate
     
+    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
+        return self.collapseDetailViewController
+    }
     
     // MARK: - UITableViewDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        collapseDetailViewController = false
-    }
-    
-    
-    // MARK: - UISplitViewControllerDelegate
-    
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
-        return collapseDetailViewController
+        self.collapseDetailViewController = false
     }
 }
