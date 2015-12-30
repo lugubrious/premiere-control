@@ -17,6 +17,23 @@ struct Data {
     static var dmx = DMX()
     
     // MARK: Fixture functions
+    static func getUnusedAddresses () -> [Int] {
+        var addresses = [Int]()
+        addresses += (1...1024)
+        for i in Data.fixtures {
+            if i.addressLength != 0 {
+                var fixtureAddresses = [Int]()
+                fixtureAddresses += ((i.address) ... (i.address + i.addressLength - 1))
+                for j in fixtureAddresses {
+                    if let address = addresses.indexOf(j) {
+                        addresses.removeAtIndex(address)
+                    }
+                }
+            }
+        }
+        return addresses
+    }
+    
     static func getFixturesWithIndex(index: Int) -> [Fixture] {
         var results = [Fixture]()
         for i in fixtures {
@@ -41,5 +58,6 @@ struct Data {
     // MARK: Submaster functions
     
     // MARK: Cue functions
+    
     
 }

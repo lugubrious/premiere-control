@@ -28,6 +28,10 @@ class Fixture: NSObject, NSCoding, NSCopying {
         static let propKey = "fixtureProperty"
     }
     
+    var addressLength: Int {
+        return Fixture.addressLengthForProperties(self.properties)
+    }
+    
     // MARK: Initilization
     
     init? (name: String, address: Int, index: Int) {
@@ -119,6 +123,20 @@ class Fixture: NSObject, NSCoding, NSCopying {
             }
         }
         return nil
+    }
+    
+    static func addressLengthForProperties(properties: [Property]) -> Int {
+        var length = 0
+        for i in properties {
+            if i is GenericProperty || i is ScrollerProperty {
+                length += (i.depth == 8) ? 1 : 2
+            } else if i is ColourProperty {
+                length += (i.depth == 8) ? 3 : 6
+            } else if i is PositionProperty {
+                length += (i.depth == 8) ? 2 : 4
+            }
+        }
+        return length
     }
     
     // MARK: Encoding

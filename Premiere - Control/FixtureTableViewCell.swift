@@ -19,16 +19,16 @@ class FixtureTableViewCell: UITableViewCell {
         
         if let val = fixture.getProprietyAsDouble("Intensity") {
             self.valueLabel.text = "\(Int(round(val * 100)))%"
-        } else if let val = fixture.getProprietyAsInt("Scroller") {
-            self.valueLabel.text = "Pos: \(val)"
+        } else if let val = fixture.getProprietyAsInt("Gel Scroller") {
+            self.valueLabel.text = "Pos: \(val + 1)"
         } else if let val = fixture.getProprietyAsColour("Colour") {
-            // Do something fancy with colour
-             self.valueLabel.text = "\(val)"
+            self.valueLabel.text = nil
+            self.valueLabel.backgroundColor = val
         } else if let val = fixture.getProprietyAsTuple("Position") {
             self.valueLabel.text = "(\(val.0),\(val.1))"
         } else {
-            print("No value propriety found for fixture \(fixture.name)")
-            self.valueLabel.text = ""
+//            print("No value propriety found for fixture \(fixture.name)")
+            self.valueLabel.text = nil
         }
     }
     

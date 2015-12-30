@@ -1387,7 +1387,7 @@
             <objects>
                 <tableViewController id="xsr-fQ-ppH" customClass="FixtureEditViewController" customModule="Premiere" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dnl-Xf-94n">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1010"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1977,6 +1977,64 @@
                                     <outlet property="typeControl" destination="GOD-4x-VEL" id="HuK-us-LFE"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureAddMultipleCell" rowHeight="85" id="CTs-ba-XUf" customClass="FixtureAddMultipleCell" customModule="Premiere" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="876" width="600" height="85"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CTs-ba-XUf" id="WSl-to-wgu">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Multiple Fixtures:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBL-jp-Ads">
+                                            <rect key="frame" x="8" y="12" width="166" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bA-Vr-bL4">
+                                            <rect key="frame" x="448" y="12" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="oKM-WR-pGn">
+                                            <rect key="frame" x="498" y="8" width="94" height="29"/>
+                                            <connections>
+                                                <action selector="numFixturesChanged:forEvent:" destination="CTs-ba-XUf" eventType="valueChanged" id="Ys8-At-os0"/>
+                                            </connections>
+                                        </stepper>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If more than one fixture is created, a number will be appended to the fixture name." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhA-kG-Afb">
+                                            <rect key="frame" x="8" y="55" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mhA-kG-Afb" firstAttribute="bottom" secondItem="WSl-to-wgu" secondAttribute="bottomMargin" id="25x-lI-haN"/>
+                                        <constraint firstItem="oKM-WR-pGn" firstAttribute="leading" secondItem="2bA-Vr-bL4" secondAttribute="trailing" constant="8" id="6EP-a6-oWN"/>
+                                        <constraint firstItem="oKM-WR-pGn" firstAttribute="centerY" secondItem="kBL-jp-Ads" secondAttribute="centerY" id="Otw-16-SRU"/>
+                                        <constraint firstItem="oKM-WR-pGn" firstAttribute="top" secondItem="WSl-to-wgu" secondAttribute="topMargin" id="SER-4f-Tad"/>
+                                        <constraint firstItem="kBL-jp-Ads" firstAttribute="leading" secondItem="WSl-to-wgu" secondAttribute="leadingMargin" id="T9S-CU-Wda"/>
+                                        <constraint firstItem="mhA-kG-Afb" firstAttribute="leading" secondItem="WSl-to-wgu" secondAttribute="leadingMargin" id="auX-Xd-ks5"/>
+                                        <constraint firstItem="kBL-jp-Ads" firstAttribute="top" secondItem="WSl-to-wgu" secondAttribute="topMargin" id="dFU-Rl-s9V"/>
+                                        <constraint firstItem="oKM-WR-pGn" firstAttribute="trailing" secondItem="WSl-to-wgu" secondAttribute="trailingMargin" id="dsV-Nb-w0o"/>
+                                        <constraint firstItem="mhA-kG-Afb" firstAttribute="trailing" secondItem="WSl-to-wgu" secondAttribute="trailingMargin" id="fkD-6j-k7e"/>
+                                        <constraint firstItem="2bA-Vr-bL4" firstAttribute="centerY" secondItem="oKM-WR-pGn" secondAttribute="centerY" id="jdo-ce-Qn3"/>
+                                        <constraint firstItem="mhA-kG-Afb" firstAttribute="top" secondItem="oKM-WR-pGn" secondAttribute="bottom" constant="18" id="pUQ-LY-KGt"/>
+                                        <constraint firstItem="mhA-kG-Afb" firstAttribute="top" secondItem="oKM-WR-pGn" secondAttribute="bottom" constant="13" id="s9v-fj-709"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="dFU-Rl-s9V"/>
+                                            <exclude reference="s9v-fj-709"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="numFixtureStepper" destination="oKM-WR-pGn" id="eD6-Wk-oqn"/>
+                                    <outlet property="numFixturesLabel" destination="2bA-Vr-bL4" id="hIZ-PQ-x9r"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="xsr-fQ-ppH" id="6AZ-t9-LGy"/>
@@ -1997,7 +2055,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="900"/>
+                    <size key="freeformSize" width="600" height="1010"/>
                     <connections>
                         <outlet property="saveButton" destination="EnZ-IG-8o3" id="z3c-VM-iEU"/>
                         <segue destination="7Lm-Ur-xC5" kind="unwind" identifier="unwindToFixtureList" unwindAction="unwindToFixtureList:" id="Kga-bE-lW0"/>

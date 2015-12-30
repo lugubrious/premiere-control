@@ -18,7 +18,7 @@ class FixtureTableViewController: UITableViewController, UISearchResultsUpdating
         return (!searching) ? Data.fixtures.sort({$0.index < $1.index}) : searchResultFixtures.sort({$0.index < $1.index})
     }
     
-    var searchController: UISearchController!
+    var searchController: UISearchController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,7 +123,7 @@ class FixtureTableViewController: UITableViewController, UISearchResultsUpdating
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         searchResultFixtures.removeAll(keepCapacity: false)
         
-        searchResultFixtures = Data.fixtures.filter({$0.name.lowercaseString.containsString(self.searchController.searchBar.text?.lowercaseString ?? "")})
+        searchResultFixtures = Data.fixtures.filter({$0.name.lowercaseString.containsString(self.searchController?.searchBar.text?.lowercaseString ?? "")})
         
         self.tableView.reloadData()
     }
@@ -155,20 +155,46 @@ class FixtureTableViewController: UITableViewController, UISearchResultsUpdating
         if let sourceViewController = sender.sourceViewController as? FixtureEditViewController, fixture =
             sourceViewController.fixture {
                 // Add an new fixture
-                Data.fixtures.append(fixture)    // Add new fixture to array
+                if (sourceViewController.numFixtures == 1) {
+                    Data.fixtures.append(fixture)    // Add new fixture to array
                 
-                let row = Data.fixtures.indexOf(fixture) ?? Data.fixtures.count
-                let newIndexPath = NSIndexPath(forRow: row, inSection: 0)    // Get the path where the data should be added
+                    let row = Data.fixtures.indexOf(fixture) ?? Data.fixtures.count
+                    let newIndexPath = NSIndexPath(forRow: row, inSection: 0)    // Get the path where the data should be added
                 
-                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic) // Add data to table view
+                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Automatic) // Add data to table view
+                } else {
+                    let rows = addMultipleCopiesOfFixture(fixture, numCopies: sourceViewController.numFixtures)
+                    var indexPaths = [NSIndexPath]()
+                    for i in rows {
+                        indexPaths.append(NSIndexPath(forRow: i, inSection: 0))
+                    }
+                    tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+                }
                 Data.fixtures.sortInPlace({$0.index < $1.index})   // Sort the fixtures in ascending order by index
-                tableView.reloadData()  // Notify the table view that the data has chagned
-                
+                tableView.reloadData()  // Notify the table view that the data has changed
                 Data.saveFixures()
         } else if let sourceViewController = sender.sourceViewController as? FixtureDetailViewController, fixture = sourceViewController.fixture {
                 // Edited Fixture
                 print("Returned from fixture \(fixture.name)")
         }
+    }
+    
+    enum FixtureCreationError: ErrorType {
+        case InsufficiantAddressSpace (neededAddresses: Int)
+    }
+    
+    private func addMultipleCopiesOfFixture (fixture: Fixture, numCopies: Int) -> [Int] {
+        var rows = [Int]()
+        for i in 1 ... numCopies {
+            let fix = fixture.copyWithZone(nil) as! Fixture
+            fix.name = fix.name + " " + String(i)
+            fix.index = fixture.index + i - 1
+            fix.address = fixture.address + ((i - 1) * fixture.addressLength)
+            Data.fixtures.append(fix)
+            
+            rows.append(Data.fixtures.indexOf(fix) ?? Data.fixtures.count)
+        }
+        return rows
     }
     
     // MARK: - UISplitViewControllerDelegate

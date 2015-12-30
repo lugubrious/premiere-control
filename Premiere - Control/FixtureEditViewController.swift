@@ -15,14 +15,19 @@ class FixtureEditViewController: UITableViewController {
     var properties: [Property]!
     var name: String!, index: Int!, address: Int!
     
+    var isNewFixture = false
+    var numFixtures = 1
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     let backgroundColour = UIColor(red: 0.975, green: 0.975, blue: 0.975, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.isNewFixture = self.fixture == nil
 
-        self.fixture = self.fixture ?? Fixture(name: "New Fixture", address: 0, index: 0)
+        self.fixture = self.fixture ?? Fixture(name: "New Fixture", address: 1, index: 0)
         
         self.properties = self.fixture.properties.map({$0.copyWithZone(nil) as! Property})
         self.name = self.fixture.name
@@ -30,8 +35,6 @@ class FixtureEditViewController: UITableViewController {
         self.address = self.fixture.address
         
         setNavigationTitle(self.fixture.name)
-        
-//        self.navigationController?.setToolbarHidden(false, animated: true)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 60.0
@@ -79,7 +82,7 @@ class FixtureEditViewController: UITableViewController {
         case 1:
             return self.properties.count
         case 2:
-            return 1
+            return self.isNewFixture ? 2 : 1
         default:
             return 0
         }
@@ -141,9 +144,16 @@ class FixtureEditViewController: UITableViewController {
             self.properties.sortInPlace({$0.index < $1.index})
             return createPropCell(propriety: self.properties[indexPath.row], path: indexPath)
         } else if  indexPath.section == 2 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("FixtureEditAddCell", forIndexPath: indexPath) as! FixtureEditAddCell
-            cell.setupForController(self)
-            return cell
+            switch indexPath.row {
+            case 1:
+                let cell = tableView.dequeueReusableCellWithIdentifier("FixtureAddMultipleCell", forIndexPath: indexPath) as! FixtureAddMultipleCell
+                cell.setupForController(self)
+                return cell
+            default:
+                let cell = tableView.dequeueReusableCellWithIdentifier("FixtureEditAddCell", forIndexPath: indexPath) as! FixtureEditAddCell
+                cell.setupForController(self)
+                return cell
+            }
         } else {
             print("Too many sections in fixtureEditView for fixture \"\(fixture.name)\"")
             let cell = tableView.dequeueReusableCellWithIdentifier("FixtureEditNameCell", forIndexPath: indexPath) as! FixtureEditNameCell
@@ -180,10 +190,43 @@ class FixtureEditViewController: UITableViewController {
     
     @IBAction func save(sender: UIBarButtonItem) {
         if source is FixtureTableViewController {
-            self.performSegueWithIdentifier("unwindToFixtureList", sender: self)
+            // Returning from adding new fixture
+            let freeAddresses = Data.getUnusedAddresses()
+            let numAddresses = Fixture.addressLengthForProperties(self.properties) * self.numFixtures
+            
+            if freeAddresses.count < numAddresses || !isAddressBlockFreeStartingAt(self.address, addresses: numAddresses, avaliable: freeAddresses){
+                // There is not enough space, panic
+                createAlertWithTitle("Insufficient Addresses", error: "There where not enough free addresses to create all of the fixtures");
+            } else {
+                self.performSegueWithIdentifier("unwindToFixtureList", sender: self)
+            }
         } else if source is FixtureDetailViewController {
+            // Returning from edit
             self.performSegueWithIdentifier("unwindToFixtureDetail", sender: self)
         }
+    }
+    
+    private func createAlertWithTitle (title: String, error: String) {
+        let alertController = UIAlertController(title: title, message: error, preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .Cancel, handler: {(_) in })
+        alertController.addAction(okAction)
+        
+        self.presentViewController(alertController, animated: true, completion: {})
+    }
+    
+    func isAddressBlockFreeStartingAt (start: Int, addresses: Int, avaliable: [Int]) -> Bool {
+        if addresses == 0 {
+            return true
+        }
+        var requiredAddresses = [Int]()
+        requiredAddresses += (start ... (addresses + start - 1))
+        for i in requiredAddresses {
+            if !avaliable.contains(i) {
+                return false
+            }
+        }
+        return true
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -317,20 +360,36 @@ class FixtureEditDimmerCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     
     func setupForParent(parent: FixtureEditViewController) {
         self.parent = parent
-        let address = parent.address
-        universe = (address < 512) ? 1 : 2
-        dimmer = (universe == 1) ? address : address - 512
+        self.universe = (self.parent.address < 512) ? 1 : 2
+        self.dimmer = (self.universe == 1) ? self.parent.address : self.parent.address - 512
         
-        dimmerPicker.delegate = self
-        dimmerPicker.dataSource = self
+        self.dimmerPicker.delegate = self
+        self.dimmerPicker.dataSource = self
 
-        pickerData[0] = [1,2]
-        for i in 1...512 {
-            pickerData[1] += [i]
+        var avaliableAddresses = Data.getUnusedAddresses()
+        let addressLength = Fixture.addressLengthForProperties(self.parent.properties)
+        if (!(parent.isNewFixture || (addressLength == 0))) {
+            avaliableAddresses += (self.parent.address ... (self.parent.address - 1 + addressLength))
         }
         
-        dimmerPicker.selectRow(universe - 1, inComponent: 0, animated: false)
-        dimmerPicker.selectRow(dimmer - 1, inComponent: 1, animated: false)
+        for i in avaliableAddresses {
+            let uni = (i <= 512) ? 1 : 2
+            let dim = (uni == 1) ? i : i - 512
+            self.pickerData[uni - 1].append(dim)
+        }
+        
+        self.pickerData[0].sortInPlace({$0 < $1})
+        self.pickerData[1].sortInPlace({$0 < $1})
+        
+        self.dimmerPicker.selectRow(self.universe - 1, inComponent: 0, animated: false)
+        let row = self.parent.isNewFixture ? 0 : self.pickerData[universe - 1].indexOf(self.dimmer)!
+        self.dimmerPicker.selectRow(row, inComponent: 1, animated: false)
+        
+        if self.parent.isNewFixture {
+            self.universe = 1
+            self.dimmer = pickerData[universe - 1][row]
+            self.parent.address = (universe == 1) ? dimmer : dimmer + 512
+        }
     }
     
     // MARK: Picker
@@ -339,7 +398,7 @@ class FixtureEditDimmerCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     // The number of columns of data
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         if pickerView === dimmerPicker {
-            return pickerData.count
+            return 2
         } else {
             return 0
         }
@@ -348,7 +407,14 @@ class FixtureEditDimmerCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     // The number of rows of data
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView === dimmerPicker {
-            return pickerData[component].count
+            switch component {
+            case 0:
+                return 2
+            case 1:
+                return pickerData[dimmerPicker.selectedRowInComponent(0)].count
+            default:
+                return 0
+            }
         } else {
             return 0
         }
@@ -357,7 +423,14 @@ class FixtureEditDimmerCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     // The data to return for the row and component (column) that's being passed in
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView === dimmerPicker {
-            return String(pickerData[component][row])
+            switch component {
+            case 0:
+                return String(row + 1)
+            case 1:
+                return String(pickerData[universe - 1][row])
+            default:
+                return nil
+            }
         } else {
             return nil
         }
@@ -367,11 +440,12 @@ class FixtureEditDimmerCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView === dimmerPicker {
             if component == 0 {
-                universe = pickerData[component][row]
+                self.universe = row + 1
+                pickerView.reloadComponent(1)
             } else if component == 1 {
-                dimmer = pickerData[component][row]
+                self.dimmer = pickerData[universe - 1][row]
             }
-            parent.address = (universe == 1) ? dimmer : dimmer + 512
+            self.parent.address = (universe == 1) ? dimmer : dimmer + 512
         }
     }
 }
@@ -428,5 +502,24 @@ class FixtureEditAddCell: UITableViewCell {
         } else {
             return nil
         }
+    }
+}
+
+class FixtureAddMultipleCell: UITableViewCell {
+    var parent: FixtureEditViewController!
+    
+    @IBOutlet weak var numFixtureStepper: UIStepper!
+    @IBOutlet weak var numFixturesLabel: UILabel!
+    
+    
+    func setupForController(parent:FixtureEditViewController) {
+        self.parent = parent
+        self.numFixtureStepper.value = Double(self.parent.numFixtures)
+        self.numFixturesLabel.text = String(self.parent.numFixtures)
+    }
+    
+    @IBAction func numFixturesChanged(sender: UIStepper, forEvent event: UIEvent) {
+        self.parent.numFixtures = Int(self.numFixtureStepper.value)
+        self.numFixturesLabel.text = String(self.parent.numFixtures)
     }
 }
