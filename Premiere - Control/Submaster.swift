@@ -12,7 +12,17 @@ class Submaster: NSObject {
     // MARK: Properties
     var values: [(fixture:Int, value:Double)]
     var index: Int
-    var intensity: Double
+    
+    var intensity: Double {
+        didSet {
+            for i in values {
+                let fixtures = Data.getFixturesWithIndex(i.fixture)
+                for f in fixtures {
+                    f.getPropertyWithName("Intensity")?.value = PropertyType.Generic(i.value * self.intensity)
+                }
+            }
+        }
+    }
     var name: String
     
     init (index: Int, name: String? = nil) {

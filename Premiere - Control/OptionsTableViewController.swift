@@ -17,6 +17,7 @@ class OptionsTableViewController: UITableViewController, UIPickerViewDelegate, U
     @IBOutlet weak var aLabel: UILabel!
     @IBOutlet weak var aProgressView: UIProgressView!
     @IBOutlet weak var anotherLabel: UILabel!
+    @IBOutlet weak var aButton: UIButton!
     
     @IBOutlet weak var infoSectionHeaderCell: UITableViewCell!
     @IBOutlet weak var settingsSectionHeaderCell: UITableViewCell!
@@ -58,7 +59,6 @@ class OptionsTableViewController: UITableViewController, UIPickerViewDelegate, U
         settingsSectionHeaderCell!.separatorInset.left=5000;
         testsSectionHeaderCell!.contentView.backgroundColor = backgroundColour
         testsSectionHeaderCell!.separatorInset.left=5000;
-
         
 
         // Uncomment the following line to preserve selection between presentations

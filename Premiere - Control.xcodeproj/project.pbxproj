@@ -22,10 +22,10 @@
 		BC6127031C15D1C400C22F5E /* PositionProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127021C15D1C400C22F5E /* PositionProperty.swift */; };
 		BC6127051C15D55900C22F5E /* FixtureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127041C15D55900C22F5E /* FixtureTableViewCell.swift */; };
 		BC6127091C1628CD00C22F5E /* KeypadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127081C1628CD00C22F5E /* KeypadViewController.swift */; };
+		BC7025611C335EB4007E6411 /* SubmasterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7025601C335EB4007E6411 /* SubmasterDetailViewController.swift */; };
 		BCBF4F3F1C168ED5008C7192 /* FixtureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */; };
 		BCD43ADE1C08A1EE005ABA97 /* FixtureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43ADD1C08A1EE005ABA97 /* FixtureTableViewController.swift */; };
 		BCD43AE01C08A20A005ABA97 /* SubmasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */; };
-		BCD43AE41C08A279005ABA97 /* SubmasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AE31C08A279005ABA97 /* SubmasterViewController.swift */; };
 		BCD43AE81C08A5F5005ABA97 /* SubmasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AE71C08A5F5005ABA97 /* SubmasterTableViewCell.swift */; };
 		BCD43AEA1C08BE96005ABA97 /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AE91C08BE96005ABA97 /* Fixture.swift */; };
 		BCD43AEC1C08BEB1005ABA97 /* Submaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AEB1C08BEB1005ABA97 /* Submaster.swift */; };
@@ -73,10 +73,10 @@
 		BC6127021C15D1C400C22F5E /* PositionProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionProperty.swift; sourceTree = "<group>"; };
 		BC6127041C15D55900C22F5E /* FixtureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureTableViewCell.swift; sourceTree = "<group>"; };
 		BC6127081C1628CD00C22F5E /* KeypadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeypadViewController.swift; sourceTree = "<group>"; };
+		BC7025601C335EB4007E6411 /* SubmasterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterDetailViewController.swift; sourceTree = "<group>"; };
 		BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureDetailViewController.swift; sourceTree = "<group>"; };
 		BCD43ADD1C08A1EE005ABA97 /* FixtureTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureTableViewController.swift; sourceTree = "<group>"; };
 		BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterTableViewController.swift; sourceTree = "<group>"; };
-		BCD43AE31C08A279005ABA97 /* SubmasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterViewController.swift; sourceTree = "<group>"; };
 		BCD43AE71C08A5F5005ABA97 /* SubmasterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterTableViewCell.swift; sourceTree = "<group>"; };
 		BCD43AE91C08BE96005ABA97 /* Fixture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
 		BCD43AEB1C08BEB1005ABA97 /* Submaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Submaster.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 				BC41FE931C060094004FBA72 /* SubmastersSplitViewController.swift */,
 				BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */,
 				BCD43AE71C08A5F5005ABA97 /* SubmasterTableViewCell.swift */,
-				BCD43AE31C08A279005ABA97 /* SubmasterViewController.swift */,
+				BC7025601C335EB4007E6411 /* SubmasterDetailViewController.swift */,
 				BCD43AFF1C0AA7CC005ABA97 /* SubmasterEditViewController.swift */,
 			);
 			name = Submasters;
@@ -344,9 +344,9 @@
 				BCD43AF71C0924E5005ABA97 /* CueTableViewCell.swift in Sources */,
 				BC6126FF1C15D16E00C22F5E /* ColourProperty.swift in Sources */,
 				BCD43AE01C08A20A005ABA97 /* SubmasterTableViewController.swift in Sources */,
+				BC7025611C335EB4007E6411 /* SubmasterDetailViewController.swift in Sources */,
 				BC6127031C15D1C400C22F5E /* PositionProperty.swift in Sources */,
 				BC41FE941C060094004FBA72 /* SubmastersSplitViewController.swift in Sources */,
-				BCD43AE41C08A279005ABA97 /* SubmasterViewController.swift in Sources */,
 				BC41FE901C060094004FBA72 /* AppDelegate.swift in Sources */,
 				BCD43AF31C0924B1005ABA97 /* CuesSplitViewController.swift in Sources */,
 				BC6126FD1C15D14100C22F5E /* GenericProperty.swift in Sources */,

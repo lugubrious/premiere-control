@@ -69,6 +69,15 @@ class Fixture: NSObject, NSCoding, NSCopying {
         }
     }
     
+    func getPropertyWithName (name: String) -> Property? {
+        for prop in properties {
+            if prop.name == name {
+                return prop
+            }
+        }
+        return nil
+    }
+    
     func getProprietyAsDouble(name: String) -> Double? {
         for prop in properties {
             if prop.name == name {

@@ -59,5 +59,8 @@ struct Data {
     
     // MARK: Cue functions
     
-    
+    // MARL: Other functions
+    static func saveAll () {
+        Data.saveFixures()
+    }
 }

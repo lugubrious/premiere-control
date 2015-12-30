@@ -53,6 +53,11 @@ class FixtureTableViewController: UITableViewController, UISearchResultsUpdating
         
         self.clearsSelectionOnViewWillAppear = true
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView?.reloadData()
+    }
 
     func loadSampleFixtures() {
         let fix = Fixture(name: "A Fixture", address: 1, index: 1)!
@@ -148,7 +153,6 @@ class FixtureTableViewController: UITableViewController, UISearchResultsUpdating
             let fixtureDetailViewController = detailNavView.viewControllers[0] as! FixtureEditViewController
             fixtureDetailViewController.source = self
         }
-
     }
     
     @IBAction func unwindToFixtureList(sender: UIStoryboardSegue) {

@@ -8,17 +8,17 @@
 
 import UIKit
 
+private let backgroundColour = UIColor(red: 0.975, green: 0.975, blue: 0.975, alpha: 1)
+
 class FixtureDetailViewController: UITableViewController {
     var fixture: Fixture!
     var parentCell: FixtureTableViewCell!
-    
-    let backgroundColour = UIColor(red: 0.975, green: 0.975, blue: 0.975, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if fixture == nil {
-            navigationItem.title = "No Fixture Selected"
+            self.navigationItem.title = "No Fixture Selected"
             return
         }
         
@@ -36,6 +36,11 @@ class FixtureDetailViewController: UITableViewController {
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
         self.navigationItem.title = self.fixture.name
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -175,6 +180,7 @@ class FixtureColourCell: UITableViewCell {
         
         self.colourView.backgroundColor = self.property.unwrappedValue!
         self.colourView.layer.borderWidth = 1
+        self.colourView.layer.cornerRadius = 10.0
         self.colourView.layer.borderColor = UIColor.blackColor().CGColor
         
         self.nameLabel.text = self.property.name
