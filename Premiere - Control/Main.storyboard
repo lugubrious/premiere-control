@@ -946,6 +946,11 @@
                                     <constraint firstAttribute="width" constant="55" id="i24-56-4GA"/>
                                 </constraints>
                                 <state key="normal" title="F1"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="6Y2-gT-sMG"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="dGa-LO-TnI"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="He5-ab-xPv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1X5-Kr-75x">
                                 <rect key="frame" x="189" y="140" width="55" height="55"/>
@@ -954,6 +959,11 @@
                                     <constraint firstAttribute="width" constant="55" id="dbc-wZ-aZt"/>
                                 </constraints>
                                 <state key="normal" title="F2"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="9dK-Ef-k16"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="ADV-Ga-Zxj"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="POX-Zp-fDJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yWp-mG-Izq">
                                 <rect key="frame" x="357" y="140" width="55" height="55"/>
@@ -962,6 +972,11 @@
                                     <constraint firstAttribute="height" constant="55" id="N1G-we-n7g"/>
                                 </constraints>
                                 <state key="normal" title="F3"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="jCb-KI-a7c"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="Vxh-kj-Cch"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="BWH-pW-Ko9"/>
+                                </connections>
                             </button>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Do3-Pr-54h">
                                 <rect key="frame" x="83" y="153" width="98" height="30"/>
@@ -991,6 +1006,11 @@
                                     <constraint firstAttribute="height" constant="55" id="wbq-vA-WBR"/>
                                 </constraints>
                                 <state key="normal" title="F4"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="me0-aC-xXI"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="chO-ty-tNg"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="Nvh-7y-jM4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7T-GI-50N">
                                 <rect key="frame" x="20" y="219" width="55" height="55"/>
@@ -999,6 +1019,11 @@
                                     <constraint firstAttribute="width" constant="55" id="sUn-z7-y2R"/>
                                 </constraints>
                                 <state key="normal" title="7"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="9qf-rW-zcg"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="WGD-wa-yaM"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="us3-hX-aOk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2l-4u-Uvp">
                                 <rect key="frame" x="188" y="219" width="55" height="55"/>
@@ -1007,6 +1032,11 @@
                                     <constraint firstAttribute="width" constant="55" id="gvW-cE-XCf"/>
                                 </constraints>
                                 <state key="normal" title="8"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="M4P-1p-Epl"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="k9m-QD-gvg"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="Pzn-hU-dVk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYt-F3-nXw">
                                 <rect key="frame" x="357" y="219" width="55" height="55"/>
@@ -1015,6 +1045,11 @@
                                     <constraint firstAttribute="width" constant="55" id="p6n-Wr-7LK"/>
                                 </constraints>
                                 <state key="normal" title="9"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="2y6-We-5Rg"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="gcB-n7-x6L"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="8S3-l7-fS8"/>
+                                </connections>
                             </button>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcl-6f-yA0">
                                 <rect key="frame" x="83" y="232" width="97" height="30"/>
@@ -1044,6 +1079,11 @@
                                     <constraint firstAttribute="height" constant="55" id="ygT-dw-bgq"/>
                                 </constraints>
                                 <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="rDt-cV-gdQ"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="OSq-HX-Yhx"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="yXE-3w-NUq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elr-f6-dIy">
                                 <rect key="frame" x="20" y="298" width="55" height="55"/>
@@ -1052,6 +1092,11 @@
                                     <constraint firstAttribute="width" constant="55" id="wbv-3g-T4L"/>
                                 </constraints>
                                 <state key="normal" title="4"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="8df-cx-Qpf"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="6J6-O5-Bqu"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="H3E-YR-dbb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiJ-be-TBh">
                                 <rect key="frame" x="188" y="298" width="55" height="55"/>
@@ -1060,6 +1105,11 @@
                                     <constraint firstAttribute="height" constant="55" id="eag-31-oXB"/>
                                 </constraints>
                                 <state key="normal" title="5"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="FMy-gN-wL9"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="sBx-xj-Rui"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="30O-OQ-xhc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9l-8b-Oh8">
                                 <rect key="frame" x="357" y="298" width="55" height="55"/>
@@ -1068,6 +1118,11 @@
                                     <constraint firstAttribute="height" constant="55" id="yK0-sQ-ETc"/>
                                 </constraints>
                                 <state key="normal" title="6"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="YKF-jO-KHY"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="EHl-eF-rPW"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="kvv-nM-6ig"/>
+                                </connections>
                             </button>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTJ-3H-DWg">
                                 <rect key="frame" x="83" y="311" width="97" height="30"/>
@@ -1097,6 +1152,11 @@
                                     <constraint firstAttribute="width" constant="55" id="wt5-fS-Nww"/>
                                 </constraints>
                                 <state key="normal" title="And"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="9bF-5k-l7x"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="g3f-1E-Sud"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="25A-Y4-Hd8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dC-X6-cxQ">
                                 <rect key="frame" x="20" y="377" width="55" height="55"/>
@@ -1105,6 +1165,11 @@
                                     <constraint firstAttribute="width" constant="55" id="e1z-8v-bNI"/>
                                 </constraints>
                                 <state key="normal" title="1"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="zrD-ZQ-DnT"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="AK7-8W-XSN"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="lbm-51-kre"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Boh-C1-w3L">
                                 <rect key="frame" x="188" y="377" width="55" height="55"/>
@@ -1113,6 +1178,11 @@
                                     <constraint firstAttribute="width" constant="55" id="jhG-mP-AwH"/>
                                 </constraints>
                                 <state key="normal" title="2"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="z0Q-aa-jmN"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="yOj-wU-WXR"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="pvE-2F-x48"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSi-Je-5nA">
                                 <rect key="frame" x="357" y="377" width="55" height="55"/>
@@ -1121,6 +1191,11 @@
                                     <constraint firstAttribute="width" constant="55" id="t2I-Xd-uyI"/>
                                 </constraints>
                                 <state key="normal" title="3"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="Os3-iy-wQm"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="cT8-8R-n7i"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="g3Z-kw-FEZ"/>
+                                </connections>
                             </button>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lsG-xf-0JW">
                                 <rect key="frame" x="83" y="390" width="97" height="30"/>
@@ -1150,6 +1225,11 @@
                                     <constraint firstAttribute="width" constant="55" id="Xgx-jr-cLU"/>
                                 </constraints>
                                 <state key="normal" title="Except"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="2jL-Wq-26a"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="LVW-k9-yat"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="aT3-rN-WZE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggr-ma-5k7">
                                 <rect key="frame" x="20" y="456" width="55" height="55"/>
@@ -1158,6 +1238,11 @@
                                     <constraint firstAttribute="height" constant="55" id="WjJ-Ek-ejJ"/>
                                 </constraints>
                                 <state key="normal" title="Thru"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="Jxx-5T-uJY"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="Tdj-pe-msh"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="aDa-pG-Tlp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFc-me-DtG">
                                 <rect key="frame" x="188" y="456" width="55" height="55"/>
@@ -1166,6 +1251,11 @@
                                     <constraint firstAttribute="height" constant="55" id="dea-sB-BbJ"/>
                                 </constraints>
                                 <state key="normal" title="0"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="Iba-ed-DF5"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="IGo-iO-9tM"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="IU9-Qb-eyy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Vp-54-Lq4">
                                 <rect key="frame" x="357" y="456" width="55" height="55"/>
@@ -1174,6 +1264,11 @@
                                     <constraint firstAttribute="height" constant="55" id="NwV-s6-cXd"/>
                                 </constraints>
                                 <state key="normal" title="At"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="mBn-0p-eXc"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="oYY-xf-zjS"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="reo-03-lKq"/>
+                                </connections>
                             </button>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ows-lZ-iZt">
                                 <rect key="frame" x="83" y="469" width="97" height="30"/>
@@ -1203,6 +1298,11 @@
                                     <constraint firstAttribute="height" constant="55" id="ubg-82-mpI"/>
                                 </constraints>
                                 <state key="normal" title="Enter"/>
+                                <connections>
+                                    <action selector="buttonPressed:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpInside" id="ahd-e1-aUC"/>
+                                    <action selector="buttonTouchDown:forEvent:" destination="EKj-Jk-N5W" eventType="touchDown" id="cql-Yn-vRA"/>
+                                    <action selector="buttonTouchUpOutside:forEvent:" destination="EKj-Jk-N5W" eventType="touchUpOutside" id="OUx-7G-bgt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2498,68 +2598,27 @@
                                                 <action selector="addPressed:forEvent:" destination="DoD-8e-xU5" eventType="touchUpInside" id="cbv-Gu-vFj"/>
                                             </connections>
                                         </button>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GOD-4x-VEL">
-                                            <rect key="frame" x="8" y="7" width="546" height="29"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="28" id="2Nb-fR-xO9"/>
-                                                <constraint firstAttribute="height" constant="28" id="CMN-Ub-aJy"/>
-                                            </constraints>
-                                            <segments>
-                                                <segment title="Generic"/>
-                                                <segment title="Colour"/>
-                                                <segment title="Position"/>
-                                                <segment title="Scroller"/>
-                                            </segments>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="CMN-Ub-aJy"/>
-                                                </mask>
-                                            </variation>
-                                        </segmentedControl>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="GOD-4x-VEL" firstAttribute="leading" secondItem="rUj-Ng-Q2Z" secondAttribute="leadingMargin" id="1FB-VX-x1y"/>
-                                        <constraint firstItem="GOD-4x-VEL" firstAttribute="top" secondItem="rUj-Ng-Q2Z" secondAttribute="topMargin" constant="-1" id="6f0-JJ-nTg"/>
                                         <constraint firstItem="GKw-o5-dfZ" firstAttribute="trailing" secondItem="rUj-Ng-Q2Z" secondAttribute="trailingMargin" id="8LJ-in-ehv"/>
-                                        <constraint firstItem="GKw-o5-dfZ" firstAttribute="leading" secondItem="GOD-4x-VEL" secondAttribute="trailing" constant="8" id="Ah0-oR-ice"/>
                                         <constraint firstItem="GKw-o5-dfZ" firstAttribute="top" secondItem="rUj-Ng-Q2Z" secondAttribute="topMargin" constant="-1" id="BQa-cR-lN3"/>
                                         <constraint firstItem="GKw-o5-dfZ" firstAttribute="trailing" secondItem="rUj-Ng-Q2Z" secondAttribute="trailingMargin" id="Cip-qu-3ED"/>
                                         <constraint firstItem="GKw-o5-dfZ" firstAttribute="top" secondItem="rUj-Ng-Q2Z" secondAttribute="topMargin" constant="-1" id="H2j-dZ-Xd7"/>
-                                        <constraint firstItem="GOD-4x-VEL" firstAttribute="leading" secondItem="rUj-Ng-Q2Z" secondAttribute="leadingMargin" id="MX7-ca-Uxs"/>
-                                        <constraint firstItem="GKw-o5-dfZ" firstAttribute="leading" secondItem="GOD-4x-VEL" secondAttribute="trailing" constant="8" id="MsE-Nd-COG"/>
-                                        <constraint firstItem="GOD-4x-VEL" firstAttribute="bottom" secondItem="rUj-Ng-Q2Z" secondAttribute="bottomMargin" id="VZf-6Z-qR6"/>
-                                        <constraint firstItem="GOD-4x-VEL" firstAttribute="leading" secondItem="rUj-Ng-Q2Z" secondAttribute="leadingMargin" id="Ycv-zd-B8T"/>
-                                        <constraint firstItem="GOD-4x-VEL" firstAttribute="top" secondItem="rUj-Ng-Q2Z" secondAttribute="topMargin" constant="-1" id="Yrv-WO-BwR"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="GKw-o5-dfZ" secondAttribute="bottom" constant="-2" id="ZcO-A8-oSv"/>
-                                        <constraint firstItem="GOD-4x-VEL" firstAttribute="bottom" secondItem="rUj-Ng-Q2Z" secondAttribute="bottomMargin" id="acx-9t-lAK"/>
                                         <constraint firstItem="GKw-o5-dfZ" firstAttribute="trailing" secondItem="rUj-Ng-Q2Z" secondAttribute="trailingMargin" id="cHz-7R-tFu"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="GKw-o5-dfZ" secondAttribute="bottom" constant="-2" id="hLO-xi-2SW"/>
-                                        <constraint firstItem="GOD-4x-VEL" firstAttribute="top" secondItem="rUj-Ng-Q2Z" secondAttribute="topMargin" constant="-1" id="jZj-pb-cr3"/>
-                                        <constraint firstItem="GKw-o5-dfZ" firstAttribute="leading" secondItem="GOD-4x-VEL" secondAttribute="trailing" constant="8" id="nAY-Iy-Dvv"/>
                                         <constraint firstItem="GKw-o5-dfZ" firstAttribute="top" secondItem="rUj-Ng-Q2Z" secondAttribute="topMargin" constant="-1" id="sQb-aO-Sr6"/>
-                                        <constraint firstItem="GOD-4x-VEL" firstAttribute="bottom" secondItem="rUj-Ng-Q2Z" secondAttribute="bottomMargin" id="x1x-EE-BlX"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="6f0-JJ-nTg"/>
-                                            <exclude reference="MX7-ca-Uxs"/>
-                                            <exclude reference="VZf-6Z-qR6"/>
-                                            <exclude reference="Ycv-zd-B8T"/>
-                                            <exclude reference="acx-9t-lAK"/>
-                                            <exclude reference="jZj-pb-cr3"/>
                                             <exclude reference="8LJ-in-ehv"/>
-                                            <exclude reference="Ah0-oR-ice"/>
                                             <exclude reference="BQa-cR-lN3"/>
                                             <exclude reference="H2j-dZ-Xd7"/>
-                                            <exclude reference="MsE-Nd-COG"/>
                                             <exclude reference="cHz-7R-tFu"/>
                                             <exclude reference="hLO-xi-2SW"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="typeControl" destination="GOD-4x-VEL" id="HuK-us-LFE"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FixtureAddMultipleCell" rowHeight="85" id="CTs-ba-XUf" customClass="FixtureAddMultipleCell" customModule="Premiere" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="856" width="600" height="85"/>

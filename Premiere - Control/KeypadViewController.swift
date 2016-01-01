@@ -10,6 +10,8 @@ import UIKit
 
 //private let backgroundColour = UIColor(red:0.239, green: 0, blue: 1, alpha: 1)
 private let backgroundColour = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1)
+private let touchDownColour = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+private let buttonBackColour = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1)
 private let highlightedColour = UIColor(red: 0.0, green: 1.0, blue: 0.1, alpha: 1.0).CGColor
 
 class KeypadViewController: UIViewController {
@@ -48,6 +50,10 @@ class KeypadViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
+        //                      l1                l2                "
+        self.displayLabel.text = "Line One........\nLine Two........"
+//        self.displayLabel.font = UIFont.monospacedDigitSystemFontOfSize(16.0, weight: )
+        
         self.navigationController?.preferredContentSize = CGSize(width: 320, height: 480) // Size that the view will have when displayed as a popover on iPad, screen size of iPhone 2g/3g/3gs/4/4s
         
         self.view.backgroundColor = backgroundColour
@@ -59,6 +65,7 @@ class KeypadViewController: UIViewController {
             i.layer.borderColor = i.tintColor.CGColor
             i.layer.borderWidth = 1.0
             i.layer.cornerRadius = 8.0
+            i.backgroundColor = buttonBackColour
         }
         self.buttonAt.layer.borderColor = highlightedColour
     }
@@ -82,5 +89,15 @@ class KeypadViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     
+    @IBAction func buttonPressed(sender: UIButton, forEvent event: UIEvent) {
+        sender.backgroundColor = buttonBackColour
+    }
+    
+    @IBAction func buttonTouchUpOutside(sender: UIButton, forEvent event: UIEvent) {
+        sender.backgroundColor = buttonBackColour
+    }
 
+    @IBAction func buttonTouchDown(sender: UIButton, forEvent event: UIEvent) {
+        sender.backgroundColor = touchDownColour
+    }
 }

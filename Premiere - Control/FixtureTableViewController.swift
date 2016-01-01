@@ -26,7 +26,7 @@ class FixtureTableViewController: UITableViewController, UISearchResultsUpdating
         // Load any saved fixtures, otherwise load sample data.
         if let savedFixtures = Data.loadFixtures() where savedFixtures.count != 0 {
             Data.fixtures += savedFixtures
-            print("Loaded \(Data.fixtures.count) fixture(s) from non-volatile storage")
+//            print("Loaded \(Data.fixtures.count) fixture(s) from non-volatile storage")
         } else {
             loadSampleFixtures()
         }

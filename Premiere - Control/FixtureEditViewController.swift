@@ -451,8 +451,6 @@ class FixtureEditDimmerCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
 }
 
 class FixtureEditAddCell: UITableViewCell {
-    @IBOutlet weak var typeControl: UISegmentedControl!
-    
     var parent: FixtureEditViewController!
     
     func setupForController(parent:FixtureEditViewController) {
@@ -460,9 +458,22 @@ class FixtureEditAddCell: UITableViewCell {
     }
     
     @IBAction func addPressed(sender: UIButton, forEvent event: UIEvent) {
-//        print("addPressed. Selected = \(typeControl.selectedSegmentIndex).")
+        var data = [(name: String, secondary: String?)]()
+        data.append((name: "Generic", nil))
+        data.append((name: "Colour", nil))
+        data.append((name: "Position", nil))
+        data.append((name: "Scroller", nil))
+        let popover = PopoverPicker(data: data, width: 200, height: nil, completion: addPopoverReturned)
+        
+        let location = event.allTouches()?.first?.locationInView(sender)
+        let x = location?.x ?? 0, y = location?.y ?? 0
+        
+        popover.showViewFromController(self.parent, sender: sender, sourceRect: CGRect(x: x, y: y, width: 1, height: 1))
+    }
+    
+    func addPopoverReturned (selectedRow: Int) {
         var prop: Property!
-        switch typeControl.selectedSegmentIndex {
+        switch selectedRow {
         case 0:
             prop = GenericProperty(index: getLowestUnusedIndex(), parent: parent.fixture)
         case 1:

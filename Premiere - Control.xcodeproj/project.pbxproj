@@ -23,6 +23,8 @@
 		BC6127051C15D55900C22F5E /* FixtureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127041C15D55900C22F5E /* FixtureTableViewCell.swift */; };
 		BC6127091C1628CD00C22F5E /* KeypadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127081C1628CD00C22F5E /* KeypadViewController.swift */; };
 		BC7025611C335EB4007E6411 /* SubmasterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7025601C335EB4007E6411 /* SubmasterDetailViewController.swift */; };
+		BC8B90941C34D78400E39ED8 /* PopoverPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B90931C34D78400E39ED8 /* PopoverPicker.swift */; };
+		BC8B90961C34D8F200E39ED8 /* Aux.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC8B90951C34D8F200E39ED8 /* Aux.storyboard */; };
 		BCBF4F3F1C168ED5008C7192 /* FixtureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */; };
 		BCD43ADE1C08A1EE005ABA97 /* FixtureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43ADD1C08A1EE005ABA97 /* FixtureTableViewController.swift */; };
 		BCD43AE01C08A20A005ABA97 /* SubmasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */; };
@@ -74,6 +76,8 @@
 		BC6127041C15D55900C22F5E /* FixtureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureTableViewCell.swift; sourceTree = "<group>"; };
 		BC6127081C1628CD00C22F5E /* KeypadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeypadViewController.swift; sourceTree = "<group>"; };
 		BC7025601C335EB4007E6411 /* SubmasterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterDetailViewController.swift; sourceTree = "<group>"; };
+		BC8B90931C34D78400E39ED8 /* PopoverPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPicker.swift; sourceTree = "<group>"; };
+		BC8B90951C34D8F200E39ED8 /* Aux.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Aux.storyboard; sourceTree = "<group>"; };
 		BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureDetailViewController.swift; sourceTree = "<group>"; };
 		BCD43ADD1C08A1EE005ABA97 /* FixtureTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureTableViewController.swift; sourceTree = "<group>"; };
 		BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterTableViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 			children = (
 				BC41FE8F1C060094004FBA72 /* AppDelegate.swift */,
 				BCD43B311C0B91CB005ABA97 /* Main.storyboard */,
+				BC8B90951C34D8F200E39ED8 /* Aux.storyboard */,
 				BC41FE981C060094004FBA72 /* Assets.xcassets */,
 				BC41FE9A1C060094004FBA72 /* LaunchScreen.storyboard */,
 				BC41FE9D1C060094004FBA72 /* Info.plist */,
@@ -212,6 +217,7 @@
 			children = (
 				BCD43B371C0CA970005ABA97 /* OptionsTableViewController.swift */,
 				BC6127081C1628CD00C22F5E /* KeypadViewController.swift */,
+				BC8B90931C34D78400E39ED8 /* PopoverPicker.swift */,
 			);
 			name = "Other Views";
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 				BCD43B321C0B91CB005ABA97 /* Main.storyboard in Resources */,
 				BC41FE9C1C060094004FBA72 /* LaunchScreen.storyboard in Resources */,
 				BC41FE991C060094004FBA72 /* Assets.xcassets in Resources */,
+				BC8B90961C34D8F200E39ED8 /* Aux.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +371,7 @@
 				BC6126FA1C15CEC900C22F5E /* FixtureEditViewController.swift in Sources */,
 				BC41FE921C060094004FBA72 /* FixturesSplitViewController.swift in Sources */,
 				BCD43AF91C092509005ABA97 /* CueViewController.swift in Sources */,
+				BC8B90941C34D78400E39ED8 /* PopoverPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

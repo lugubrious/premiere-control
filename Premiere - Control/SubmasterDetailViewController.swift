@@ -77,6 +77,7 @@ class SubmasterDetailViewController: UICollectionViewController {
             return cell
         } else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("SubmasterTombstone", forIndexPath: indexPath) as! SubmasterTombstoneCell
+            self.submaster.values.sortInPlace({$0.0 < $1.0})
             cell.setupForFixture(Data.getFixturesWithIndex(self.submaster.values[indexPath.row].fixture)[0])
             
             return cell
@@ -160,14 +161,33 @@ class SubmasterTombstoneCell: UICollectionViewCell {
 class SubmasterAddCell: UICollectionViewCell {
     @IBOutlet weak var addFixtureButton: UIButton!
     
+    private var parent: SubmasterDetailViewController!
+    
     func setupForParent (parent: SubmasterDetailViewController) {
+        self.parent = parent
         self.layer.borderWidth = 1.0
         self.layer.borderColor = UIColor.darkGrayColor().CGColor
         self.layer.cornerRadius = 8.0
     }
     
     @IBAction func addFixturePressed(sender: UIButton, forEvent event: UIEvent) {
+        var data = [(name: String, secondary: String?)]()
+        let fixtures = Data.fixtures.sort({$0.index < $1.index})
+        for i in fixtures {
+            data.append((name: i.name, secondary: String(i.index)))
+        }
         
+        let location = event.allTouches()?.first?.locationInView(sender)
+        let x = location?.x ?? 0, y = location?.y ?? 0
+        let popover = PopoverPicker(data: data, width: nil, height: nil, completion: popoverReturned)
+        popover.showViewFromController(self.parent, sender: sender, sourceRect: CGRect(x: x, y: y, width: 1, height: 1))
+    }
+    
+    func popoverReturned (row: Int) {
+//        print("Add new fixture popover returned: \(row)")
+        let fixture = Data.fixtures[row]
+        self.parent.submaster.values.append((fixture: fixture.index, value: 1.0))
+        self.parent.collectionView?.reloadData()
     }
 }
 

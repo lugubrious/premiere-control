@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D9c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Picker Table View Controller-->
+        <scene sceneID="HlH-e4-HMp">
+            <objects>
+                <tableViewController restorationIdentifier="PickerTableViewController" storyboardIdentifier="PickerTableViewController" id="wDE-Qe-bDe" customClass="PickerTableViewController" customModule="Premiere" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zZh-ul-808">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopoverPickerCell" id="cc0-6h-9o6" customClass="PickerTableViewCell" customModule="Premiere" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cc0-6h-9o6" id="KWd-Nd-DaN">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fixture Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMH-XJ-laS">
+                                            <rect key="frame" x="8" y="11" width="102" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZy-Nz-DFG">
+                                            <rect key="frame" x="540" y="11" width="52" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cZy-Nz-DFG" firstAttribute="trailing" secondItem="KWd-Nd-DaN" secondAttribute="trailingMargin" id="Ixy-IU-8By"/>
+                                        <constraint firstItem="cZy-Nz-DFG" firstAttribute="centerY" secondItem="KWd-Nd-DaN" secondAttribute="centerY" id="JHE-5q-N2R"/>
+                                        <constraint firstItem="XMH-XJ-laS" firstAttribute="centerY" secondItem="KWd-Nd-DaN" secondAttribute="centerY" id="Psj-nP-J5h"/>
+                                        <constraint firstItem="XMH-XJ-laS" firstAttribute="leading" secondItem="KWd-Nd-DaN" secondAttribute="leadingMargin" id="xh0-cX-lf5"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="XMH-XJ-laS" id="alj-06-5u4"/>
+                                    <outlet property="secondaryLabel" destination="cZy-Nz-DFG" id="kAw-I8-RB7"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PopoverCancelCell" id="Ywq-xE-HgP" customClass="PickerCancelCell" customModule="Premiere" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ywq-xE-HgP" id="Jn8-Yu-VM8">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nT6-kp-Dd8">
+                                            <rect key="frame" x="541" y="7" width="51" height="30"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" title="Cancel"/>
+                                            <connections>
+                                                <action selector="cancelPressed:forEvent:" destination="Ywq-xE-HgP" eventType="touchUpInside" id="IIL-6O-yBR"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="nT6-kp-Dd8" firstAttribute="trailing" secondItem="Jn8-Yu-VM8" secondAttribute="trailingMargin" id="Jlr-KH-IW1"/>
+                                        <constraint firstItem="nT6-kp-Dd8" firstAttribute="centerY" secondItem="Jn8-Yu-VM8" secondAttribute="centerY" id="Mnh-U2-1Gb"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="wDE-Qe-bDe" id="ALa-a3-buY"/>
+                            <outlet property="delegate" destination="wDE-Qe-bDe" id="vwO-1h-aFK"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NuC-kz-IGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="371" y="345"/>
+        </scene>
+    </scenes>
+</document>
