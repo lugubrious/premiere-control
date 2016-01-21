@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D9c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1972,6 +1972,36 @@
                                                     <exclude reference="hcn-Kr-shb"/>
                                                 </mask>
                                             </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OptionsNetwork" id="3Bv-aB-frP">
+                                        <rect key="frame" x="0.0" y="678" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Bv-aB-frP" id="sRE-gc-T3n">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOj-Qm-Xdb">
+                                                    <rect key="frame" x="8" y="11" width="102" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kba-qO-7GH">
+                                                    <rect key="frame" x="523" y="7" width="69" height="30"/>
+                                                    <state key="normal" title="Send Test"/>
+                                                    <connections>
+                                                        <action selector="networkTestPressed:forEvent:" destination="EnD-jf-IaT" eventType="touchUpInside" id="7Gg-W7-Fap"/>
+                                                        <action selector="resetPressed:forEvent:" destination="EnD-jf-IaT" eventType="touchUpInside" id="Gix-u5-pOb"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kba-qO-7GH" firstAttribute="centerY" secondItem="sRE-gc-T3n" secondAttribute="centerY" id="ASN-ZA-LLm"/>
+                                                <constraint firstItem="GOj-Qm-Xdb" firstAttribute="centerY" secondItem="sRE-gc-T3n" secondAttribute="centerY" id="N7k-Xq-e9K"/>
+                                                <constraint firstItem="GOj-Qm-Xdb" firstAttribute="leading" secondItem="sRE-gc-T3n" secondAttribute="leadingMargin" id="cGd-nX-aU8"/>
+                                                <constraint firstItem="kba-qO-7GH" firstAttribute="trailing" secondItem="sRE-gc-T3n" secondAttribute="trailingMargin" id="i9t-gi-gDh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>

@@ -19,8 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.tintColor = UIColor(red: 0.239, green: 0, blue: 1, alpha: 1)
         
+        self.performSelectorInBackground(Selector("networkLoop:"), withObject: nil)
+        
         return true
     }
+    
+    @objc private func networkLoop (_: AnyObject?) {
+        Communications.start()
+        NSRunLoop.currentRunLoop().run()
+    }
+
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

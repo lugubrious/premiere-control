@@ -177,10 +177,10 @@ class SubmasterAddCell: UICollectionViewCell {
             data.append((name: i.name, secondary: String(i.index)))
         }
         
-        let location = event.allTouches()?.first?.locationInView(sender)
-        let x = location?.x ?? 0, y = location?.y ?? 0
+//        let location = event.allTouches()?.first?.locationInView(sender)
+//        let x = location?.x ?? 0, y = location?.y ?? 0
         let popover = PopoverPicker(data: data, width: nil, height: nil, completion: popoverReturned)
-        popover.showViewFromController(self.parent, sender: sender, sourceRect: CGRect(x: x, y: y, width: 1, height: 1))
+        popover.showViewFromController(self.parent, sender: sender)
     }
     
     func popoverReturned (row: Int) {

@@ -23,7 +23,7 @@ class OptionsTableViewController: UITableViewController, UIPickerViewDelegate, U
     @IBOutlet weak var settingsSectionHeaderCell: UITableViewCell!
     @IBOutlet weak var testsSectionHeaderCell: UITableViewCell!
     
-    let tableRows = [4, 2, 5]
+    let tableRows = [4, 2, 6]
     let backgroundColour = UIColor(red: 0.975, green: 0.975, blue: 0.975, alpha: 1)
 
     var pickerData = [[Int](), [Int]()]
@@ -221,4 +221,15 @@ class OptionsTableViewController: UITableViewController, UIPickerViewDelegate, U
         anotherLabel.text = String(numSliderUpdates)
     }
     
+    var i = 0
+    @IBAction func networkTestPressed(sender: AnyObject, forEvent event: UIEvent) {
+        let string = "Test\(i)"
+        i++
+        if let connect = Communications.connection {
+            Connection.syncronized (connect.dataBuffer) {
+                connect.dataBuffer.append(string.dataUsingEncoding(NSUTF8StringEncoding)!)
+            }
+            connect.send()
+        }
+    }
 }

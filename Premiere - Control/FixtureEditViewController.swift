@@ -465,10 +465,7 @@ class FixtureEditAddCell: UITableViewCell {
         data.append((name: "Scroller", nil))
         let popover = PopoverPicker(data: data, width: 200, height: nil, completion: addPopoverReturned)
         
-        let location = event.allTouches()?.first?.locationInView(sender)
-        let x = location?.x ?? 0, y = location?.y ?? 0
-        
-        popover.showViewFromController(self.parent, sender: sender, sourceRect: CGRect(x: x, y: y, width: 1, height: 1))
+        popover.showViewFromController(self.parent, sender: sender)
     }
     
     func addPopoverReturned (selectedRow: Int) {

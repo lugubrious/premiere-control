@@ -29,12 +29,14 @@ class PopoverPicker: NSObject, UIPopoverPresentationControllerDelegate {
         self.tableView.preferredContentSize = CGSize(width: width ?? 300, height: computedHeight)
     }
     
-    func showViewFromController (controller: UIViewController, sender: UIView, sourceRect: CGRect) {
+    func showViewFromController (controller: UIViewController, sender: UIView) {
         if let popoverController = self.tableView.popoverPresentationController {
             popoverController.permittedArrowDirections = .Any
             popoverController.delegate = self
             popoverController.sourceView = sender
-            popoverController.sourceRect = sourceRect
+            
+            let center = sender.superview?.convertPoint(sender.center, toCoordinateSpace: sender) ?? CGPoint(x: 0, y: 0)
+            popoverController.sourceRect = CGRect(x: center.x, y: center.y, width: 1, height: 1)
             controller.presentViewController(self.tableView, animated: true, completion: nil)
         }
     }

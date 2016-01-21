@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D9c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D13b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
@@ -27,7 +27,15 @@
                         <constraints>
                             <constraint firstItem="eUo-4L-0sY" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="1a6-cW-ffs"/>
                             <constraint firstItem="eUo-4L-0sY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3vY-wd-pTo"/>
+                            <constraint firstItem="eUo-4L-0sY" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="5fM-ha-vlm"/>
+                            <constraint firstItem="eUo-4L-0sY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Afm-mD-kuQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1a6-cW-ffs"/>
+                                <exclude reference="3vY-wd-pTo"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
