@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E95CE5EB23C529287591F99 /* Pods_Premiere___Control.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB251B22AE14EABF0FFD3B7B /* Pods_Premiere___Control.framework */; };
+		BC07E00F1C51D66500052DC7 /* UDPNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC07E00E1C51D66500052DC7 /* UDPNet.swift */; };
 		BC41FE901C060094004FBA72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FE8F1C060094004FBA72 /* AppDelegate.swift */; };
 		BC41FE921C060094004FBA72 /* FixturesSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FE911C060094004FBA72 /* FixturesSplitViewController.swift */; };
 		BC41FE941C060094004FBA72 /* SubmastersSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC41FE931C060094004FBA72 /* SubmastersSplitViewController.swift */; };
@@ -24,11 +26,9 @@
 		BC6127091C1628CD00C22F5E /* KeypadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6127081C1628CD00C22F5E /* KeypadViewController.swift */; };
 		BC7025611C335EB4007E6411 /* SubmasterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7025601C335EB4007E6411 /* SubmasterDetailViewController.swift */; };
 		BC7D337D1C493BFD00147FA6 /* Communications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7D337C1C493BFD00147FA6 /* Communications.swift */; };
-		BC859DF01C41E75900AF4CB9 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC859DEF1C41E75900AF4CB9 /* Networking.swift */; };
 		BC8B90941C34D78400E39ED8 /* PopoverPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B90931C34D78400E39ED8 /* PopoverPicker.swift */; };
 		BC8B90961C34D8F200E39ED8 /* Aux.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC8B90951C34D8F200E39ED8 /* Aux.storyboard */; };
 		BCBF4F3F1C168ED5008C7192 /* FixtureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */; };
-		BCC0C6521C36C86C00E0E091 /* ConsoleConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC0C6511C36C86C00E0E091 /* ConsoleConnection.swift */; };
 		BCC0C6541C36CB9000E0E091 /* TCPIPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC0C6531C36CB9000E0E091 /* TCPIPSocket.swift */; };
 		BCD43ADE1C08A1EE005ABA97 /* FixtureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43ADD1C08A1EE005ABA97 /* FixtureTableViewController.swift */; };
 		BCD43AE01C08A20A005ABA97 /* SubmasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */; };
@@ -60,6 +60,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5EBD5621F1EE51BEDCDE10EC /* Pods-Premiere - Control.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Premiere - Control.release.xcconfig"; path = "Pods/Target Support Files/Pods-Premiere - Control/Pods-Premiere - Control.release.xcconfig"; sourceTree = "<group>"; };
+		6E8E376138AC4D1DFB36A246 /* Pods-Premiere - Control.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Premiere - Control.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Premiere - Control/Pods-Premiere - Control.debug.xcconfig"; sourceTree = "<group>"; };
+		BC07E00E1C51D66500052DC7 /* UDPNet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPNet.swift; sourceTree = "<group>"; };
 		BC41FE8C1C060094004FBA72 /* Premiere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Premiere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC41FE8F1C060094004FBA72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC41FE911C060094004FBA72 /* FixturesSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesSplitViewController.swift; sourceTree = "<group>"; };
@@ -81,12 +84,10 @@
 		BC6127081C1628CD00C22F5E /* KeypadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeypadViewController.swift; sourceTree = "<group>"; };
 		BC7025601C335EB4007E6411 /* SubmasterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterDetailViewController.swift; sourceTree = "<group>"; };
 		BC7D337C1C493BFD00147FA6 /* Communications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Communications.swift; sourceTree = "<group>"; };
-		BC859DEF1C41E75900AF4CB9 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		BC8B90931C34D78400E39ED8 /* PopoverPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPicker.swift; sourceTree = "<group>"; };
 		BC8B90951C34D8F200E39ED8 /* Aux.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Aux.storyboard; sourceTree = "<group>"; };
 		BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureDetailViewController.swift; sourceTree = "<group>"; };
 		BCC0C64E1C36C17300E0E091 /* Premiere - Control-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Premiere - Control-Bridging-Header.h"; sourceTree = "<group>"; };
-		BCC0C6511C36C86C00E0E091 /* ConsoleConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsoleConnection.swift; path = ../ConsoleConnection.swift; sourceTree = "<group>"; };
 		BCC0C6531C36CB9000E0E091 /* TCPIPSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPIPSocket.swift; sourceTree = "<group>"; };
 		BCD43ADD1C08A1EE005ABA97 /* FixtureTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureTableViewController.swift; sourceTree = "<group>"; };
 		BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterTableViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +106,7 @@
 		BCD43B391C0F457B005ABA97 /* Dimmer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimmer.swift; sourceTree = "<group>"; };
 		BCD43B3B1C0F49A0005ABA97 /* DMX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMX.swift; sourceTree = "<group>"; };
 		BCD43B3D1C108B06005ABA97 /* Propriety.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Propriety.swift; sourceTree = "<group>"; };
+		CB251B22AE14EABF0FFD3B7B /* Pods_Premiere___Control.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Premiere___Control.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E95CE5EB23C529287591F99 /* Pods_Premiere___Control.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,12 +128,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A084DF86E1D1367DD21BBBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB251B22AE14EABF0FFD3B7B /* Pods_Premiere___Control.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D0F15CA6CD23ECDC3B89A24 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E8E376138AC4D1DFB36A246 /* Pods-Premiere - Control.debug.xcconfig */,
+				5EBD5621F1EE51BEDCDE10EC /* Pods-Premiere - Control.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BC41FE831C060094004FBA72 = {
 			isa = PBXGroup;
 			children = (
 				BC41FE8E1C060094004FBA72 /* Premiere - Control */,
 				BC41FEA51C060095004FBA72 /* Premiere - ControlTests */,
 				BC41FE8D1C060094004FBA72 /* Products */,
+				8D0F15CA6CD23ECDC3B89A24 /* Pods */,
+				8A084DF86E1D1367DD21BBBA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,10 +200,9 @@
 				BCD43B391C0F457B005ABA97 /* Dimmer.swift */,
 				BCD43B3B1C0F49A0005ABA97 /* DMX.swift */,
 				BC5D9C4D1C2D154700E4DB6A /* Data.swift */,
-				BCC0C6511C36C86C00E0E091 /* ConsoleConnection.swift */,
 				BCC0C64E1C36C17300E0E091 /* Premiere - Control-Bridging-Header.h */,
-				BC859DEF1C41E75900AF4CB9 /* Networking.swift */,
 				BC7D337C1C493BFD00147FA6 /* Communications.swift */,
+				BC07E00E1C51D66500052DC7 /* UDPNet.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -263,9 +284,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC41FEAB1C060095004FBA72 /* Build configuration list for PBXNativeTarget "Premiere - Control" */;
 			buildPhases = (
+				ED205C0C673FD51782BC9A92 /* Check Pods Manifest.lock */,
 				BC41FE881C060094004FBA72 /* Sources */,
 				BC41FE891C060094004FBA72 /* Frameworks */,
 				BC41FE8A1C060094004FBA72 /* Resources */,
+				4D8AC80032B6E9D32C870F01 /* Embed Pods Frameworks */,
+				C5FA3EABF586A0676F850DD1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -358,6 +382,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4D8AC80032B6E9D32C870F01 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Premiere - Control/Pods-Premiere - Control-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5FA3EABF586A0676F850DD1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Premiere - Control/Pods-Premiere - Control-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED205C0C673FD51782BC9A92 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BC41FE881C060094004FBA72 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -374,6 +446,7 @@
 				BCD43AF71C0924E5005ABA97 /* CueTableViewCell.swift in Sources */,
 				BC6126FF1C15D16E00C22F5E /* ColourProperty.swift in Sources */,
 				BCD43AE01C08A20A005ABA97 /* SubmasterTableViewController.swift in Sources */,
+				BC07E00F1C51D66500052DC7 /* UDPNet.swift in Sources */,
 				BC7025611C335EB4007E6411 /* SubmasterDetailViewController.swift in Sources */,
 				BC6127031C15D1C400C22F5E /* PositionProperty.swift in Sources */,
 				BC41FE941C060094004FBA72 /* SubmastersSplitViewController.swift in Sources */,
@@ -383,11 +456,9 @@
 				BC6127011C15D1A100C22F5E /* ScrollerProperty.swift in Sources */,
 				BCD43B381C0CA970005ABA97 /* OptionsTableViewController.swift in Sources */,
 				BCD43B001C0AA7CC005ABA97 /* SubmasterEditViewController.swift in Sources */,
-				BC859DF01C41E75900AF4CB9 /* Networking.swift in Sources */,
 				BC5C2B481C1DD90E00B16077 /* FixtureEditDynamicCells.swift in Sources */,
 				BCC0C6541C36CB9000E0E091 /* TCPIPSocket.swift in Sources */,
 				BCD43AEC1C08BEB1005ABA97 /* Submaster.swift in Sources */,
-				BCC0C6521C36C86C00E0E091 /* ConsoleConnection.swift in Sources */,
 				BCD43ADE1C08A1EE005ABA97 /* FixtureTableViewController.swift in Sources */,
 				BCBF4F3F1C168ED5008C7192 /* FixtureDetailViewController.swift in Sources */,
 				BCD43B3C1C0F49A0005ABA97 /* DMX.swift in Sources */,
@@ -516,6 +587,7 @@
 		};
 		BC41FEAC1C060095004FBA72 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E8E376138AC4D1DFB36A246 /* Pods-Premiere - Control.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -530,6 +602,7 @@
 		};
 		BC41FEAD1C060095004FBA72 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EBD5621F1EE51BEDCDE10EC /* Pods-Premiere - Control.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

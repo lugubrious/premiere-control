@@ -13,6 +13,9 @@ class Submaster: NSObject {
     var values: [(fixture:Int, value:Double)]
     var index: Int
     
+    weak var cell: SubmasterTableViewCell?
+    weak var detail: SubmasterDetailViewController?
+    
     var intensity: Double {
         didSet {
             for i in values {
@@ -20,6 +23,9 @@ class Submaster: NSObject {
                 for f in fixtures {
                     f.getPropertyWithName("Intensity")?.value = PropertyType.Generic(i.value * self.intensity)
                 }
+                cell?.setupForSubmaster(self)
+                detail?.updateTombstoneValues()
+                detail?.updateFaderValue()
             }
         }
     }

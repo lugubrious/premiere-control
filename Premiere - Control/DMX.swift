@@ -24,12 +24,29 @@ class DMX: DimmerDelegate {
     
     // MARK: Functions
     func sendDMXPacket () {
-        // Put network stuff here
+        // Packet is broken into 4 parts to make sure that it fits into the console's buffer
+        Communications.sendDMXFromStartAddress(0, data: getDmxValuesAsBytesFromStartAddress(0, numValues:  256))
+        Communications.sendDMXFromStartAddress(0, data: getDmxValuesAsBytesFromStartAddress(256, numValues:  256))
+        Communications.sendDMXFromStartAddress(0, data: getDmxValuesAsBytesFromStartAddress(512, numValues:  256))
+        Communications.sendDMXFromStartAddress(0, data: getDmxValuesAsBytesFromStartAddress(768, numValues:  256))
     }
     
     // MARK: Dimmer delegate
     func dimmerValueChanged (source: Dimmer, newValue value: UInt8) {
-        sendDMXPacket()
+        let index = dimmers.indexOf(source)!
+        Communications.sendDMXFromStartAddress(UInt16(source.index), data: getDmxValuesAsBytesFromStartAddress(index, numValues: 1))
+    }
+    
+    func getDmxValuesAsBytesFromStartAddress (startAddress: Int, numValues: Int) -> [UInt8] {
+        var data = [UInt8]()
+        for (index, dimmer) in dimmers.enumerate() {
+            if (index - startAddress) >= numValues {
+                break
+            } else if index >= startAddress {
+                data.append(dimmer.intensity)
+            }
+        }
+        return data
     }
     
     

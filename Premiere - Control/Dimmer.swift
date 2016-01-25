@@ -12,7 +12,7 @@ class Dimmer: NSObject {
     // MARK: Proprieties
     
     var index: Int
-    var intesity: UInt8 {
+    var intensity: UInt8 {
         // Before updating intesity values
         willSet (newIntesity) {
             for delegate in delegates {
@@ -26,7 +26,7 @@ class Dimmer: NSObject {
     // MARK: Initialisation
     init (index: Int) {
         self.index = index
-        self.intesity = 0
+        self.intensity = 0
         self.delegates = [DimmerDelegate]()
     }
 }

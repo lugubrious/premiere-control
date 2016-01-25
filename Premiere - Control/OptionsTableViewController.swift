@@ -225,11 +225,15 @@ class OptionsTableViewController: UITableViewController, UIPickerViewDelegate, U
     @IBAction func networkTestPressed(sender: AnyObject, forEvent event: UIEvent) {
         let string = "Test\(i)"
         i++
-        if let connect = Communications.connection {
-            Connection.syncronized (connect.dataBuffer) {
-                connect.dataBuffer.append(string.dataUsingEncoding(NSUTF8StringEncoding)!)
-            }
-            connect.send()
+        if let connect = Communications.socket {
+            connect.send([UInt8](string.utf8))
+        }
+    }
+    
+    @IBAction func getInfoPressed(sender: UIButton, forEvent event: UIEvent) {
+        if let connect = Communications.socket {
+            let bytes:[UInt8] = [0b00000011, 0b00000000]
+            connect.send(bytes)
         }
     }
 }

@@ -16,20 +16,28 @@ class Communications {
     private static let ID_ADC: UInt8 = 0b0010
     private static let ID_BUTTON: UInt8 = 0b0011
     
-    
-    static var connection: Connection?
+    static var socket: ConsoleSocket!
     static var host = "192.168.2.10"
     
     static var timer = NSTimer()
     
+    // Describes a possible type of value that could be polled
     enum pollType {
         case NONE
         case ADC
         case BUTTONS
     }
 
+    /**
+     * Initilaizes the communications subsystem (hopfully)
+     *
+     * @remark Must be called first!!!
+     */
     static func start() {
-        connection = Connection(host: self.host)
+        socket = ConsoleSocket(ip: host)
+        
+        let bytes:[UInt8] = [0b00000011, 0b00000000]
+        socket.send(bytes)
         
 //        timer = NSTimer.scheduledTimerWithTimeInterval(0.03, target: self, selector: "poll", userInfo: nil, repeats: true)
     }
@@ -64,8 +72,7 @@ class Communications {
             packet.append(ID_BUTTON)
         }
         
-        connection?.dataBuffer.append(NSData(bytes: packet, length: packet.count))
-        connection?.send()
+        socket.send(packet)
     }
     
     static func handleResponse (data: Array<UInt8>) {
@@ -74,14 +81,13 @@ class Communications {
         switch data[0] {
         case 0b00000000: //ping
             let packet = [UInt8(0b00000001), UInt8(data[1])]
-            connection?.dataBuffer.append(NSData(bytes: packet, length: packet.count))
-            connection?.send()
+            socket.send(packet)
         case 0b00000001: //ping response
             break
         case 0b00000010: //set
-            break
+            processSet(data)
         case 0b00000011: //get
-            break
+            processGet(data)
         case 0b00000100: //event
             break
         default:
@@ -90,10 +96,36 @@ class Communications {
     }
     
     static func processSet (data: Array<UInt8>) {
-        
+        switch data[1] {
+        case 0b00000000: //info string
+            let subData = data[2..<data.count]
+            print(String(bytes: subData, encoding: NSUTF8StringEncoding))
+        case 0b00000001: //dmx value
+            break
+        case 0b00000010: // ADC value
+            let subData = Array(data[2..<data.count])
+            setSubmasterValues(subData)
+        case 0b00000011: // Button events
+            break
+        default: break
+        }
     }
     
     static func processGet (data: Array<UInt8>) {
         
+    }
+    
+    static func sendDMXFromStartAddress (startAddress: UInt16, data: Array<UInt8>) {
+        var packet = [UInt8(0b00000010), UInt8(0b00000001), UInt8((startAddress >> 8) & 0xff), UInt8(startAddress & 0xff)]
+        packet.appendContentsOf(data)
+        socket.send(packet)
+    }
+    
+    static func setSubmasterValues (values: [UInt8]) {
+        for (index, value) in values.enumerate() {
+            guard index < Data.submasters.count else {return}
+            
+            Data.submasters[index].intensity = (Double(value) / 255.0)
+        }
     }
 }

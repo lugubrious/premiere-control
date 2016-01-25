@@ -32,6 +32,9 @@ class SubmasterDetailViewController: UICollectionViewController {
         self.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
         self.navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.title = self.submaster?.name ?? "No Submaster Selected"
+        
+        self.submaster?.cell = self.parentCell
+        self.submaster?.detail = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,11 +87,14 @@ class SubmasterDetailViewController: UICollectionViewController {
         }
     }
     
+    weak var header: SubmasterHeader?
+    
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
 
         if (kind == UICollectionElementKindSectionHeader) {
             let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "SubmasterDetailHeader", forIndexPath: indexPath) as! SubmasterHeader
             view.setupForParent(self)
+            self.header = view
             return view
         } else {
             return collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: "FooterView", forIndexPath: indexPath)
@@ -123,6 +129,10 @@ class SubmasterDetailViewController: UICollectionViewController {
     
     }
     */
+    
+    func updateFaderValue () {
+        header?.valueSlider.value = Float(self.submaster.intensity)
+    }
     
     func updateTombstoneValues () {
         if let cells = self.collectionView?.visibleCells() {

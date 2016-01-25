@@ -62,9 +62,9 @@ class Fixture: NSObject, NSCoding, NSCopying {
         let outputs = properties.sort({$0.index > $1.index})
         for output in outputs {
             let dmxValues = output.getDMXValues()
-            let address = self.index + output.index
+            let address = self.address + output.index
             for i in address..<address + dmxValues.count {
-                Data.dmx.dimmers[i].intesity = dmxValues[i - address]
+                Data.dmx.dimmers[i].intensity = dmxValues[i - address]
             }
         }
     }
