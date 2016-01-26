@@ -29,7 +29,6 @@
 		BC8B90941C34D78400E39ED8 /* PopoverPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8B90931C34D78400E39ED8 /* PopoverPicker.swift */; };
 		BC8B90961C34D8F200E39ED8 /* Aux.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC8B90951C34D8F200E39ED8 /* Aux.storyboard */; };
 		BCBF4F3F1C168ED5008C7192 /* FixtureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */; };
-		BCC0C6541C36CB9000E0E091 /* TCPIPSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC0C6531C36CB9000E0E091 /* TCPIPSocket.swift */; };
 		BCD43ADE1C08A1EE005ABA97 /* FixtureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43ADD1C08A1EE005ABA97 /* FixtureTableViewController.swift */; };
 		BCD43AE01C08A20A005ABA97 /* SubmasterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */; };
 		BCD43AE81C08A5F5005ABA97 /* SubmasterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD43AE71C08A5F5005ABA97 /* SubmasterTableViewCell.swift */; };
@@ -88,7 +87,6 @@
 		BC8B90951C34D8F200E39ED8 /* Aux.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Aux.storyboard; sourceTree = "<group>"; };
 		BCBF4F3E1C168ED5008C7192 /* FixtureDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureDetailViewController.swift; sourceTree = "<group>"; };
 		BCC0C64E1C36C17300E0E091 /* Premiere - Control-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Premiere - Control-Bridging-Header.h"; sourceTree = "<group>"; };
-		BCC0C6531C36CB9000E0E091 /* TCPIPSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPIPSocket.swift; sourceTree = "<group>"; };
 		BCD43ADD1C08A1EE005ABA97 /* FixtureTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FixtureTableViewController.swift; sourceTree = "<group>"; };
 		BCD43ADF1C08A20A005ABA97 /* SubmasterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterTableViewController.swift; sourceTree = "<group>"; };
 		BCD43AE71C08A5F5005ABA97 /* SubmasterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmasterTableViewCell.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				BC41FEB21C060249004FBA72 /* Submasters */,
 				BC41FEB41C060283004FBA72 /* Cues */,
 				BC41FEB51C06028C004FBA72 /* Other Views */,
-				BCC0C6551C36CB9A00E0E091 /* Libraries */,
 			);
 			path = "Premiere - Control";
 			sourceTree = "<group>";
@@ -267,14 +264,6 @@
 				BC6127021C15D1C400C22F5E /* PositionProperty.swift */,
 			);
 			name = Proprieties;
-			sourceTree = "<group>";
-		};
-		BCC0C6551C36CB9A00E0E091 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				BCC0C6531C36CB9000E0E091 /* TCPIPSocket.swift */,
-			);
-			name = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,7 +446,6 @@
 				BCD43B381C0CA970005ABA97 /* OptionsTableViewController.swift in Sources */,
 				BCD43B001C0AA7CC005ABA97 /* SubmasterEditViewController.swift in Sources */,
 				BC5C2B481C1DD90E00B16077 /* FixtureEditDynamicCells.swift in Sources */,
-				BCC0C6541C36CB9000E0E091 /* TCPIPSocket.swift in Sources */,
 				BCD43AEC1C08BEB1005ABA97 /* Submaster.swift in Sources */,
 				BCD43ADE1C08A1EE005ABA97 /* FixtureTableViewController.swift in Sources */,
 				BCBF4F3F1C168ED5008C7192 /* FixtureDetailViewController.swift in Sources */,
