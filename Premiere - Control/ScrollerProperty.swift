@@ -36,8 +36,11 @@ class ScrollerProperty: NSObject, NSCoding, Property {
     var name: String
     
     // MARK: Other Variables
+    
+    /// The number of frames in the scroller
     var locations: Int
     
+    /// Gets the value of this property in its raw form
     var unwrappedValue: Int? {
         switch value {
         case .Scroller(let val):
@@ -47,6 +50,7 @@ class ScrollerProperty: NSObject, NSCoding, Property {
         }
     }
     
+    /// Keys used when saving this property to a plist
     struct PropertyKey {
         static let nameKey = "scrollerName"
         static let valueKey = "scrollerValue"

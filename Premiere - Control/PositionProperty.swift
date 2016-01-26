@@ -34,6 +34,7 @@ class PositionProperty: NSObject, NSCoding, Property {
     
     // MARK: Other Variables
     
+    /// Gets the value of this property in its raw form
     var unwrappedValue: (Int,Int)? {
         switch value {
         case .Position(let pan, let tilt):
@@ -43,6 +44,7 @@ class PositionProperty: NSObject, NSCoding, Property {
         }
     }
     
+    /// Keys used when saving this property to a plist
     struct PropertyKey {
         static let nameKey = "positionName"
         static let valuePanKey = "positionValuePan"

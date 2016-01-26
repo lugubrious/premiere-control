@@ -13,14 +13,17 @@ class Dimmer: NSObject {
     
     var index: Int
     var intensity: UInt8 {
-        // Before updating intesity values
+        // Before updating intensity values
         willSet (newIntesity) {
+            // Notify any delegates that the value has changed
+            // TODO: Spawn a new thread for this?
             for delegate in delegates {
                 delegate.dimmerValueChanged(self, newValue: newIntesity)
             }
         }
     }
     
+    // I'm not sure if it is "Swifty" to have multiple delgates, but I want to have multiple delegates, so I do
     var delegates: [DimmerDelegate]
     
     // MARK: Initialisation

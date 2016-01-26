@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+/// Mostly just tests
 class OptionsTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var dimmerPicker: UIPickerView!

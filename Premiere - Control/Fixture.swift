@@ -8,18 +8,23 @@
 
 import UIKit
 
+/// An abstraction representing a single stage light, anything from a bare lightbulb to a moving head
 class Fixture: NSObject, NSCoding, NSCopying {
     // MARK: Properties
     
+    /// Where to save the fixture data
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    /// File name for the fixture data
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("fixtures")
     
     var name: String
     var address: Int
     var index: Int
     
+    /// The properties contained by this fixture
     var properties: [Property]
     
+    // Keys for the properties when saved in a plist
     struct PropertyKey {
         static let nameKey = "fixtureName"
         static let addressKey = "fixtureAddress"
@@ -28,6 +33,7 @@ class Fixture: NSObject, NSCoding, NSCopying {
         static let propKey = "fixtureProperty"
     }
     
+    /// Reutrns the length in addresss space of this fixture
     var addressLength: Int {
         return Fixture.addressLengthForProperties(self.properties)
     }
@@ -51,13 +57,13 @@ class Fixture: NSObject, NSCoding, NSCopying {
     }
     
     deinit {
+        // TODO: This doesn't seem to get called often enough. Is there a memory leak somwhere, or is automatic refrence counting just slow to release te fixtures?
         print("Deinit Fixture: \(self.name)")
     }
     
     // MARK: Functions
-    /**
-     *  Updates the dmx values for the fixture
-     */
+    
+    /// Updates the dmx values for the fixture
     func update() {
         let outputs = properties.sort({$0.index > $1.index})
         for output in outputs {
@@ -69,6 +75,11 @@ class Fixture: NSObject, NSCoding, NSCopying {
         }
     }
     
+    /**
+     * Get a property belonging to this fixture with a specific name
+     * - parameter name: The name of the desired property
+     * - return: The first property with the specified name, or nil if there is no such property
+     */
     func getPropertyWithName (name: String) -> Property? {
         for prop in properties {
             if prop.name == name {
@@ -78,6 +89,11 @@ class Fixture: NSObject, NSCoding, NSCopying {
         return nil
     }
     
+    /**
+     * Get the value of a propery belonging to this fixture as a double if possible
+     * - parameter name: The name of the desired property
+     * - return: The value as a double of the first property with the specified name, or nil if there is no such property or the property with the specified name does not have a double value
+     */
     func getProprietyAsDouble(name: String) -> Double? {
         for prop in properties {
             if prop.name == name {
@@ -92,6 +108,11 @@ class Fixture: NSObject, NSCoding, NSCopying {
         return nil
     }
     
+    /**
+     * Get the value of a propery belonging to this fixture as an int if possible
+     * - parameter name: The name of the desired property
+     * - return: The value as an int of the first property with the specified name, or nil if there is no such property or the property with the specified name does not have an integer value
+     */
     func getProprietyAsInt(name: String) -> Int? {
         for prop in properties {
             if prop.name == name {
@@ -106,6 +127,11 @@ class Fixture: NSObject, NSCoding, NSCopying {
         return nil
     }
     
+    /**
+     * Get the value of a propery belonging to this fixture as an (Int, Int) tuple if possible
+     * - parameter name: The name of the desired property
+     * - return: The value as a tuple of the first property with the specified name, or nil if there is no such property or the property with the specified name does not have a tuple value
+     */
     func getProprietyAsTuple(name: String) -> (Int,Int)? {
         for prop in properties {
             if prop.name == name {
@@ -120,6 +146,11 @@ class Fixture: NSObject, NSCoding, NSCopying {
         return nil
     }
     
+    /**
+     * Get the value of a propery belonging to this fixture as an UIColor if possible
+     * - parameter name: The name of the desired property
+     * - return: The value as a UIColor of the first property with the specified name, or nil if there is no such property or the property with the specified name does not have a colour value
+     */
     func getProprietyAsColour(name: String) -> UIColor? {
         for prop in properties {
             if prop.name == name {
@@ -134,6 +165,11 @@ class Fixture: NSObject, NSCoding, NSCopying {
         return nil
     }
     
+    /**
+     * Calculate the length in addresss space of a list of properties
+     * - parameter properties: The list of properties
+     * - return: The length in address space of the give properties
+     */
     static func addressLengthForProperties(properties: [Property]) -> Int {
         var length = 0
         for i in properties {
@@ -150,6 +186,10 @@ class Fixture: NSObject, NSCoding, NSCopying {
     
     // MARK: Encoding
     
+    /**
+     * Use a given NSCoder to encode all of this fixtures properties
+     * - parameter aCode: The NSCoder to encode with
+     */
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeInteger(self.address, forKey: PropertyKey.addressKey)
         aCoder.encodeObject(self.name, forKey: PropertyKey.nameKey)
@@ -180,6 +220,11 @@ class Fixture: NSObject, NSCoding, NSCopying {
     
     // MARK: Copying
     
+    /**
+    * Create a copy of this fixture
+    * - parameter zone: Unused, an Obj-C concept that does not apply in Swift
+    * - return: A fixture with all of the same properites as this one
+    */
     func copyWithZone(zone: NSZone) -> AnyObject {
         let copy = Fixture(name: self.name, address: self.address, index: self.index)!
         copy.properties = self.properties.map({($0.copyWithZone(nil)) as! Property})

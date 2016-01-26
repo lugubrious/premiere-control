@@ -17,8 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        // This is supposed to be the colour of our LEDs
         window?.tintColor = UIColor(red: 0.239, green: 0, blue: 1, alpha: 1)
         
+        // Start the netowrking code on a seprait thread
         self.performSelectorInBackground(Selector("networkLoop:"), withObject: nil)
         
         return true

@@ -33,6 +33,7 @@ class GenericProperty: NSObject, NSCoding, Property {
     var name: String
     
     // MARK: Other Variables
+    /// Gets the value of this property in its raw form
     var unwrappedValue: Double? {
         switch value {
         case .Generic(let val):
@@ -42,6 +43,7 @@ class GenericProperty: NSObject, NSCoding, Property {
         }
     }
     
+    /// Keys used when saving this property to a plist
     struct PropertyKey {
         static let nameKey = "genericName"
         static let valueKey = "genericValue"
@@ -77,7 +79,7 @@ class GenericProperty: NSObject, NSCoding, Property {
             return [0]
         }
     }
-    
+
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell {
         return cell
     }
@@ -108,6 +110,7 @@ class GenericProperty: NSObject, NSCoding, Property {
     
     // MARK: Copying
     
+    /// Create a copy of this fixture
     @objc func copyWithZone(zone: NSZone) -> AnyObject {
         return GenericProperty(index: self.index, parent: self.parent, name: self.name, initialValue: self.value, depth: self.depth)!
     }

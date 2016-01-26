@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A table view in a popover
 class PopoverPicker: NSObject, UIPopoverPresentationControllerDelegate {
     private var tableView: PickerTableViewController
     private var completion: ((Int) -> Void)?

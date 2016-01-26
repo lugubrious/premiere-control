@@ -17,6 +17,7 @@ class FixtureTableViewCell: UITableViewCell {
         self.nameLabel.text = fixture.name
         self.addressLabel.text = "#\(fixture.index)"
         
+        // Try and find a value to display
         if let val = fixture.getProprietyAsDouble("Intensity") {
             self.valueLabel.text = "\(Int(round(val * 100)))%"
         } else if let val = fixture.getProprietyAsInt("Gel Scroller") {

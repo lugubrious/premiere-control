@@ -39,8 +39,10 @@ class ColourProperty: NSObject, NSCoding, Property {
         case HSI
     }
     
+    /// The colour space used for DMX output
     var outputMode: ColourOutputMode
     
+    /// Gets the value of this property in its raw form
     var unwrappedValue: UIColor? {
         switch value {
         case .Colour(let val):
@@ -50,6 +52,7 @@ class ColourProperty: NSObject, NSCoding, Property {
         }
     }
     
+    /// Keys used when saving this property to a plist
     struct PropertyKey {
         static let nameKey = "colourName"
         static let valueKey = "colourValue"

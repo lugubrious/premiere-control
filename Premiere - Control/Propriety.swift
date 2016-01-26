@@ -8,32 +8,38 @@
 
 import UIKit
 
+/// Represents one property of a fixture. eg. Brightness, colour, position
 protocol Property: NSCopying, NSCoding {
-    // The weight of this property when displayed in a table view. Higher numbers are displayed first.
+    /// The weight of this property when displayed in a table view. Higher numbers are displayed first.
     var sortOrder: Int {get}
     
-    // The fixture that this property belogns to
+    /// The fixture that this property belogns to
     var parent: Fixture? {get set}
-    // The value of this propriety
+    /// The value of this propriety
     var value: PropertyType {get set}
-    // The order of this property in the DMX packet (unlike sortOrder this should be an absolute value, nto a weigth)
+    /// The order of this property in the DMX packet (unlike sortOrder this should be an absolute value, nto a weigth)
     var index: Int {get set}
-    // How many bits this property has (must be a multiple of 8, since DMX channels are 8 bits)
+    /// How many bits this property has (must be a multiple of 8, since DMX channels are 8 bits)
     var depth: Int {get set}
-    // The maximum DMX value this propriety can have (2^depth)
+    /// The maximum DMX value this propriety can have (2^depth)
     var maxValue: Int {get}
-    // The name that this property should display
+    /// The name that this property should display
     var name: String {get set}
     
-    // Returns the DMX values for this property
+    /// Returns the DMX values for this property
     func getDMXValues() -> [UInt8]
+    /**
+     * Takes a table cell and initializes it to represent this property
+     * - parameter cell: The cell to setup
+     * - return: The setup cell
+     */
     func setUpTableCell(cell: UITableViewCell) -> UITableViewCell
     
-    // A generic initilaiser
+    /// A generic initilaiser
     init(index: Int, parent: Fixture?)
 }
 
-// The possible storage types for the value paramater
+/// The possible storage types for the value paramater
 enum PropertyType {
     case Generic(Double)
     case Colour(UIColor)
